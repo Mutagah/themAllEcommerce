@@ -2,12 +2,14 @@ export interface UserData {
   id: number;
   email: string;
   username: string;
+  fisrtname: string;
+  lastname: string;
   password: string;
   phone: string;
   __v: number;
   name: {
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
   };
   address: {
     geolocation: {
