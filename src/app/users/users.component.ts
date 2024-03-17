@@ -4,11 +4,15 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from '../users.service';
 
 /*Interface import */
-import { UserData } from '../userData';
+import { UserData } from '../user-interface';
+
+/*Component imports */
+import { SingleUserDialogComponent } from '../single-user-dialog/single-user-dialog.component';
 
 /*Angular imports */
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +20,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit, AfterViewInit {
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private dialog: MatDialog) {}
 
   dataSource!: MatTableDataSource<UserData>;
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email', 'view'];
@@ -56,6 +60,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   viewUserDetails(userId: number) {
-    console.log(userId);
+    this.dialog.open(SingleUserDialogComponent, {
+      data: this.dataSource.data.find((user) => user.id === userId),
+    });
   }
 }
