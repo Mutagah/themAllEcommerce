@@ -1,0 +1,18 @@
+.table-container {
+  width: 80%;
+  margin: 0 auto;
+  .table-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+table
+ {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 25%;
+}
