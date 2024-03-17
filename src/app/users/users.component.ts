@@ -9,6 +9,7 @@ import { UserData } from '../userData';
 /*Angular imports */
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -42,5 +43,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
       },
     });
   }
-  applyFilter(event: any) {}
+
+  applyFilter(event: any) {
+    console.log(event.target)
+  }
+
 }
