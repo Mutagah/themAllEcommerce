@@ -1,23 +1,68 @@
 <div>
   <h1 mat-dialog-title>Delete Employee Record</h1>
-  <div mat-dialog-content class="delete-confirmation-form-container">
-    <p>Enter the names of the employee you want to delete?</p>
-    <!-- First Name field -->
-    <form class="delete-confirmation-form">
-      <mat-form-field>
-        <mat-label>First Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <!-- Last Name field -->
-      <mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </form>
-  </div>
-
-  <div mat-dialog-actions class="dialog-footer-buttons">
-    <button mat-button mat-raised-button disabled>Yes</button>
-    <button mat-button mat-raised-button mat-dialog-close>No</button>
-  </div>
+  <form
+    class="delete-confirmation-form"
+    #myForm="ngForm"
+    (ngSubmit)="submitDeleteData(myForm)"
+  >
+    <p>Enter the names of the employee you want to delete</p>
+    <div class="input-container">
+      <div class="input-childs">
+        <!-- First Name field -->
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            type="text"
+            name="firstName"
+            ngModel
+            required
+            #firstName="ngModel"
+          />
+        </mat-form-field>
+        <br />
+        <small *ngIf="firstName.invalid && firstName.touched">
+          First Name is a required field
+        </small>
+      </div>
+      <div class="input-childs">
+        <!-- Last Name field -->
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            type="text"
+            name="lastName"
+            ngModel
+            required
+            #lastName="ngModel"
+          />
+        </mat-form-field>
+        <br />
+        <small *ngIf="lastName.invalid && lastName.touched">
+          Last Name is a required field
+        </small>
+      </div>
+    </div>
+    <p>
+      Are you sure you want to delete {{ firstName.value }}
+      {{ lastName.value }}?
+    </p>
+    <div mat-dialog-actions class="dialog-footer-buttons">
+      <button
+        mat-button
+        mat-raised-button
+        type="submit"
+        [disabled]="
+          firstName.value !== titleCase(userDetails.firstname) ||
+          lastName.value !== titleCase(userDetails.lastname)
+        "
+      >
+        Yes
+      </button>
+      <button mat-button mat-raised-button mat-dialog-close type="button">
+        No
+      </button>
+    </div>
+  </form>
 </div>

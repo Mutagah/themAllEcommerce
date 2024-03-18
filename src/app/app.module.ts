@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 /*Services imports */
 import { UsersService } from './users.service';
@@ -25,7 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     UsersComponent,
     HomeComponent,
     SingleUserDialogComponent,
-    DeleteDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

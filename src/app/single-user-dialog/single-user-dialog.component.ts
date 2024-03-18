@@ -32,6 +32,7 @@ export class SingleUserDialogComponent {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: this.userDetails,
     });
   }
 }

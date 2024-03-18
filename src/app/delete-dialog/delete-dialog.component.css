@@ -1,14 +1,28 @@
-.delete-confirmation-form-container {
+.delete-confirmation-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.delete-confirmation-form {
-  display: flex;
-  justify-content: space-between;
+  padding: 5px;
+  p {
+    text-align: center;
+  }
+  .input-container {
+    text-align: center;
+    small {
+      color: red;
+    }
+    .input-childs {
+      width: 50%;
+      float: left;
+    }
+  }
 }
 
 .dialog-footer-buttons {
   display: flex;
   justify-content: space-evenly;
 }
+/* div.mat-grid-tile-content {
+  display: flex;
+  flex-direction: column;
+} */
