@@ -62,6 +62,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   viewUserDetails(userId: number) {
     this.dialog.open(SingleUserDialogComponent, {
       data: this.dataSource.data.find((user) => user.id === userId),
+      width: '500px',
     });
   }
 }
