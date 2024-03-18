@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -33,6 +34,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     UsersComponent,
     HomeComponent,
     SingleUserDialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -63,6 +63,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.dialog.open(SingleUserDialogComponent, {
       data: this.dataSource.data.find((user) => user.id === userId),
       width: '500px',
+      position: {
+        top: '50px',
+        left: '50px',
+      },
+      panelClass: "custom-dialog-container"
     });
   }
 }

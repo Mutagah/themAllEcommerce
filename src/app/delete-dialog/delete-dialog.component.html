@@ -1,0 +1,23 @@
+<div>
+  <h1 mat-dialog-title>Delete Employee Record</h1>
+  <div mat-dialog-content class="delete-confirmation-form-container">
+    <p>Enter the names of the employee you want to delete?</p>
+    <!-- First Name field -->
+    <form class="delete-confirmation-form">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <!-- Last Name field -->
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="dialog-footer-buttons">
+    <button mat-button mat-raised-button disabled>Yes</button>
+    <button mat-button mat-raised-button mat-dialog-close>No</button>
+  </div>
+</div>
