@@ -1,6 +1,6 @@
 <div class="form-container">
   <h1>Create a user</h1>
-  <form>
+  <form [formGroup]="myReactiveForm" (ngSubmit)="submitForm()">
     <div style="display: flex" class="geo-personal-container">
       <div class="personal-details">
         <h4>Personal Details:</h4>
@@ -8,27 +8,75 @@
           <!-- First Name input -->
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput />
+            <input matInput type="text" formControlName="firstName" />
+            <mat-hint
+              *ngIf="
+                myReactiveForm.get('firstName')?.touched &&
+                myReactiveForm.get('firstName')?.invalid
+              "
+              class="hint"
+            >
+              First Name is a required field
+            </mat-hint>
           </mat-form-field>
 
           <!-- Last Name input -->
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput />
+            <input matInput formControlName="lastName" />
+            <mat-hint
+              *ngIf="
+                myReactiveForm.get('lastName')?.touched &&
+                myReactiveForm.get('lastName')?.invalid
+              "
+              class="hint"
+            >
+              Last Name is a required field
+            </mat-hint>
           </mat-form-field>
 
           <!-- Username input -->
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Placeholder" />
+            <input matInput formControlName="userName" />
+            <mat-hint
+              *ngIf="
+                myReactiveForm.get('userName')?.touched &&
+                myReactiveForm.get('userName')?.invalid
+              "
+              class="hint"
+            >
+              Username is a required field
+            </mat-hint>
           </mat-form-field>
         </div>
         <div class="channel-tabs">
           <!-- Email input -->
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput />
-          </mat-form-field>
+          <div class="email-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                myReactiveForm.get('email')?.touched &&
+                !myReactiveForm.get('email')?.errors?.['email'] &&
+                myReactiveForm.get('email')?.invalid
+              "
+              class="hint"
+            >
+              Email is a required field
+            </div>
+            <div
+              *ngIf="
+                myReactiveForm.get('email')?.touched &&
+                myReactiveForm.get('email')?.errors?.['email'] && myReactiveForm.get('email')?.invalid
+              "
+              class="hint"
+            >
+              Email is invalid
+            </div>
+          </div>
 
           <!-- Phone Number input -->
           <mat-form-field appearance="outline">
