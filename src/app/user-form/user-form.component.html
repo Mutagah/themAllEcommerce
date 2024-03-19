@@ -1,0 +1,100 @@
+<div class="form-container">
+  <h1>Create a user</h1>
+  <form>
+    <div style="display: flex" class="geo-personal-container">
+      <div class="personal-details">
+        <h4>Personal Details:</h4>
+        <div class="names-container">
+          <!-- First Name input -->
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Last Name input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Username input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+        </div>
+        <div class="channel-tabs">
+          <!-- Email input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Phone Number input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Password input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="geo-details">
+        <h4>Geographical Details:</h4>
+        <!-- Latitude input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Latitude</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <!-- Longitude input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Longitude</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="location-details">
+      <h4>Location Details:</h4>
+      <div class="location-data-container">
+        <!-- City input -->
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <!-- Street input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <!-- Address input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Address Number</mat-label>
+          <input matInput placeholder="Placeholder" />
+        </mat-form-field>
+
+        <!-- Zipcode input -->
+        <mat-form-field appearance="outline">
+          <mat-label>Zip code</mat-label>
+          <input matInput placeholder="Placeholder" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="button-container">
+      <button mat-stroked-button color="primary" class="form-button">
+        Submit
+      </button>
+      <button mat-stroked-button color="primary" class="form-button">
+        Clear Form
+      </button>
+    </div>
+  </form>
+</div>
