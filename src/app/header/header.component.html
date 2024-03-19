@@ -1,0 +1,19 @@
+<div class="header-container">
+  <div class="logo" (click)="goToHome()">Shop</div>
+  <div class="categories" (click)="goToCategories()">Categories</div>
+  <button class="toggle-button" (click)="toggleSideNav()">
+    Toggle Side Nav
+  </button>
+  <div class="logout" (click)="logout()">Logout</div>
+
+  <!-- Side navigation -->
+  <div class="sidenav" *ngIf="showSideNav">
+    <div *ngFor="let category of categories">
+      <mat-card-actions (onClick)="getInCategories()" class="card-actions">
+        <button mat-button color="primary" >
+          {{ category }}
+        </button>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>

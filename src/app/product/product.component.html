@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="home">
+  <div *ngIf="productData">
+    <mat-card class="product-card">
+      <img mat-card-image [src]="productData.image" alt="Product Image" />
+      <mat-card-content>
+        <h2>{{ productData.title }}</h2>
+        <p>{{ productData.description }}</p>
+        <p>Rate: {{ productData.rating.rate }}</p>
+        <p>Price: {{ productData.price * 130 | currency : "Ksh " }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose Quantity</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let quantity of quantities"
+              [value]="quantity"
+              >{{ quantity }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button mat-button color="primary">Add to Cart</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
