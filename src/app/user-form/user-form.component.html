@@ -50,12 +50,13 @@
             </mat-hint>
           </mat-form-field>
         </div>
+
         <div class="channel-tabs">
           <!-- Email input -->
           <div class="email-container">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput formControlName="email" />
+              <input matInput type="email" formControlName="email" />
             </mat-form-field>
             <div
               *ngIf="
@@ -81,13 +82,29 @@
           <!-- Phone Number input -->
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <input matInput />
+            <input matInput type="tel" formControlName="phoneNumber" />
+            <mat-hint
+              *ngIf="
+                myReactiveForm.get('phoneNumber')?.touched &&
+                myReactiveForm.get('phoneNumber')?.invalid
+              "
+              class="hint"
+              >Phone Number is a required field</mat-hint
+            >
           </mat-form-field>
 
           <!-- Password input -->
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput />
+            <input matInput type="password" formControlName="password" />
+            <mat-hint
+              *ngIf="
+                myReactiveForm.get('password')?.invalid &&
+                myReactiveForm.get('password')?.touched
+              "
+              class="hint"
+              >Password is a required field</mat-hint
+            >
           </mat-form-field>
         </div>
       </div>
@@ -97,13 +114,30 @@
         <!-- Latitude input -->
         <mat-form-field appearance="outline">
           <mat-label>Latitude</mat-label>
-          <input matInput />
+          <input matInput type="text" formControlName="latitude" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('latitude')?.invalid &&
+              myReactiveForm.get('latitude')?.touched
+            "
+            class="hint"
+            >Latitude is a required field
+          </mat-hint>
         </mat-form-field>
 
         <!-- Longitude input -->
         <mat-form-field appearance="outline">
           <mat-label>Longitude</mat-label>
-          <input matInput />
+          <input matInput type="text" formControlName="longitude" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('longitude')?.touched &&
+              myReactiveForm.get('latitude')?.invalid
+            "
+            class="hint"
+          >
+            Longitude is a required field
+          </mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -114,33 +148,74 @@
         <!-- City input -->
         <mat-form-field appearance="outline">
           <mat-label>City</mat-label>
-          <input matInput />
+          <input matInput type="text" formControlName="city" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('city')?.invalid &&
+              myReactiveForm.get('city')?.touched
+            "
+            class="hint"
+          >
+            City is a required field
+          </mat-hint>
         </mat-form-field>
 
         <!-- Street input -->
         <mat-form-field appearance="outline">
           <mat-label>Street</mat-label>
-          <input matInput />
+          <input matInput type="text" formControlName="street" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('street')?.invalid &&
+              myReactiveForm.get('street')?.touched
+            "
+            class="hint"
+          >
+            Street is a required field
+          </mat-hint>
         </mat-form-field>
 
         <!-- Address input -->
         <mat-form-field appearance="outline">
           <mat-label>Address Number</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input matInput type="number" formControlName="number" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('number')?.touched &&
+              myReactiveForm.get('number')?.invalid
+            "
+            class="hint"
+          >
+            Address Number is a required field
+          </mat-hint>
         </mat-form-field>
 
         <!-- Zipcode input -->
         <mat-form-field appearance="outline">
           <mat-label>Zip code</mat-label>
-          <input matInput placeholder="Placeholder" />
+          <input matInput type="text" formControlName="zipCode" />
+          <mat-hint
+            *ngIf="
+              myReactiveForm.get('zipCode')?.invalid &&
+              myReactiveForm.get('zipCode')?.touched
+            "
+            class="hint"
+          >
+            Zip Code is a required field
+          </mat-hint>
         </mat-form-field>
       </div>
     </div>
     <div class="button-container">
-      <button mat-stroked-button color="primary" class="form-button">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="form-button"
+        [disabled]="myReactiveForm.invalid"
+      >
         Submit
       </button>
-      <button mat-stroked-button color="primary" class="form-button">
+      <button mat-stroked-button color="primary" class="form-button" (click)="resetForm()">
         Clear Form
       </button>
     </div>
