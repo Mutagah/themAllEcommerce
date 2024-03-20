@@ -220,50 +220,6 @@
       },
       "phone": "1-104-001-4567",
       "__v": 0
-    },
-    {
-      "id": "b613",
-      "email": "tashacounts254@gmail.com",
-      "username": "tasha",
-      "password": "tasha",
-      "phone": "0727249154",
-      "_v": 0,
-      "name": {
-        "firstname": "Mutaga",
-        "lastname": "Tasha"
-      },
-      "address": {
-        "geolocation": {
-          "lat": "-57868",
-          "long": "67788"
-        },
-        "city": "Nairobi",
-        "street": "Ngong lane",
-        "number": 397,
-        "zipcode": "10100"
-      }
-    },
-    {
-      "id": "8bbd",
-      "email": "kevin@gmail.com",
-      "username": "kevinryan",
-      "password": "kev02937@",
-      "phone": "1-567-094-1345",
-      "_v": 0,
-      "name": {
-        "firstname": "Kevin Ingosi",
-        "lastname": "ryan"
-      },
-      "address": {
-        "geolocation": {
-          "lat": "40.3467",
-          "long": "-30.1310"
-        },
-        "city": "Cullman",
-        "street": "Frances Ct",
-        "number": 86,
-        "zipcode": "29567-1452"
-      }
     }
   ]
 }

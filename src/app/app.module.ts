@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -24,9 +25,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { UserFormComponent } from './user-form/user-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper'
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatFormFieldModule,
     MatDialogModule,
     MatGridListModule,
+    MatStepperModule,
     ReactiveFormsModule
   ],
   providers: [UsersService],

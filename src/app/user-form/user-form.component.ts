@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 /*Service import */
 import { UsersService } from '../users.service';
+
+/* Angular imports*/
+import { MatStepper } from '@angular/material/stepper';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  myGroup!: FormGroup;
+  personalDetails!: FormGroup;
+  geographicalDetails!: FormGroup;
+  locationDetails!: FormGroup;
   userId!: number;
   userDetails: any;
   updateMode!: boolean;
+  @ViewChild('stepper') stepper!: MatStepper;
 
   constructor(
     private userService: UsersService,
@@ -21,7 +27,7 @@ export class UserFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
-      this.userId = parseInt(params['id']);
+      this.userId = params['id'];
     });
   }
 
@@ -30,7 +36,7 @@ export class UserFormComponent implements OnInit {
       this.updateMode = true;
       this.userService.getSpecificUser(this.userId).subscribe({
         next: (res) => {
-          this.myGroup = new FormGroup({
+          this.personalDetails = new FormGroup({
             firstName: new FormControl(res.name.firstname, Validators.required),
             lastName: new FormControl(res.name.lastname, Validators.required),
             userName: new FormControl(res.username, Validators.required),
@@ -38,6 +44,9 @@ export class UserFormComponent implements OnInit {
               Validators.required,
               Validators.email,
             ]),
+          });
+
+          this.geographicalDetails = new FormGroup({
             phoneNumber: new FormControl(res.phone, Validators.required),
             password: new FormControl(res.password, Validators.required),
             latitude: new FormControl(
@@ -48,6 +57,9 @@ export class UserFormComponent implements OnInit {
               res.address?.geolocation?.long,
               Validators.required
             ),
+          });
+
+          this.locationDetails = new FormGroup({
             city: new FormControl(res?.address?.city, Validators.required),
             street: new FormControl(res.address?.street, Validators.required),
             number: new FormControl(res.address?.number, Validators.required),
@@ -59,15 +71,21 @@ export class UserFormComponent implements OnInit {
         },
       });
     } else {
-      this.myGroup = new FormGroup({
+      this.personalDetails = new FormGroup({
         firstName: new FormControl('', Validators.required),
         lastName: new FormControl('', Validators.required),
         userName: new FormControl('', Validators.required),
         email: new FormControl('', [Validators.required, Validators.email]),
+      });
+
+      this.geographicalDetails = new FormGroup({
         phoneNumber: new FormControl('', Validators.required),
         password: new FormControl('', Validators.required),
         latitude: new FormControl('', Validators.required),
         longitude: new FormControl('', Validators.required),
+      });
+
+      this.locationDetails = new FormGroup({
         city: new FormControl('', Validators.required),
         street: new FormControl('', Validators.required),
         number: new FormControl('', Validators.required),
@@ -76,50 +94,57 @@ export class UserFormComponent implements OnInit {
     }
   }
   submitForm() {
-    const submitData = {
-      email: this.myGroup.value.email,
-      username: this.myGroup.value.userName,
-      password: this.myGroup.value.password,
-      phone: this.myGroup.value.phoneNumber,
-      _v: 0,
-      name: {
-        firstname: this.myGroup.value.firstName,
-        lastname: this.myGroup.value.lastName,
-      },
+    const formData = {
       address: {
         geolocation: {
-          lat: this.myGroup.value.latitude,
-          long: this.myGroup.value.longitude,
+          lat: this.geographicalDetails.value.latitude,
+          long: this.geographicalDetails.value.longitude,
         },
-        city: this.myGroup.value.city,
-        street: this.myGroup.value.street,
-        number: this.myGroup.value.number,
-        zipcode: this.myGroup.value.zipCode,
+        city: this.locationDetails.value.city,
+        street: this.locationDetails.value.street,
+        number: this.locationDetails.value.number,
+        zipcode: this.locationDetails.value.zipCode,
       },
+      email: this.personalDetails.value.email,
+      username: this.personalDetails.value.userName,
+      password: this.geographicalDetails.value.password,
+      name: {
+        firstname: this.personalDetails.value.firstName,
+        lastname: this.personalDetails.value.lastName,
+      },
+      phone: this.geographicalDetails.value.phoneNumber,
+      _v: 0,
     };
     if (this.updateMode) {
-      this.userService.patchUser(this.userId, submitData).subscribe({
+      this.userService.patchUser(this.userId, formData).subscribe({
         next: () => {
-          this.myGroup.reset();
-          this.router.navigate(['/users']);
+          this.personalDetails.reset();
+          this.locationDetails.reset();
+          this.geographicalDetails.reset();
+          this.stepper.reset();
+          // this.router.navigate(['users']);
         },
         error: (error: any) => {
           return error;
         },
         complete: () => {
+          this.router.navigate(['users']);
           return 'Data successfully patched';
         },
       });
     } else {
-      this.userService.createEmployee(submitData).subscribe({
+      this.userService.createEmployee(formData).subscribe({
         next: () => {
-          this.myGroup.reset();
-          this.router.navigate(['/users']);
+          this.personalDetails.reset();
+          this.locationDetails.reset();
+          this.geographicalDetails.reset();
+          this.stepper.reset();
         },
         error: (error: any) => {
           return error;
         },
         complete: () => {
+          this.router.navigate(['users']);
           return 'Data successfully posted';
         },
       });
@@ -127,6 +152,9 @@ export class UserFormComponent implements OnInit {
   }
 
   resetForm() {
-    this.myGroup.reset();
+    this.personalDetails.reset();
+    this.locationDetails.reset();
+    this.geographicalDetails.reset();
+    this.stepper.reset();
   }
 }

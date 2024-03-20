@@ -1,18 +1,20 @@
 <div class="form-container">
-  <h1>Create a user</h1>
-  <form *ngIf="myGroup" [formGroup]="myGroup" (ngSubmit)="submitForm()">
-    <div style="display: flex" class="geo-personal-container">
-      <div class="personal-details">
-        <h4>Personal Details:</h4>
-        <div class="names-container">
+  <h1>{{ updateMode ? "Update user" : "Create a user" }}</h1>
+
+  <mat-stepper linear>
+    <!-- First step -->
+    <mat-step [stepControl]="personalDetails">
+      <form *ngIf="personalDetails" [formGroup]="personalDetails">
+        <ng-template matStepLabel> Fill out your personal details </ng-template>
+        <div class="input-container">
           <!-- First Name input -->
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput type="text" formControlName="firstName" />
             <mat-hint
               *ngIf="
-                myGroup.get('firstName')?.touched &&
-                myGroup.get('firstName')?.invalid
+                personalDetails.get('firstName')?.touched &&
+                personalDetails.get('firstName')?.invalid
               "
               class="hint"
             >
@@ -26,8 +28,8 @@
             <input matInput type="text" formControlName="lastName" />
             <mat-hint
               *ngIf="
-                myGroup.get('lastName')?.touched &&
-                myGroup.get('lastName')?.invalid
+                personalDetails.get('lastName')?.touched &&
+                personalDetails.get('lastName')?.invalid
               "
               class="hint"
             >
@@ -41,17 +43,15 @@
             <input matInput type="text" formControlName="userName" />
             <mat-hint
               *ngIf="
-                myGroup.get('userName')?.touched &&
-                myGroup.get('userName')?.invalid
+                personalDetails.get('userName')?.touched &&
+                personalDetails.get('userName')?.invalid
               "
               class="hint"
             >
               Username is a required field
             </mat-hint>
           </mat-form-field>
-        </div>
 
-        <div class="channel-tabs">
           <!-- Email input -->
           <div class="email-container">
             <mat-form-field appearance="outline">
@@ -60,9 +60,9 @@
             </mat-form-field>
             <div
               *ngIf="
-                myGroup.get('email')?.touched &&
-                !myGroup.get('email')?.errors?.['email'] &&
-                myGroup.get('email')?.invalid
+                personalDetails.get('email')?.touched &&
+                !personalDetails.get('email')?.errors?.['email'] &&
+                personalDetails.get('email')?.invalid
               "
               class="hint"
             >
@@ -70,27 +70,42 @@
             </div>
             <div
               *ngIf="
-                myGroup.get('email')?.touched &&
-                myGroup.get('email')?.errors?.['email'] && myGroup.get('email')?.invalid
+                personalDetails.get('email')?.touched &&
+                personalDetails.get('email')?.errors?.['email'] && personalDetails.get('email')?.invalid
               "
               class="hint"
             >
               Email is invalid
             </div>
           </div>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
 
+    <!-- Second Step -->
+    <mat-step *ngIf="geographicalDetails" [stepControl]="geographicalDetails">
+      <form [formGroup]="geographicalDetails">
+        <ng-template matStepLabel>
+          Enter phone number, password and geographical details
+        </ng-template>
+
+        <div class="input-container">
           <!-- Phone Number input -->
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
             <input matInput type="tel" formControlName="phoneNumber" />
             <mat-hint
               *ngIf="
-                myGroup.get('phoneNumber')?.touched &&
-                myGroup.get('phoneNumber')?.invalid
+                geographicalDetails.get('phoneNumber')?.touched &&
+                geographicalDetails.get('phoneNumber')?.invalid
               "
               class="hint"
-              >Phone Number is a required field</mat-hint
             >
+              Phone Number is a required field
+            </mat-hint>
           </mat-form-field>
 
           <!-- Password input -->
@@ -99,124 +114,129 @@
             <input matInput type="password" formControlName="password" />
             <mat-hint
               *ngIf="
-                myGroup.get('password')?.invalid &&
-                myGroup.get('password')?.touched
+                geographicalDetails.get('password')?.invalid &&
+                geographicalDetails.get('password')?.touched
               "
               class="hint"
               >Password is a required field</mat-hint
             >
           </mat-form-field>
+
+          <!-- Latitude input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Latitude</mat-label>
+            <input matInput type="text" formControlName="latitude" />
+            <mat-hint
+              *ngIf="
+                geographicalDetails.get('latitude')?.invalid &&
+                geographicalDetails.get('latitude')?.touched
+              "
+              class="hint"
+              >Latitude is a required field
+            </mat-hint>
+          </mat-form-field>
+
+          <!-- Longitude input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Longitude</mat-label>
+            <input matInput type="text" formControlName="longitude" />
+            <mat-hint
+              *ngIf="
+                geographicalDetails.get('longitude')?.touched &&
+                geographicalDetails.get('latitude')?.invalid
+              "
+              class="hint"
+            >
+              Longitude is a required field
+            </mat-hint>
+          </mat-form-field>
         </div>
-      </div>
+        <div class="button-container">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-      <div class="geo-details">
-        <h4>Geographical Details:</h4>
-        <!-- Latitude input -->
-        <mat-form-field appearance="outline">
-          <mat-label>Latitude</mat-label>
-          <input matInput type="text" formControlName="latitude" />
-          <mat-hint
-            *ngIf="
-              myGroup.get('latitude')?.invalid &&
-              myGroup.get('latitude')?.touched
-            "
-            class="hint"
-            >Latitude is a required field
-          </mat-hint>
-        </mat-form-field>
+    <!-- Third step -->
+    <mat-step *ngIf="locationDetails" [stepControl]="locationDetails">
+      <form [formGroup]="locationDetails">
+        <ng-template matStepLabel> Enter location details </ng-template>
+        <div class="input-container">
+          <!-- City input  -->
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName="city" />
+            <mat-hint
+              *ngIf="
+                locationDetails.get('city')?.invalid &&
+                locationDetails.get('city')?.touched
+              "
+              class="hint"
+            >
+              City is a required field
+            </mat-hint>
+          </mat-form-field>
 
-        <!-- Longitude input -->
-        <mat-form-field appearance="outline">
-          <mat-label>Longitude</mat-label>
-          <input matInput type="text" formControlName="longitude" />
-          <mat-hint
-            *ngIf="
-              myGroup.get('longitude')?.touched &&
-              myGroup.get('latitude')?.invalid
-            "
-            class="hint"
+          <!-- Street input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Street</mat-label>
+            <input matInput type="text" formControlName="street" />
+            <mat-hint
+              *ngIf="
+                locationDetails.get('street')?.invalid &&
+                locationDetails.get('street')?.touched
+              "
+              class="hint"
+            >
+              Street is a required field
+            </mat-hint>
+          </mat-form-field>
+
+          <!-- Address input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Address Number</mat-label>
+            <input matInput type="number" formControlName="number" />
+            <mat-hint
+              *ngIf="
+                locationDetails.get('number')?.touched &&
+                locationDetails.get('number')?.invalid
+              "
+              class="hint"
+            >
+              Address Number is a required field
+            </mat-hint>
+          </mat-form-field>
+
+          <!-- Zipcode input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Zip code</mat-label>
+            <input matInput type="text" formControlName="zipCode" />
+            <mat-hint
+              *ngIf="
+                locationDetails.get('zipCode')?.invalid &&
+                locationDetails.get('zipCode')?.touched
+              "
+              class="hint"
+            >
+              Zip Code is a required field
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="button-container">
+          <button mat-stroked-button color="primary" class="form-button"
+            (click)="submitForm()">Submit
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="form-button"
+            (click)="resetForm()"
           >
-            Longitude is a required field
-          </mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div class="location-details">
-      <h4>Location Details:</h4>
-      <div class="location-data-container">
-        <!-- City input -->
-        <mat-form-field appearance="outline">
-          <mat-label>City</mat-label>
-          <input matInput type="text" formControlName="city" />
-          <mat-hint
-            *ngIf="myGroup.get('city')?.invalid && myGroup.get('city')?.touched"
-            class="hint"
-          >
-            City is a required field
-          </mat-hint>
-        </mat-form-field>
-
-        <!-- Street input -->
-        <mat-form-field appearance="outline">
-          <mat-label>Street</mat-label>
-          <input matInput type="text" formControlName="street" />
-          <mat-hint
-            *ngIf="
-              myGroup.get('street')?.invalid && myGroup.get('street')?.touched
-            "
-            class="hint"
-          >
-            Street is a required field
-          </mat-hint>
-        </mat-form-field>
-
-        <!-- Address input -->
-        <mat-form-field appearance="outline">
-          <mat-label>Address Number</mat-label>
-          <input matInput type="number" formControlName="number" />
-          <mat-hint
-            *ngIf="
-              myGroup.get('number')?.touched && myGroup.get('number')?.invalid
-            "
-            class="hint"
-          >
-            Address Number is a required field
-          </mat-hint>
-        </mat-form-field>
-
-        <!-- Zipcode input -->
-        <mat-form-field appearance="outline">
-          <mat-label>Zip code</mat-label>
-          <input matInput type="text" formControlName="zipCode" />
-          <mat-hint
-            *ngIf="
-              myGroup.get('zipCode')?.invalid && myGroup.get('zipCode')?.touched
-            "
-            class="hint"
-          >
-            Zip Code is a required field
-          </mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="button-container">
-      <button
-        mat-stroked-button
-        color="primary"
-        class="form-button"
-        [disabled]="myGroup.invalid"
-      >
-        Submit
-      </button>
-      <button
-        mat-stroked-button
-        color="primary"
-        class="form-button"
-        (click)="resetForm()"
-      >
-        Clear Form
-      </button>
-    </div>
-  </form>
+            Clear Form
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
 </div>
