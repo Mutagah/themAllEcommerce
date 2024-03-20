@@ -1,14 +1,16 @@
 .home-container {
   background-color: #f5f5dc;
   position: relative;
+  height: max-content;
   .mat-card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-bottom: 20px;
 
     .example-card {
-      margin-top: 20px;
-      width: 280px;
+      margin-top: 15px;
+      min-width: 280px;
       height: 300px;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -27,15 +29,16 @@
     }
 
     .image-container {
-      padding: 10px;
-      display: flex;
+      margin-top: 15px;
+      margin-bottom: 15px;
       justify-content: center;
+      text-align: center;
     }
 
     .card-content {
       position: absolute; /* Set the position to absolute */
-      bottom: 10px; /* Adjust the distance from the bottom as needed */
-      text-align: left;
+      bottom: 0; /* Adjust the distance from the bottom as needed */
+      left: 0;
       line-height: 1.7;
       padding: 5px;
     }
@@ -47,4 +50,29 @@
       text-align: right;
     }
   }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 7px solid #ff9900;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  .view-all {
+    color: blue;
+    cursor: pointer;
+  }
+}
+.product-title {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }

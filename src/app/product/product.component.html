@@ -1,28 +1,31 @@
 <app-header></app-header>
-<div class="home">
-  <div *ngIf="productData">
-    <mat-card class="product-card">
-      <img mat-card-image [src]="productData.image" alt="Product Image" />
-      <mat-card-content>
-        <h2>{{ productData.title }}</h2>
-        <p>{{ productData.description }}</p>
-        <p>Rate: {{ productData.rating.rate }}</p>
-        <p>Price: {{ productData.price * 130 | currency : "Ksh " }}</p>
-      </mat-card-content>
 
-      <mat-card-actions>
-        <mat-form-field appearance="fill">
-          <mat-label>Choose Quantity</mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let quantity of quantities"
-              [value]="quantity"
-              >{{ quantity }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-        <button mat-button color="primary">Add to Cart</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+  </head>
+  <body>
+    <div class="product-container" *ngIf="productData">
+      <div class="product-image">
+        <img [src]="productData.image" alt="Product Image" />
+      </div>
+      <div class="product-details">
+        <h1 class="product-title">{{ productData.title }}</h1>
+        <p class="product-description">{{ productData.description }}</p>
+        <p class="product-price">
+          {{ productData.price * 130 | currency : "Ksh " }}
+        </p>
+        <p class="product-rating">
+          Product Rating: {{ productData.rating.rate }}
+        </p>
+        <p class="product-score">
+          Product Count: {{ productData.rating.count }}
+        </p>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </body>
+</html>

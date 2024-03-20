@@ -6,9 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseURL = 'https://fakestoreapi.com/products';
+  private baseURL = 'http://localhost:3000/products';
   private categoryUrl = 'https://fakestoreapi.com/products/categories';
-  private inCategoryUrl = 'https://fakestoreapi.com/products/category/jewelery';
+  private jewels = 'https://fakestoreapi.com/products/category/jewelery';
+  private electronics =
+    'https://fakestoreapi.com/products/category/electronics?limit=4';
+  private mensClothing =
+    "https://fakestoreapi.com/products/category/men's%20clothing";
+  private womensClothing =
+    "https://fakestoreapi.com/products/category/women's%20clothing?limit=4";
 
   constructor(private httpClient: HttpClient) {}
 
@@ -25,22 +31,30 @@ export class ProductsService {
     return this.httpClient.get<any>(this.categoryUrl);
   }
 
-  //Get Products in Category
-  getInCategory(): Observable<any> {
-    return this.httpClient.get<any>(this.inCategoryUrl);
+  getJewels(): Observable<any> {
+    return this.httpClient.get<any>(this.jewels);
   }
 
-  // Add a new Product
+  getElectronics(): Observable<any> {
+    return this.httpClient.get<any>(this.electronics);
+  }
+
+  getMensClothing(): Observable<any> {
+    return this.httpClient.get<any>(this.mensClothing);
+  }
+
+  getWoMensClothing(): Observable<any> {
+    return this.httpClient.get<any>(this.womensClothing);
+  }
+
   createProduct(product: any): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, product);
   }
 
-  // Update Product - By ID
   updateProduct(id: any, product: any) {
     return this.httpClient.patch(`${this.baseURL}/${id}`, product);
   }
 
-  // Delete Product - By ID
   deleteProduct(id: any): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }

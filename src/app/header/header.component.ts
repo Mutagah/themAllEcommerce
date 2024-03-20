@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../products.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateProductComponent } from '../create-product/create-product.component';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +32,16 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['categories']);
   }
 
-  logout() {}
+  open(): void {
+    const dialogRef = this.dialog.open(CreateProductComponent, {
+      width: '500px',
+      data: {}, // You can pass any data to the modal here
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The modal was closed');
+    });
+  }
 
   toggleSideNav() {
     this.showSideNav = !this.showSideNav;

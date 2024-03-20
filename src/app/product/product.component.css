@@ -1,40 +1,137 @@
-.home {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.product-container {
+  display: flex;
+  max-width: 90%;
+  margin-top: 50px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: 70vh;
+}
+
+.product-details {
+  flex: 1;
+  padding: 20px;
+}
+
+.product-title {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.product-description {
+  font-size: 16px;
+  color: #555;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-rating {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.product-score {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+  padding: 10px 20px;
+  background-color: #f90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e5800b;
+}
+
+/* .product-home {
+  background-color: #f5f5dc;
+  display: flex;
+  justify-content: left;
+
   .product-card {
     margin: 10px;
-    width: 350px; /* Adjust the width as needed */
-    margin: 20px; /* Adjust the margin as needed */
-    border-radius: 10px; /* Optional: Add border radius */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
-    background-color: #f5f5dc;
-    position: relative;
+    display: flex;
+    width: 350px;
+    margin: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    position: absolute;
+    background-color: white;
   }
 
   .product-card img {
+    padding: 15px;
     width: 100%;
-    height: 60vh; /* Make the image fill the card */
-    border-top-left-radius: 10px; /* Optional: Add border radius to top-left corner */
-    border-top-right-radius: 10px; /* Optional: Add border radius to top-right corner */
+    height: 60vh;
     margin-bottom: 10px;
   }
 
   .product-card h2 {
-    margin-top: 0; /* Remove default margin for h2 */
+    margin-top: 0;
   }
 
   .product-card p {
-    margin-bottom: 0.5em; /* Adjust margin between paragraphs */
+    margin-bottom: 0.5em;
     line-height: normal;
   }
 
   .card-actions {
     position: absolute;
-    bottom: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
+    bottom: 10px;
+    right: 10px; 
   }
 
   .quantity-field {
-    width: 100px; /* Adjust as needed */
+    width: 100px;
     bottom: 0;
     left: 0;
   }
 }
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 7px solid #ff9900;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  .view-all {
+    color: blue;
+    cursor: pointer;
+  }
+} */

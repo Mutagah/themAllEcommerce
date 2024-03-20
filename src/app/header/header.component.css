@@ -9,14 +9,21 @@
   padding: 10 20px; /* Add padding to ensure content doesn't touch the edges */
 
   .logo {
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .categories {
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     padding: 20px;
   }
 
   .sidenav {
-    height: 100vh;
+    height: max-content;
     width: 250px;
     position: absolute;
     top: 80px; /* Align below the header */
@@ -27,7 +34,7 @@
     padding-top: 20px;
     z-index: 3; /* Ensure it's above other content */
   }
-  
+
   .sidenav a {
     padding: 10px 15px;
     text-decoration: none;
@@ -35,11 +42,10 @@
     color: white;
     display: block;
   }
-  
+
   .sidenav a:hover {
     background-color: #555;
   }
-  
 }
 
 .logout {
