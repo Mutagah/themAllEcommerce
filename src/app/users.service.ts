@@ -19,4 +19,9 @@ export class UsersService {
       this.fakeStoreUsersUrl + '?limit=' + `${limitedValue}`
     );
   }
+
+  // fetch users in ascending or descending order
+  getSortedUsers(order: string): Observable<any> {
+    return this.httpClient.get(`${this.fakeStoreUsersUrl}?sort=${order}`);
+  }
 }

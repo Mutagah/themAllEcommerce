@@ -23,6 +23,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<UserData>;
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email', 'view'];
 
+  ascending: boolean = true;
+
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<UserData>([]);
     this.getAllUsers();
@@ -72,5 +74,30 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   viewUserDetails(userId: number) {
     console.log(userId);
+  }
+
+  changeFetchOrder() {
+    this.ascending = !this.ascending;
+    if (this.ascending) {
+      this.userService.getSortedUsers('asc').subscribe({
+        next: (res) => {
+          this.dataSource.data = res.map((user: any) => ({
+            ...user,
+            firstname: user.name.firstname,
+            lastname: user.name.lastname,
+          }));
+        },
+      });
+    } else {
+      this.userService.getSortedUsers('desc').subscribe({
+        next: (res) => {
+          this.dataSource.data = res.map((user: any) => ({
+            ...user,
+            firstname: user.name.firstname,
+            lastname: user.name.lastname,
+          }));
+        },
+      });
+    }
   }
 }
