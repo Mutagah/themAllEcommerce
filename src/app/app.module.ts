@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
+import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +24,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
@@ -31,6 +34,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     NavbarComponent,
     UsersComponent,
     HomeComponent,
+    SingleUserDialogComponent,
     UserFormComponent
   ],
   imports: [
@@ -46,6 +50,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule,
+    MatGridListModule,
     ReactiveFormsModule
   ],
   providers: [UsersService],

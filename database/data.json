@@ -221,46 +221,24 @@
       "__v": 0
     },
     {
-      "id": "9bc4",
-      "email": "kihahumutagah@gmail.com",
-      "username": "mutagah",
-      "password": "mutaga",
-      "phone": "0727249154",
-      "_v": 0,
-      "name": {
-        "firstname": "Mutaga",
-        "lastname": "Kihahu"
-      },
-      "address": {
-        "geolocation": {
-          "lat": "-37.3159",
-          "long": "81.1496"
-        },
-        "city": "kilcoole",
-        "street": "Lovers Ln",
-        "number": 7267,
-        "zipcode": "12926-3874"
-      }
-    },
-    {
-      "id": "8677",
+      "id": "b613",
       "email": "tashacounts254@gmail.com",
       "username": "tasha",
       "password": "tasha",
       "phone": "0727249154",
       "_v": 0,
       "name": {
-        "firstname": "Tasha",
-        "lastname": "Accounts"
+        "firstname": "Mutaga",
+        "lastname": "Tasha"
       },
       "address": {
         "geolocation": {
-          "lat": "-37.3159",
-          "long": "81.1496"
+          "lat": "-57868",
+          "long": "67788"
         },
         "city": "Nairobi",
         "street": "Ngong lane",
-        "number": 7682,
+        "number": 397,
         "zipcode": "10100"
       }
     }
