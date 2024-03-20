@@ -7,9 +7,16 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
-  usersUrl = "https://fakestoreapi.com/users"
-  
+  fakeStoreUsersUrl = 'https://fakestoreapi.com/users';
+
   getAllUsers(): Observable<any> {
-    return this.httpClient.get(this.usersUrl);
+    return this.httpClient.get(this.fakeStoreUsersUrl);
+  }
+
+  // Get Limited Number of users
+  getLimitedUsers(limitedValue: number): Observable<any> {
+    return this.httpClient.get(
+      this.fakeStoreUsersUrl + '?limit=' + `${limitedValue}`
+    );
   }
 }

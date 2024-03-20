@@ -22,14 +22,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    UsersComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, NavbarComponent, UsersComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +38,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSortModule,
     MatTableModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

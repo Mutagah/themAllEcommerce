@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
 /*Services import */
@@ -16,6 +17,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit, AfterViewInit {
+  @ViewChild('templateForm', { static: true }) myForm: any;
   constructor(private userService: UsersService) {}
 
   dataSource!: MatTableDataSource<UserData>;
@@ -30,6 +32,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  submitFetchValue(templateForm: NgForm) {
+    this.userService.getLimitedUsers(templateForm.value?.limit).subscribe({
+      next: (res: any) => {
+        this.dataSource.data = res.map((user: any) => ({
+          ...user,
+          firstname: user.name.firstname,
+          lastname: user.name.lastname,
+        }));
+      },
+    });
+    // console.log(templateForm.value)
   }
 
   getAllUsers() {

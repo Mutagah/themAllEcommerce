@@ -10,6 +10,23 @@
         #input
       />
     </mat-form-field>
+    <form
+      #templateForm="ngForm"
+      (keydown.enter)="$event.preventDefault(); submitFetchValue(templateForm)"
+    >
+      <mat-form-field>
+        <mat-label>No. of Users to fetch:</mat-label>
+        <input
+          matInput
+          placeholder="Enter value"
+          type="number"
+          name="limit"
+          [ngModel]="10"
+          required
+          #limit="ngModel"
+        />
+      </mat-form-field>
+    </form>
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
