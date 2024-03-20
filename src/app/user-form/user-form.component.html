@@ -1,6 +1,6 @@
 <div class="form-container">
   <h1>Create a user</h1>
-  <form [formGroup]="myReactiveForm" (ngSubmit)="submitForm()">
+  <form *ngIf="myGroup" [formGroup]="myGroup" (ngSubmit)="submitForm()">
     <div style="display: flex" class="geo-personal-container">
       <div class="personal-details">
         <h4>Personal Details:</h4>
@@ -11,8 +11,8 @@
             <input matInput type="text" formControlName="firstName" />
             <mat-hint
               *ngIf="
-                myReactiveForm.get('firstName')?.touched &&
-                myReactiveForm.get('firstName')?.invalid
+                myGroup.get('firstName')?.touched &&
+                myGroup.get('firstName')?.invalid
               "
               class="hint"
             >
@@ -23,11 +23,11 @@
           <!-- Last Name input -->
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastName" />
+            <input matInput type="text" formControlName="lastName" />
             <mat-hint
               *ngIf="
-                myReactiveForm.get('lastName')?.touched &&
-                myReactiveForm.get('lastName')?.invalid
+                myGroup.get('lastName')?.touched &&
+                myGroup.get('lastName')?.invalid
               "
               class="hint"
             >
@@ -38,11 +38,11 @@
           <!-- Username input -->
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput formControlName="userName" />
+            <input matInput type="text" formControlName="userName" />
             <mat-hint
               *ngIf="
-                myReactiveForm.get('userName')?.touched &&
-                myReactiveForm.get('userName')?.invalid
+                myGroup.get('userName')?.touched &&
+                myGroup.get('userName')?.invalid
               "
               class="hint"
             >
@@ -60,9 +60,9 @@
             </mat-form-field>
             <div
               *ngIf="
-                myReactiveForm.get('email')?.touched &&
-                !myReactiveForm.get('email')?.errors?.['email'] &&
-                myReactiveForm.get('email')?.invalid
+                myGroup.get('email')?.touched &&
+                !myGroup.get('email')?.errors?.['email'] &&
+                myGroup.get('email')?.invalid
               "
               class="hint"
             >
@@ -70,8 +70,8 @@
             </div>
             <div
               *ngIf="
-                myReactiveForm.get('email')?.touched &&
-                myReactiveForm.get('email')?.errors?.['email'] && myReactiveForm.get('email')?.invalid
+                myGroup.get('email')?.touched &&
+                myGroup.get('email')?.errors?.['email'] && myGroup.get('email')?.invalid
               "
               class="hint"
             >
@@ -85,8 +85,8 @@
             <input matInput type="tel" formControlName="phoneNumber" />
             <mat-hint
               *ngIf="
-                myReactiveForm.get('phoneNumber')?.touched &&
-                myReactiveForm.get('phoneNumber')?.invalid
+                myGroup.get('phoneNumber')?.touched &&
+                myGroup.get('phoneNumber')?.invalid
               "
               class="hint"
               >Phone Number is a required field</mat-hint
@@ -99,8 +99,8 @@
             <input matInput type="password" formControlName="password" />
             <mat-hint
               *ngIf="
-                myReactiveForm.get('password')?.invalid &&
-                myReactiveForm.get('password')?.touched
+                myGroup.get('password')?.invalid &&
+                myGroup.get('password')?.touched
               "
               class="hint"
               >Password is a required field</mat-hint
@@ -117,8 +117,8 @@
           <input matInput type="text" formControlName="latitude" />
           <mat-hint
             *ngIf="
-              myReactiveForm.get('latitude')?.invalid &&
-              myReactiveForm.get('latitude')?.touched
+              myGroup.get('latitude')?.invalid &&
+              myGroup.get('latitude')?.touched
             "
             class="hint"
             >Latitude is a required field
@@ -131,8 +131,8 @@
           <input matInput type="text" formControlName="longitude" />
           <mat-hint
             *ngIf="
-              myReactiveForm.get('longitude')?.touched &&
-              myReactiveForm.get('latitude')?.invalid
+              myGroup.get('longitude')?.touched &&
+              myGroup.get('latitude')?.invalid
             "
             class="hint"
           >
@@ -150,10 +150,7 @@
           <mat-label>City</mat-label>
           <input matInput type="text" formControlName="city" />
           <mat-hint
-            *ngIf="
-              myReactiveForm.get('city')?.invalid &&
-              myReactiveForm.get('city')?.touched
-            "
+            *ngIf="myGroup.get('city')?.invalid && myGroup.get('city')?.touched"
             class="hint"
           >
             City is a required field
@@ -166,8 +163,7 @@
           <input matInput type="text" formControlName="street" />
           <mat-hint
             *ngIf="
-              myReactiveForm.get('street')?.invalid &&
-              myReactiveForm.get('street')?.touched
+              myGroup.get('street')?.invalid && myGroup.get('street')?.touched
             "
             class="hint"
           >
@@ -181,8 +177,7 @@
           <input matInput type="number" formControlName="number" />
           <mat-hint
             *ngIf="
-              myReactiveForm.get('number')?.touched &&
-              myReactiveForm.get('number')?.invalid
+              myGroup.get('number')?.touched && myGroup.get('number')?.invalid
             "
             class="hint"
           >
@@ -196,8 +191,7 @@
           <input matInput type="text" formControlName="zipCode" />
           <mat-hint
             *ngIf="
-              myReactiveForm.get('zipCode')?.invalid &&
-              myReactiveForm.get('zipCode')?.touched
+              myGroup.get('zipCode')?.invalid && myGroup.get('zipCode')?.touched
             "
             class="hint"
           >
@@ -211,7 +205,7 @@
         mat-stroked-button
         color="primary"
         class="form-button"
-        [disabled]="myReactiveForm.invalid"
+        [disabled]="myGroup.invalid"
       >
         Submit
       </button>

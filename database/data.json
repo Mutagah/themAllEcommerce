@@ -60,11 +60,12 @@
       "username": "kevinryan",
       "password": "kev02937@",
       "name": {
-        "firstname": "kevin",
+        "firstname": "Kevin",
         "lastname": "ryan"
       },
       "phone": "1-567-094-1345",
-      "__v": 0
+      "__v": 0,
+      "_v": 0
     },
     {
       "address": {
@@ -240,6 +241,28 @@
         "street": "Ngong lane",
         "number": 397,
         "zipcode": "10100"
+      }
+    },
+    {
+      "id": "8bbd",
+      "email": "kevin@gmail.com",
+      "username": "kevinryan",
+      "password": "kev02937@",
+      "phone": "1-567-094-1345",
+      "_v": 0,
+      "name": {
+        "firstname": "Kevin Ingosi",
+        "lastname": "ryan"
+      },
+      "address": {
+        "geolocation": {
+          "lat": "40.3467",
+          "long": "-30.1310"
+        },
+        "city": "Cullman",
+        "street": "Frances Ct",
+        "number": 86,
+        "zipcode": "29567-1452"
       }
     }
   ]

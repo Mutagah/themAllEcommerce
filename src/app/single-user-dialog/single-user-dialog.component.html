@@ -30,7 +30,7 @@
 </div>
 
 <div mat-dialog-actions class="dialog-footer-buttons">
-  <button mat-button>Edit</button>
+  <button mat-button (click)="editUser(userDetails.id)">Edit</button>
   <button mat-button>Delete</button>
   <button mat-button mat-dialog-close>Close</button>
 </div>

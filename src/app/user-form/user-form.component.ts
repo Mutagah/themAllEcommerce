@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /*Service import */
 import { UsersService } from '../users.service';
@@ -10,68 +10,123 @@ import { UsersService } from '../users.service';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  myReactiveForm!: FormGroup;
+  myGroup!: FormGroup;
+  userId!: number;
+  userDetails: any;
+  updateMode!: boolean;
 
   constructor(
-    private formBuilder: FormBuilder,
     private userService: UsersService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.myReactiveForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      userName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-      password: ['', Validators.required],
-      latitude: ['', Validators.required],
-      longitude: ['', Validators.required],
-      city: ['', Validators.required],
-      street: ['', Validators.required],
-      number: ['', Validators.required],
-      zipCode: ['', Validators.required],
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      this.userId = parseInt(params['id']);
     });
   }
 
+  ngOnInit(): void {
+    if (this.userId) {
+      this.updateMode = true;
+      this.userService.getSpecificUser(this.userId).subscribe({
+        next: (res) => {
+          this.myGroup = new FormGroup({
+            firstName: new FormControl(res.name.firstname, Validators.required),
+            lastName: new FormControl(res.name.lastname, Validators.required),
+            userName: new FormControl(res.username, Validators.required),
+            email: new FormControl(res.email, [
+              Validators.required,
+              Validators.email,
+            ]),
+            phoneNumber: new FormControl(res.phone, Validators.required),
+            password: new FormControl(res.password, Validators.required),
+            latitude: new FormControl(
+              res?.address?.geolocation?.lat,
+              Validators.required
+            ),
+            longitude: new FormControl(
+              res.address?.geolocation?.long,
+              Validators.required
+            ),
+            city: new FormControl(res?.address?.city, Validators.required),
+            street: new FormControl(res.address?.street, Validators.required),
+            number: new FormControl(res.address?.number, Validators.required),
+            zipCode: new FormControl(
+              res?.address?.zipcode,
+              Validators.required
+            ),
+          });
+        },
+      });
+    } else {
+      this.myGroup = new FormGroup({
+        firstName: new FormControl('', Validators.required),
+        lastName: new FormControl('', Validators.required),
+        userName: new FormControl('', Validators.required),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        phoneNumber: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        latitude: new FormControl('', Validators.required),
+        longitude: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        street: new FormControl('', Validators.required),
+        number: new FormControl('', Validators.required),
+        zipCode: new FormControl('', Validators.required),
+      });
+    }
+  }
   submitForm() {
     const submitData = {
-      email: this.myReactiveForm.value.email,
-      username: this.myReactiveForm.value.userName,
-      password: this.myReactiveForm.value.password,
-      phone: this.myReactiveForm.value.phoneNumber,
+      email: this.myGroup.value.email,
+      username: this.myGroup.value.userName,
+      password: this.myGroup.value.password,
+      phone: this.myGroup.value.phoneNumber,
       _v: 0,
       name: {
-        firstname: this.myReactiveForm.value.firstName,
-        lastname: this.myReactiveForm.value.lastName,
+        firstname: this.myGroup.value.firstName,
+        lastname: this.myGroup.value.lastName,
       },
       address: {
         geolocation: {
-          lat: this.myReactiveForm.value.latitude,
-          long: this.myReactiveForm.value.longitude,
+          lat: this.myGroup.value.latitude,
+          long: this.myGroup.value.longitude,
         },
-        city: this.myReactiveForm.value.city,
-        street: this.myReactiveForm.value.street,
-        number: this.myReactiveForm.value.number,
-        zipcode: this.myReactiveForm.value.zipCode,
+        city: this.myGroup.value.city,
+        street: this.myGroup.value.street,
+        number: this.myGroup.value.number,
+        zipcode: this.myGroup.value.zipCode,
       },
     };
-    this.userService.createEmployee(submitData).subscribe({
-      next: () => {
-        this.myReactiveForm.reset();
-        this.router.navigate(['/users']);
-      },
-      error: (error: any) => {
-        return error;
-      },
-      complete: () => {
-        return 'Data successfully posted';
-      },
-    });
+    if (this.updateMode) {
+      this.userService.patchUser(this.userId, submitData).subscribe({
+        next: () => {
+          this.myGroup.reset();
+          this.router.navigate(['/users']);
+        },
+        error: (error: any) => {
+          return error;
+        },
+        complete: () => {
+          return 'Data successfully patched';
+        },
+      });
+    } else {
+      this.userService.createEmployee(submitData).subscribe({
+        next: () => {
+          this.myGroup.reset();
+          this.router.navigate(['/users']);
+        },
+        error: (error: any) => {
+          return error;
+        },
+        complete: () => {
+          return 'Data successfully posted';
+        },
+      });
+    }
   }
 
   resetForm() {
-    this.myReactiveForm.reset();
+    this.myGroup.reset();
   }
 }

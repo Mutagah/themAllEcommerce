@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'createuser',
     component: UserFormComponent,
   },
+  {
+    path: 'edituser/:id',
+    component: UserFormComponent,
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
