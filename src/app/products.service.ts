@@ -18,8 +18,18 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllProducts(): Observable<any> {
-    return this.httpClient.get<any>(this.baseURL);
+  getAllProducts(sortBy?: string, limit?: number): Observable<any> {
+    let url = this.baseURL;
+
+    // Append sorting and limit parameters if provided
+    if (sortBy) {
+      url += `?sortBy=${sortBy}`;
+    }
+    if (limit) {
+      url += `&limit=${limit}`;
+    }
+
+    return this.httpClient.get<any>(url);
   }
 
   getProduct(id: any): Observable<any> {

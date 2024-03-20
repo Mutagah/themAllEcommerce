@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -20,7 +20,8 @@ export class CreateProductComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private router: Router,
-    public dialogRef: MatDialogRef<CreateProductComponent>
+    public dialogRef: MatDialogRef<CreateProductComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any // Inject MAT_DIALOG_DATA to receive product data
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +33,21 @@ export class CreateProductComponent implements OnInit {
       image: new FormControl('', Validators.required),
       rating: new FormControl('', Validators.required),
     });
+
+     // Check if productData is provided (i.e., update mode)
+     if (this.data && this.data.product) {
+      this.productData = this.data.product; // Assign product data if provided
+      this.updateMode = true; // Set update mode to true
+      // Pre-populate form fields with product data
+      this.myForm.patchValue({
+        title: this.productData.title,
+        price: this.productData.price,
+        description: this.productData.description,
+        category: this.productData.category,
+        image: this.productData.image,
+        rating: this.productData.rating,
+      });
+    }
   }
 
   onSubmit(myForm: any) {

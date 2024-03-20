@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +12,10 @@ export class HomeComponent implements OnInit {
   productData: any;
   categories!: string;
   id: any;
+
+  // Form controls for sorting and limit
+  sortControl = new FormControl(''); // Initialize with default value if needed
+  limitControl = new FormControl(10); // Initialize with default limit value
 
   constructor(
     private productService: ProductsService,

@@ -6,7 +6,11 @@
     </div>
   </div>
   <div class="mat-card-container">
-    <mat-card class="example-card" *ngFor="let jewel of jewelsData" (click)="navigateToProduct(jewel.id)">
+    <mat-card
+      class="example-card"
+      *ngFor="let jewel of jewelsData"
+      (click)="navigateToProduct(jewel.id)"
+    >
       <div class="image-container">
         <img
           mat-card-image
@@ -28,8 +32,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button mat-raised-button color="accent" style="margin-top: 10px">
-          ADD TO CART</button>
+        <mat-icon color="primary">shop_two</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -40,7 +43,11 @@
     </div>
   </div>
   <div class="mat-card-container">
-    <mat-card class="example-card" *ngFor="let electronics of electronicsData" (click)="navigateToProduct(electronics.id)">
+    <mat-card
+      class="example-card"
+      *ngFor="let electronics of electronicsData"
+      (click)="navigateToProduct(electronics.id)"
+    >
       <div class="image-container">
         <img
           mat-card-image
@@ -57,7 +64,7 @@
         </button>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button mat-button color="primary">ADD TO CART</button>
+        <mat-icon color="primary">shop_two</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -68,7 +75,11 @@
     </div>
   </div>
   <div class="mat-card-container">
-    <mat-card class="example-card" *ngFor="let mens of mensData" (click)="navigateToProduct(mens.id)">
+    <mat-card
+      class="example-card"
+      *ngFor="let mens of mensData"
+      (click)="navigateToProduct(mens.id)"
+    >
       <div class="image-container">
         <img
           mat-card-image
@@ -85,7 +96,7 @@
         </button>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button mat-button color="primary">ADD TO CART</button>
+        <mat-icon color="primary">shop_two</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -96,7 +107,11 @@
     </div>
   </div>
   <div class="mat-card-container">
-    <mat-card class="example-card" *ngFor="let womens of womensData" (click)="navigateToProduct(womens.id)">
+    <mat-card
+      class="example-card"
+      *ngFor="let womens of womensData"
+      (click)="navigateToProduct(womens.id)"
+    >
       <div class="image-container">
         <img
           mat-card-image
@@ -113,10 +128,8 @@
         </button>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button mat-button color="primary">ADD TO CART</button>
+        <mat-icon color="primary">shop_two</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
-
-  
 </div>

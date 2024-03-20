@@ -24,7 +24,25 @@
         <p class="product-score">
           Product Count: {{ productData.rating.count }}
         </p>
-        <button class="add-to-cart-btn">Add to Cart</button>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary">
+            Add to Cart<mat-icon>shopping_cart</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="updateProduct(productData.id)"
+          >
+            Update Product <mat-icon>open_in_new</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteProduct(productData.id)"
+          >
+            Delete Product <mat-icon>delete_forever</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </body>

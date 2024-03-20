@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../create-product/create-product.component';
@@ -17,7 +17,9 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router // Inject the Router service
+
   ) {}
 
   ngOnInit(): void {
@@ -39,14 +41,12 @@ export class ProductComponent implements OnInit {
     this.productService.getProduct(productId).subscribe((updatedProduct) => {
       const dialogRef = this.dialog.open(CreateProductComponent, {
         width: '500px',
-        data: {}, // You can pass any data to the modal here
+        data: { product: updatedProduct }, // Pass the product data to the modal
       });
 
       dialogRef.afterClosed().subscribe((result) => {
         console.log('The modal was closed');
       });
-
-      dialogRef.componentInstance.productData = updatedProduct;
     });
   }
 
