@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
-  // fakestoreUsersUrl = 'https://fakestoreapi.com/users';
+  fakestoreUsersUrl = 'https://fakestoreapi.com/users';
   usersUrl = 'http://localhost:4000/users';
 
   getAllUsers(): Observable<any> {

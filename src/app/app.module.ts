@@ -15,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -25,9 +26,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatStepperModule} from '@angular/material/stepper'
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import {MatStepperModule} from '@angular/material/stepper'
     UsersComponent,
     HomeComponent,
     SingleUserDialogComponent,
-    UserFormComponent
+    UserFormComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import {MatStepperModule} from '@angular/material/stepper'
     MatDialogModule,
     MatGridListModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

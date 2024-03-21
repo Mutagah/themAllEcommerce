@@ -2,11 +2,15 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+/*Component import */
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+
 /*Service import */
 import { UsersService } from '../users.service';
 
 /* Angular imports*/
 import { MatStepper } from '@angular/material/stepper';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -24,7 +28,8 @@ export class UserFormComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackbar: MatSnackBar
   ) {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
@@ -118,26 +123,34 @@ export class UserFormComponent implements OnInit {
     if (this.updateMode) {
       this.userService.patchUser(this.userId, formData).subscribe({
         next: () => {
-          this.personalDetails.reset();
-          this.locationDetails.reset();
-          this.geographicalDetails.reset();
-          this.stepper.reset();
+          this.snackbar.openFromComponent(SnackBarComponent, {
+            data: {
+              message: `${formData?.name?.firstname} ${formData?.name?.lastname} has been updated`,
+            },
+          });
+          setTimeout(() => {
+            this.stepper.reset();
+          }, 3000);
         },
         error: (error: any) => {
           return error;
         },
         complete: () => {
-          this.router.navigate(['users']);
+          setTimeout(() => this.router.navigate(['users']), 1000);
           return 'Data successfully patched';
         },
       });
     } else {
       this.userService.createEmployee(formData).subscribe({
         next: () => {
-          this.personalDetails.reset();
-          this.locationDetails.reset();
-          this.geographicalDetails.reset();
-          this.stepper.reset();
+          this.snackbar.openFromComponent(SnackBarComponent, {
+            data: {
+              message: `${formData?.name?.firstname} ${formData?.name?.lastname} has been created`,
+            },
+          });
+          setTimeout(() => {
+            this.stepper.reset();
+          }, 3000);
         },
         error: (error: any) => {
           return error;

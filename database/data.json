@@ -61,7 +61,7 @@
       "password": "kev02937@",
       "name": {
         "firstname": "Kevin",
-        "lastname": "ryan"
+        "lastname": "Ryan"
       },
       "phone": "1-567-094-1345",
       "__v": 0,
@@ -220,6 +220,28 @@
       },
       "phone": "1-104-001-4567",
       "__v": 0
+    },
+    {
+      "id": "4d69",
+      "address": {
+        "geolocation": {
+          "lat": "23423",
+          "long": "345465"
+        },
+        "city": "Nairobi",
+        "street": "Ngong lane",
+        "number": 397,
+        "zipcode": "10100"
+      },
+      "email": "kihahumutagah@gmail.com",
+      "username": "mutagah",
+      "password": "mutagah",
+      "name": {
+        "firstname": "Mutaga",
+        "lastname": "Tasha"
+      },
+      "phone": "0727249154",
+      "_v": 0
     }
   ]
 }
