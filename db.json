@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 20,
+      "price": 22,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
@@ -63,7 +63,7 @@
     {
       "id": "6",
       "title": "Solid Gold Petite Micropave ",
-      "price": 168,
+      "price": 16,
       "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
@@ -241,47 +241,6 @@
       }
     },
     {
-      "id": "60e1",
-      "title": "d2f2"
-    },
-    {
-      "id": "7170",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "a303",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "95b1",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "858b",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "f2b1",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "8ac8",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "f03d",
-      "title": "Aliquam ipsum qui i"
-    },
-    {
-      "id": "937d",
-      "title": "Michael Owen",
-      "price": 3,
-      "description": "khgfds",
-      "category": "dasfsghgj",
-      "image": "sdfjkglhmj",
-      "rating": "dfghfjkglh"
-    },
-    {
       "id": "53e0",
       "title": "Michael Owen",
       "price": 9,
@@ -316,6 +275,24 @@
       "category": "Id amet quo et vol",
       "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
       "rating": "5.0 4.2"
+    },
+    {
+      "id": "d155",
+      "title": "Mutaga",
+      "price": 9,
+      "description": "Nisi voluptates quia",
+      "category": "jewelery",
+      "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
+      "rating": "4.7"
+    },
+    {
+      "id": "c263",
+      "title": "Owen",
+      "price": 746,
+      "description": "Ipsa proident exce",
+      "category": "jewelery",
+      "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
+      "rating": "Ut dolore enim eum o"
     }
   ]
 }

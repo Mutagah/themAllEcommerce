@@ -11,18 +11,15 @@ import { CreateProductComponent } from '../create-product/create-product.compone
 })
 export class HeaderComponent implements OnInit {
   showSideNav: boolean = false;
-  categories: any;
   id: any;
-
+  categories: any;
   constructor(
     private router: Router,
     private productService: ProductsService,
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.getProductCategories();
-  }
+  ngOnInit(): void {}
 
   goToHome() {
     this.router.navigate(['home']);
@@ -33,27 +30,37 @@ export class HeaderComponent implements OnInit {
   }
 
   open(): void {
-    const dialogRef = this.dialog.open(CreateProductComponent, {
-      width: '500px',
-      data: {}, // You can pass any data to the modal here
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The modal was closed');
+    /*
+  1. Fetch data ya product
+  2. In the success reponse open the modal
+  3.  */
+    this.productService.getAllProductCategories().subscribe({
+      next: (res) => {
+        const dialogRef = this.dialog.open(CreateProductComponent, {
+          width: '500px',
+          data: {
+            categories: res,
+          },
+        });
+      },
     });
   }
-
   toggleSideNav() {
     this.showSideNav = !this.showSideNav;
   }
 
-  getProductCategories() {
-    this.productService.getAllProductCategories().subscribe((data) => {
-      this.categories = data;
-    });
-  }
-
   getInCategories() {
     this.router.navigate(['category']);
+  }
+
+  getProductCategories() {
+    this.productService.getAllProductCategories().subscribe({
+      next: (res) => {
+        this.categories = res;
+        console.log(this.categories);
+      },
+    });
+    console.log(this.categories);
+    return this.categories;
   }
 }

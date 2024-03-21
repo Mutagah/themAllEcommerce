@@ -60,19 +60,24 @@
 
       <div class="form-group">
         <label for="category">Product Category</label>
-        <input
-          type="text"
-          class="form-control"
-          id="category"
-          required
-          formControlName="category"
-        />
+        <mat-form-field appearance="fill">
+          <mat-label>Select Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option
+              *ngFor="let category of data.categories"
+              [value]="category"
+            >
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <small
           *ngIf="
             !myForm.get('category')?.valid && myForm.get('category')?.touched
           "
-          >Product category is required.</small
         >
+          Product category is required.
+        </small>
       </div>
 
       <div class="form-group">
@@ -99,7 +104,8 @@
           required
           formControlName="rating"
         />
-        <small *ngIf="!productData.rating?.valid && productData.rating?.touched"
+        <small
+          *ngIf="!productData?.rating?.valid && productData?.rating?.touched"
           >Product rating is required.</small
         >
       </div>

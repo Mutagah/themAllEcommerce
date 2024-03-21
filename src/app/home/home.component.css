@@ -68,6 +68,9 @@
     color: blue;
     cursor: pointer;
   }
+  input {
+    margin-right: 30px;
+  }
 }
 .product-title {
   margin-bottom: 10px;

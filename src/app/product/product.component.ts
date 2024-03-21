@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ProductComponent implements OnInit {
   productId!: number;
   productData: any;
+  categories: any;
   quantities: number[] = [1, 2, 3, 4, 5]; // Array of quantity values from 1 to 5
 
   constructor(
@@ -25,9 +26,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.productId = +params['id']; // Convert the id to a number
+      this.productId = params['id'];
       console.log(this.productId);
       this.getProductDetails(this.productId);
+      this.getProductCategories();
     });
   }
 
@@ -42,7 +44,10 @@ export class ProductComponent implements OnInit {
     this.productService.getProduct(productId).subscribe((updatedProduct) => {
       const dialogRef = this.dialog.open(CreateProductComponent, {
         width: '500px',
-        data: { product: updatedProduct }, // Pass the product data to the modal
+        data: {
+          product: updatedProduct,
+          categories: this.getProductCategories(),
+        },
       });
 
       dialogRef.afterClosed().subscribe((result) => {
@@ -51,7 +56,7 @@ export class ProductComponent implements OnInit {
           duration: 5000, // Duration in milliseconds
         });
         this.router.navigate(['home']);
-      });      
+      });
     });
   }
 
@@ -70,5 +75,12 @@ export class ProductComponent implements OnInit {
         duration: 5000, // Duration in milliseconds
       });
     });
+  }
+
+  getProductCategories() {
+    this.productService.getAllProductCategories().subscribe((data) => {
+      this.categories = data;
+    });
+    return this.categories;
   }
 }

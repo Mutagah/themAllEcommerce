@@ -2,7 +2,12 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -11,7 +16,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./create-product.component.css'],
 })
 export class CreateProductComponent implements OnInit {
-
   myForm!: FormGroup;
 
   @Input() productData!: any;
@@ -36,8 +40,8 @@ export class CreateProductComponent implements OnInit {
       rating: new FormControl('', Validators.required),
     });
 
-     // Check if productData is provided (i.e., update mode)
-     if (this.data && this.data.product) {
+    // Check if productData is provided (i.e., update mode)
+    if (this.data && this.data.product) {
       this.productData = this.data.product; // Assign product data if provided
       this.updateMode = true; // Set update mode to true
       // Pre-populate form fields with product data
@@ -62,11 +66,11 @@ export class CreateProductComponent implements OnInit {
     } else if (!this.updateMode && myForm.valid) {
       console.log(myForm.value);
       this.productService.createProduct(myForm.value).subscribe((data) => data);
+      this.snackBar.open('Product created successfully', 'Close', {
+        duration: 5000, // Duration in milliseconds
+      });
     }
     this.myForm.reset();
     this.dialogRef.close();
-    this.snackBar.open('Product created successfully', 'Close', {
-      duration: 5000, // Duration in milliseconds
-    });
   }
 }

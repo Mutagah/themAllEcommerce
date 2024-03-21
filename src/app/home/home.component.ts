@@ -13,9 +13,7 @@ export class HomeComponent implements OnInit {
   categories!: string;
   id: any;
 
-  // Form controls for sorting and limit
-  sortControl = new FormControl(''); // Initialize with default value if needed
-  limitControl = new FormControl(10); // Initialize with default limit value
+  limitControl: any; // Initialize with default limit value
 
   constructor(
     private productService: ProductsService,
@@ -27,9 +25,10 @@ export class HomeComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productService
-      .getAllProducts()
-      .subscribe((products) => (this.productData = products));
+    this.productService.getAllProducts().subscribe((products) => {
+      this.productData = products;
+      console.log(this.productData);
+    });
   }
 
   navigateToProduct(id: any) {
@@ -40,5 +39,22 @@ export class HomeComponent implements OnInit {
     this.productService.getAllProductCategories().subscribe((data) => {
       this.categories = data;
     });
+  }
+
+  onSubmit(myForm: any) {
+    if (myForm.valid) {
+      // Convert the value to a number
+      this.limitControl = parseInt(myForm.value.limitControl);
+    }
+  }
+  clearForm() {
+    this.limitControl = undefined;
+  }
+
+  // Update limitControl when input value changes
+  onInputChange() {
+    if (!this.limitControl) {
+      this.limitControl = undefined;
+    }
   }
 }
