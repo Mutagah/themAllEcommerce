@@ -34,7 +34,7 @@
   </div>
 
   <div mat-dialog-actions class="dialog-footer-buttons">
-    <button mat-button mat-raised-button>Edit</button>
+    <button mat-button (click)="editUser(userDetails.id)" mat-raised-button>Edit</button>
     <button
       mat-button
       mat-raised-button

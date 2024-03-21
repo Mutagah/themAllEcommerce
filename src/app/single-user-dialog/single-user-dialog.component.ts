@@ -1,16 +1,19 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 /*Interface imports */
 import { UserData } from '../user-interface';
+
+/*Service imports */
+import { UsersService } from '../users.service';
 
 /*Compoent imports */
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 /*Angular material imports */
 import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
+  MAT_DIALOG_DATA, MatDialogRef,
+  MatDialog
 } from '@angular/material/dialog';
 
 @Component({
@@ -26,12 +29,17 @@ export class SingleUserDialogComponent {
   /*Using MAT_DIALOG_DATA to inject the user details passed to the dialog */
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog,
-    private dialogReference: MatDialogRef<SingleUserDialogComponent>
+    private router: Router,
+     public dialog: MatDialog,
+    private dialogReference: MatDialogRef<SingleUserDialogComponent>,
   ) {
     this.userDetails = data;
   }
 
+  editUser(userId: number) {
+    this.router.navigate([`edituser/${userId}`]);
+    this.dialogReference.close();
+  }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '500px',
@@ -45,3 +53,4 @@ export class SingleUserDialogComponent {
     });
   }
 }
+

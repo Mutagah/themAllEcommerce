@@ -1,0 +1,45 @@
+form {
+  margin-top: 10px;
+  .input-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.form-container {
+  margin: 1rem;
+  h1 {
+    text-align: center;
+    color: #4a5eba;
+  }
+}
+
+form {
+  padding-left: 1rem;
+}
+
+.button-container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.form-button:hover {
+  background-color: #4a5eba;
+  color: white;
+}
+
+.hint {
+  color: red;
+}
+
+.email-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.firststep-button-container {
+  text-align: center;
+}
