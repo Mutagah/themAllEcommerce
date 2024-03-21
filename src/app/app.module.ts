@@ -15,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 /* Angular Material imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     UsersComponent,
     HomeComponent,
     SingleUserDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDialogModule,
     MatGridListModule,
     FormsModule,
+    MatSnackBarModule,
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

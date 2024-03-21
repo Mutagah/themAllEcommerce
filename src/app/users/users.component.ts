@@ -59,7 +59,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
     as HTMLInputElement is a type assertion or type casting > A way to inform Typescript about the specific type of an object when typescript cannot infer it on its own 
     Trim method is used to remove whitespaces
     */
-
     this.dataSource.filter = (event.target as HTMLInputElement).value
       .trim()
       .toLowerCase();

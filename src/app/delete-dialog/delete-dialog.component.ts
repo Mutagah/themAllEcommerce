@@ -12,6 +12,8 @@ import { UsersService } from '../users.service';
 
 /*Angular imports */
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 @Component({
   selector: 'app-delete-dialog',
   templateUrl: './delete-dialog.component.html',
@@ -26,7 +28,8 @@ export class DeleteDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UsersService,
-    private dialogRef: MatDialogRef<DeleteDialogComponent>
+    private dialogRef: MatDialogRef<DeleteDialogComponent>,
+    private snackbar: MatSnackBar
   ) {
     this.userDetails = data;
     console.log(this.userDetails);
@@ -38,10 +41,24 @@ export class DeleteDialogComponent {
   }
 
   submitDeleteData(form: NgForm) {
+    console.log(form.value.firstName, form.value.lastName);
     this.userService.deleteUser(this.userDetails.id).subscribe({
       next: () => {
+        this.snackbar.openFromComponent(SnackBarComponent, {
+          data: {
+            message: `${form.value.firstName} ${form.value.lastName} record deleted successfully`,
+          },
+          duration: 5 * 1000,
+        });
         this.deletedUser.emit(this.userDetails.id);
         this.dialogRef.close();
+      },
+      error: () => {
+        this.snackbar.openFromComponent(SnackBarComponent, {
+          data: {
+            message: 'The targeted record has not been successfully deleted',
+          },
+        });
       },
     });
   }
