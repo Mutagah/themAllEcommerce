@@ -7,9 +7,14 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
-  usersUrl = "https://fakestoreapi.com/users"
-  
+  usersUrl = 'https://fakestoreapi.com/users';
+
   getAllUsers(): Observable<any> {
     return this.httpClient.get(this.usersUrl);
   }
+
+  deleteUser(userId: number): Observable<any> {
+    return this.httpClient.delete(`${this.usersUrl}/${userId}`);
+  }
+  
 }

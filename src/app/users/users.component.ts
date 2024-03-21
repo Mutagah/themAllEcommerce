@@ -36,6 +36,12 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  deletedUser(userId: number) {
+    this.dataSource.data = this.dataSource.data.filter(
+      (user) => user.id !== userId
+    );
+  }
+
   getAllUsers() {
     this.userService.getAllUsers().subscribe({
       next: (res: any) => {
@@ -53,16 +59,27 @@ export class UsersComponent implements OnInit, AfterViewInit {
     as HTMLInputElement is a type assertion or type casting > A way to inform Typescript about the specific type of an object when typescript cannot infer it on its own 
     Trim method is used to remove whitespaces
     */
-
     this.dataSource.filter = (event.target as HTMLInputElement).value
       .trim()
       .toLowerCase();
   }
 
   viewUserDetails(userId: number) {
-    this.dialog.open(SingleUserDialogComponent, {
+    const dialogRef = this.dialog.open(SingleUserDialogComponent, {
       data: this.dataSource.data.find((user) => user.id === userId),
       width: '500px',
+      position: {
+        top: '50px',
+        left: '50px',
+      },
+      panelClass: 'custom-dialog-container',
     });
+    dialogRef.componentInstance.deletedUser.subscribe(
+      (deletedUserId: number) => {
+        this.dataSource.data = this.dataSource.data.filter(
+          (user) => user.id !== deletedUserId
+        );
+      }
+    );
   }
 }
