@@ -1,0 +1,83 @@
+.home-container {
+  background-color: #f5f5dc;
+  position: relative;
+  height: max-content;
+  .mat-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    .example-card {
+      margin-top: 15px;
+      min-width: 280px;
+      height: 300px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      color: black;
+      background-color: white;
+      transition: box-shadow 0.3s;
+      position: relative;
+    }
+
+    .example-card.selected {
+      border: 5px solid blue; /* Adjust the border properties as needed */
+    }
+
+    .example-card:hover {
+      box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5); /* Add a shadow on hover */
+    }
+
+    .image-container {
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card-content {
+      position: absolute; /* Set the position to absolute */
+      bottom: 10px; /* Adjust the distance from the bottom as needed */
+      text-align: left;
+      line-height: 1.7;
+      padding: 5px;
+    }
+
+    .card-actions {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      text-align: right;
+    }
+  }
+
+  h4 {
+    font-weight: bold;
+    margin-left: 30px;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 7px solid #ff9900;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  .view-all {
+    color: blue;
+    cursor: pointer;
+  }
+}
+.product-title {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
