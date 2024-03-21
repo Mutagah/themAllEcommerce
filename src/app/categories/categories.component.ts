@@ -29,14 +29,12 @@ export class CategoriesComponent implements OnInit {
   getJewels() {
     this.productService.getJewels().subscribe((jewels) => {
       this.jewelsData = jewels;
-      // console.log(this.jewelsData);
     });
   }
 
   getElectronics() {
     this.productService.getElectronics().subscribe((electronics) => {
       this.electronicsData = electronics;
-      // console.log(this.electronicsData);
     });
   }
 

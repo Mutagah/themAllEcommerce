@@ -41,11 +41,9 @@ export class CreateProductComponent implements OnInit {
       count: new FormControl('', Validators.required),
     });
 
-    // Check if productData is provided (i.e., update mode)
     if (this.data && this.data.product) {
-      this.productData = this.data.product; // Assign product data if provided
-      this.updateMode = true; // Set update mode to true
-      // Pre-populate form fields with product data
+      this.productData = this.data.product;
+      this.updateMode = true;
       this.myForm.patchValue({
         title: this.productData.title,
         price: this.productData.price,

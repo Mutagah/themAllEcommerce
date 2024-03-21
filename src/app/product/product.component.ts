@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
   productId!: number;
   productData: any;
   categories: any;
-  quantities: number[] = [1, 2, 3, 4, 5]; // Array of quantity values from 1 to 5
+  quantities: number[] = [1, 2, 3, 4, 5];
 
   constructor(
     private route: ActivatedRoute,
@@ -54,7 +54,7 @@ export class ProductComponent implements OnInit {
       dialogRef.afterClosed().subscribe((result) => {
         console.log('The modal was closed');
         this.snackBar.open('Product updated successfully', 'Close', {
-          duration: 5000, // Duration in milliseconds
+          duration: 5000,
         });
         this.router.navigate(['home']);
       });
