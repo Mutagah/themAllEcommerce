@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
 /*Services import */
@@ -20,10 +21,13 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit, AfterViewInit {
+  @ViewChild('templateForm', { static: true }) myForm: any;
   constructor(private userService: UsersService, private dialog: MatDialog) {}
 
   dataSource!: MatTableDataSource<UserData>;
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email', 'view'];
+
+  ascending: boolean = true;
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<UserData>([]);
@@ -34,6 +38,18 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  submitFetchValue(templateForm: NgForm) {
+    this.userService.getLimitedUsers(templateForm.value?.limit).subscribe({
+      next: (res: any) => {
+        this.dataSource.data = res.map((user: any) => ({
+          ...user,
+          firstname: user.name.firstname,
+          lastname: user.name.lastname,
+        }));
+      },
+    });
   }
 
   deletedUser(userId: number) {
@@ -81,5 +97,30 @@ export class UsersComponent implements OnInit, AfterViewInit {
         );
       }
     );
+  }
+
+  changeFetchOrder() {
+    this.ascending = !this.ascending;
+    if (this.ascending) {
+      this.userService.getSortedUsers('asc').subscribe({
+        next: (res) => {
+          this.dataSource.data = res.map((user: any) => ({
+            ...user,
+            firstname: user.name.firstname,
+            lastname: user.name.lastname,
+          }));
+        },
+      });
+    } else {
+      this.userService.getSortedUsers('desc').subscribe({
+        next: (res) => {
+          this.dataSource.data = res.map((user: any) => ({
+            ...user,
+            firstname: user.name.firstname,
+            lastname: user.name.lastname,
+          }));
+        },
+      });
+    }
   }
 }

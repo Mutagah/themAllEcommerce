@@ -42,8 +42,7 @@ import { MatSnackBarModule  } from '@angular/material/snack-bar';
     SingleUserDialogComponent,
     DeleteDialogComponent,
     SnackBarComponent,
-    UserFormComponent,
-    SnackBarComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

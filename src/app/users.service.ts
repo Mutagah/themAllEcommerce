@@ -7,11 +7,24 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
-  fakestoreUsersUrl = 'https://fakestoreapi.com/users';
+  fakeStoreUsersUrl = 'https://fakestoreapi.com/users';
   usersUrl = 'http://localhost:4000/users';
 
+
   getAllUsers(): Observable<any> {
-    return this.httpClient.get(this.usersUrl);
+    return this.httpClient.get(this.fakeStoreUsersUrl);
+  }
+
+  // Get Limited Number of users
+  getLimitedUsers(limitedValue: number): Observable<any> {
+    return this.httpClient.get(
+      this.fakeStoreUsersUrl + '?limit=' + `${limitedValue}`
+    );
+  }
+
+  // fetch users in ascending or descending order
+  getSortedUsers(order: string): Observable<any> {
+    return this.httpClient.get(`${this.fakeStoreUsersUrl}?sort=${order}`);
   }
 
   createEmployee(userData: object): Observable<any> {
