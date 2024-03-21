@@ -96,13 +96,13 @@
       </div>
 
       <div class="form-group">
-        <label for="rating">Rating</label>
+        <label for="rating">Rate</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           id="rating"
           required
-          formControlName="rating"
+          formControlName="rate"
         />
         <small
           *ngIf="!productData?.rating?.valid && productData?.rating?.touched"
@@ -110,6 +110,20 @@
         >
       </div>
 
+      <div class="form-group">
+        <label for="rating">Count</label>
+        <input
+          type="number"
+          class="form-control"
+          id="rating"
+          required
+          formControlName="count"
+        />
+        <small
+          *ngIf="!productData?.rating?.valid && productData?.rating?.touched"
+          >Product rating is required.</small
+        >
+      </div>
       <div class="button-container">
         <button
           mat-raised-button

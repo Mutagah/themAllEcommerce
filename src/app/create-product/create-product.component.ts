@@ -37,7 +37,8 @@ export class CreateProductComponent implements OnInit {
       description: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       image: new FormControl('', Validators.required),
-      rating: new FormControl('', Validators.required),
+      rate: new FormControl('', Validators.required),
+      count: new FormControl('', Validators.required),
     });
 
     // Check if productData is provided (i.e., update mode)
@@ -51,23 +52,34 @@ export class CreateProductComponent implements OnInit {
         description: this.productData.description,
         category: this.productData.category,
         image: this.productData.image,
-        rating: this.productData.rating,
+        rate: this.productData.rate,
+        count: this.productData.count,
       });
     }
   }
 
   onSubmit(myForm: any) {
+    console.log(myForm);
+    const filteredData = Object.fromEntries(
+      Object.entries(myForm.value).filter(
+        ([key]) => !['rate', 'count'].includes(key)
+      )
+    );
+    const formData = {
+      ...filteredData,
+      rating: {
+        rate: myForm.value.rate,
+        count: myForm.value.count,
+      },
+    };
     if (this.updateMode && myForm.valid) {
-      console.log(myForm.value);
-      console.log(this.productData.id);
       this.productService
-        .updateProduct(this.productData.id, myForm.value)
+        .updateProduct(this.productData.id, formData)
         .subscribe((data) => data);
     } else if (!this.updateMode && myForm.valid) {
-      console.log(myForm.value);
-      this.productService.createProduct(myForm.value).subscribe((data) => data);
+      this.productService.createProduct(formData).subscribe((data) => data);
       this.snackBar.open('Product created successfully', 'Close', {
-        duration: 5000, // Duration in milliseconds
+        duration: 5000,
       });
     }
     this.myForm.reset();

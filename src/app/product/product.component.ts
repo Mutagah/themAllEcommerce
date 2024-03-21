@@ -4,6 +4,7 @@ import { ProductsService } from '../products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../create-product/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-product',
@@ -61,19 +62,24 @@ export class ProductComponent implements OnInit {
   }
 
   deleteProduct(productId: any) {
-    this.productService.deleteProduct(productId).subscribe((deletedProduct) => {
-      this.productData = deletedProduct;
-      console.log(this.productData);
-      // Display delete success message
-      this.snackBar.open('Product deleted successfully', 'Close', {
-        duration: 5000, // Duration in milliseconds
-      });
 
-      // Navigate to home page after deletion
-      this.router.navigate(['home']);
-      this.snackBar.open('Product deleted successfully', 'Close', {
-        duration: 5000, // Duration in milliseconds
-      });
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.productService.deleteProduct(productId).subscribe((deletedProduct) => {
+          this.snackBar.open('Product deleted successfully', 'Close', {
+            duration: 5000, 
+          });
+    
+          this.router.navigate(['home']);
+          this.snackBar.open('Product deleted successfully', 'Close', {
+            duration: 5000,
+          });
+        });
+      }
     });
   }
 

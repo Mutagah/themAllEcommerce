@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     CategoriesComponent,
     CreateProductComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule,
