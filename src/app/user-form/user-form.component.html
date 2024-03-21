@@ -79,7 +79,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="firststep-button-container">
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
@@ -224,8 +224,13 @@
           </mat-form-field>
         </div>
         <div class="button-container">
-          <button mat-stroked-button color="primary" class="form-button"
-            (click)="submitForm()">Submit
+          <button
+            mat-stroked-button
+            color="primary"
+            class="form-button"
+            (click)="submitForm()"
+          >
+            Submit
           </button>
           <button
             mat-stroked-button

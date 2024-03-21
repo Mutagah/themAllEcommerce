@@ -122,7 +122,6 @@ export class UserFormComponent implements OnInit {
           this.locationDetails.reset();
           this.geographicalDetails.reset();
           this.stepper.reset();
-          // this.router.navigate(['users']);
         },
         error: (error: any) => {
           return error;

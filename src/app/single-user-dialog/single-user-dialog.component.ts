@@ -29,7 +29,6 @@ export class SingleUserDialogComponent {
   }
 
   editUser(userId: number) {
-    console.log(userId)
     this.router.navigate([`edituser/${userId}`]);
     this.dialogReference.close();
   }
