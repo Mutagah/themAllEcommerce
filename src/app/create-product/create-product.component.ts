@@ -3,6 +3,7 @@ import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-product',
@@ -20,6 +21,7 @@ export class CreateProductComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private router: Router,
+    private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<CreateProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any // Inject MAT_DIALOG_DATA to receive product data
   ) {}
@@ -63,5 +65,8 @@ export class CreateProductComponent implements OnInit {
     }
     this.myForm.reset();
     this.dialogRef.close();
+    this.snackBar.open('Product created successfully', 'Close', {
+      duration: 5000, // Duration in milliseconds
+    });
   }
 }

@@ -19,7 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
     MatDividerModule,
     MatDialogModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

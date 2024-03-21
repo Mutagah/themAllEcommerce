@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router  } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../create-product/create-product.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product',
@@ -18,8 +19,8 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductsService,
     private dialog: MatDialog,
-    private router: Router // Inject the Router service
-
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +47,11 @@ export class ProductComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe((result) => {
         console.log('The modal was closed');
-      });
+        this.snackBar.open('Product updated successfully', 'Close', {
+          duration: 5000, // Duration in milliseconds
+        });
+        this.router.navigate(['home']);
+      });      
     });
   }
 
@@ -54,6 +59,16 @@ export class ProductComponent implements OnInit {
     this.productService.deleteProduct(productId).subscribe((deletedProduct) => {
       this.productData = deletedProduct;
       console.log(this.productData);
+      // Display delete success message
+      this.snackBar.open('Product deleted successfully', 'Close', {
+        duration: 5000, // Duration in milliseconds
+      });
+
+      // Navigate to home page after deletion
+      this.router.navigate(['home']);
+      this.snackBar.open('Product deleted successfully', 'Close', {
+        duration: 5000, // Duration in milliseconds
+      });
     });
   }
 }
