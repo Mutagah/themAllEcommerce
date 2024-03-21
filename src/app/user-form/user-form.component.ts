@@ -124,6 +124,7 @@ export class UserFormComponent implements OnInit {
       this.userService.patchUser(this.userId, formData).subscribe({
         next: () => {
           this.snackbar.openFromComponent(SnackBarComponent, {
+            duration: 3 * 1000,
             data: {
               message: `${formData?.name?.firstname} ${formData?.name?.lastname} has been updated`,
             },
@@ -144,6 +145,7 @@ export class UserFormComponent implements OnInit {
       this.userService.createEmployee(formData).subscribe({
         next: () => {
           this.snackbar.openFromComponent(SnackBarComponent, {
+            duration: 3 * 1000,
             data: {
               message: `${formData?.name?.firstname} ${formData?.name?.lastname} has been created`,
             },

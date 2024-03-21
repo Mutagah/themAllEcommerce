@@ -12,7 +12,13 @@ export class UsersService {
 
 
   getAllUsers(): Observable<any> {
-    return this.httpClient.get(this.fakeStoreUsersUrl);
+    return this.httpClient.get(this.usersUrl);
+  }
+
+  
+  // getting a single user
+  getSpecificUser(userId: number): Observable<any> {
+    return this.httpClient.get(`${this.usersUrl}/${userId}`);
   }
 
   // Get Limited Number of users
@@ -31,10 +37,6 @@ export class UsersService {
     return this.httpClient.post(`${this.usersUrl}`, userData);
   }
 
-  // getting a single user
-  getSpecificUser(userId: number): Observable<any> {
-    return this.httpClient.get(`${this.usersUrl}/${userId}`);
-  }
 
   // updating a user
   patchUser(userId: number, userData: object) {
