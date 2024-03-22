@@ -21,6 +21,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     CategoriesComponent,
     CreateProductComponent,
     DeleteConfirmationComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

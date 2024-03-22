@@ -1,14 +1,22 @@
-<div class="header-container">
-  <div class="logo" (click)="goToHome()">
+<nav class="header-container">
+  <!-- home routing -->
+  <a routerLink="home" class="link">
     <mat-icon>home</mat-icon>
-    <p>Shop</p>
-  </div>
-  <div class="categories" (click)="goToCategories()">
+    Home
+  </a>
+
+  <!-- categories routing -->
+  <a routerLink="categories" class="link">
     <mat-icon>reorder</mat-icon>
-    <p>Categories</p>
-  </div>
-  <div class="logout" (click)="open()">
+    Categories
+  </a>
+
+  <!--Add product route-->
+  <div class="add-product-container" (click)="productModal()">
     <mat-icon>note_add</mat-icon>
-    <p>Add Product</p>
+    Add Product
   </div>
-</div>
+  
+  <!-- Cart Link -->
+  <a routerLink="cart" class="link">Cart</a>
+</nav>
