@@ -20,7 +20,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
       "rating": {
-        "rate": 4.7,
+        "rate": 5,
         "count": 5
       }
     },
@@ -33,7 +33,7 @@
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
         "rate": 4.7,
-        "count": 5
+        "count": 7
       },
       "rate": 4.7,
       "count": 5
@@ -41,13 +41,13 @@
     {
       "id": "5",
       "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-      "price": 695,
+      "price": 563,
       "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "rate": 4.6,
-        "count": 400
+        "rate": 5,
+        "count": 5
       }
     },
     {
@@ -225,7 +225,10 @@
       "description": "Black off the vans",
       "category": "electronics",
       "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
-      "rating": "4.6"
+      "rating": {
+        "rate": 5,
+        "count": 26
+      }
     },
     {
       "id": "c279",
@@ -234,27 +237,9 @@
       "description": "Very Nice",
       "category": "jewelery",
       "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
-      "rating": "5.0"
-    },
-    {
-      "id": "4ce9",
-      "title": "Consequat Quae eum ",
-      "price": 554,
-      "description": "Vel aut voluptatem ",
-      "category": "Id amet quo et vol",
-      "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
-      "rating": "5.0 4.2"
-    },
-    {
-      "id": "5262",
-      "title": "Tasha",
-      "price": 329,
-      "description": "Eu harum sequi itaqu",
-      "category": "jewelery",
-      "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
       "rating": {
-        "rate": 48,
-        "count": 51
+        "rate": 4.7,
+        "count": 5
       }
     }
   ]

@@ -75,9 +75,7 @@ export class ProductComponent implements OnInit {
           });
     
           this.router.navigate(['home']);
-          this.snackBar.open('Product deleted successfully', 'Close', {
-            duration: 5000,
-          });
+          
         });
       }
     });
