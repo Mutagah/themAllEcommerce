@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseURL = 'http://localhost:3000/products';
+  private baseURL = 'http://localhost:4000/products';
   private categoryUrl = 'https://fakestoreapi.com/products/categories';
   private jewels = 'https://fakestoreapi.com/products/category/jewelery';
   private electronics =
