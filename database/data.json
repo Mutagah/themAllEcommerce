@@ -220,6 +220,28 @@
       },
       "phone": "1-104-001-4567",
       "__v": 0
+    },
+    {
+      "id": "e7da",
+      "address": {
+        "geolocation": {
+          "lat": "45678",
+          "long": "45678"
+        },
+        "city": "Nairobi",
+        "street": "Ngong lane",
+        "number": 397,
+        "zipcode": "10100"
+      },
+      "email": "owen150@gmail.com",
+      "username": "michael",
+      "password": "michael",
+      "name": {
+        "firstname": "Michael",
+        "lastname": "Owen"
+      },
+      "phone": "0727249154",
+      "_v": 0
     }
   ]
 }

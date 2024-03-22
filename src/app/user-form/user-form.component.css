@@ -2,7 +2,9 @@ form {
   margin-top: 10px;
   .input-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    gap: 20px;
   }
 }
 
@@ -35,9 +37,9 @@ form {
   color: red;
 }
 
-.email-container {
+.paired-inputs {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
 }
 
 .firststep-button-container {
