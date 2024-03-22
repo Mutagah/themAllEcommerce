@@ -1,0 +1,9 @@
+.empty-cart {
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  top: 30%;
+}
+.empty-cart-content {
+  font-size: 50px;
+}

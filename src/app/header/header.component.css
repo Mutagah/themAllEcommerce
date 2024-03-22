@@ -1,73 +1,22 @@
 .header-container {
-  position: relative; /* Make the header container relatively positioned */
-  width: 100%;
   height: 60px;
-  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* Add padding to ensure content doesn't touch the edges */
+  justify-content: space-around;
 
-  .logo {
-    display: flex;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 21px;
-    justify-content: center;
-    align-items: center;
-
-    p {
-      justify-content: center;
-      align-items: center;
-      margin-top: 14px;
-      margin-left: 7px;
-    }
-  }
-
-  .categories {
-    display: flex;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-
-    p {
-      justify-content: center;
-      align-items: center;
-      margin-top: 14px;
-      margin-left: 7px;
-    }
-  }
-
-  .sidenav {
-    height: max-content;
-    width: 250px;
-    position: absolute;
-    top: 80px; /* Align below the header */
-    left: 0;
-    background-color: #111;
-    color: white;
-    overflow: hidden;
-    padding-top: 20px;
-    z-index: 3; /* Ensure it's above other content */
-  }
-
-  .sidenav a {
-    padding: 10px 15px;
+  .link {
     text-decoration: none;
+    color: black;
+    font-weight: bold;
     font-size: 18px;
-    color: white;
-    display: block;
-  }
-
-  .sidenav a:hover {
-    background-color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 }
 
-.logout {
+.add-product-container {
   display: flex;
   font-size: 18px;
   font-weight: bold;
@@ -75,17 +24,4 @@
   margin-right: 31px;
   justify-content: center;
   align-items: center;
-
-  p {
-    justify-content: center;
-    align-items: center;
-    margin-top: 14px;
-    margin-left: 7px;
-  }
-}
-
-.toggle-button {
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
 }
