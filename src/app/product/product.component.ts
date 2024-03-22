@@ -51,7 +51,7 @@ export class ProductComponent implements OnInit {
         },
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
+      dialogRef.componentInstance.productUpdated.subscribe((result) => {
         console.log('The modal was closed');
         this.snackBar.open('Product updated successfully', 'Close', {
           duration: 5000,

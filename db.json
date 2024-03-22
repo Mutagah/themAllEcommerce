@@ -15,13 +15,13 @@
     {
       "id": "3",
       "title": "Mens Cotton Jacket",
-      "price": 52,
+      "price": 54,
       "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
       "rating": {
-        "rate": 5,
-        "count": 5
+        "rate": 4.7,
+        "count": 4.7
       }
     },
     {
@@ -33,7 +33,7 @@
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
         "rate": 4.7,
-        "count": 7
+        "count": 5
       },
       "rate": 4.7,
       "count": 5
@@ -223,11 +223,11 @@
       "title": "Michael Owen",
       "price": 9,
       "description": "Black off the vans",
-      "category": "electronics",
+      "category": "men's clothing",
       "image": "https://images.vans.com/is/image/Vans/VN000EE3_BLK_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0",
       "rating": {
         "rate": 5,
-        "count": 26
+        "count": 4.7
       }
     },
     {

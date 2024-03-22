@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -19,6 +19,7 @@ export class CreateProductComponent implements OnInit {
   myForm!: FormGroup;
 
   @Input() productData!: any;
+  @Output() productUpdated = new EventEmitter<string>(); // EventEmitter for product update
 
   updateMode: boolean = false;
 
@@ -70,10 +71,14 @@ export class CreateProductComponent implements OnInit {
         count: myForm.value.count,
       },
     };
+
     if (this.updateMode && myForm.valid) {
       this.productService
         .updateProduct(this.productData.id, formData)
-        .subscribe((data) => data);
+        .subscribe((data) => {
+          // Emit 'updated' event upon successful update
+          this.productUpdated.emit('updated');
+        });
     } else if (!this.updateMode && myForm.valid) {
       this.productService.createProduct(formData).subscribe((data) => data);
       this.snackBar.open('Product created successfully', 'Close', {

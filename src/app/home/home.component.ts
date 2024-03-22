@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   categories!: string;
   id: any;
 
-  limitControl: any; // Initialize with default limit value
+  limitControl: any; // Initialize form input with a default limit value
 
   constructor(
     private productService: ProductsService,
@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
       this.limitControl = parseInt(myForm.value.limitControl);
     }
   }
+
   clearForm() {
     this.limitControl = undefined;
   }
