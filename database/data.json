@@ -243,25 +243,60 @@
       }
     }
   ],
-  "cart": [
+  "carts": [
     {
-      "id": "bcf2",
+      "id": "e021",
       "userId": 1,
-      "date": "2024-03-25",
+      "date": "2024-03-24",
       "products": [
         {
+          "productId": "15",
+          "quantity": 3
+        },
+        {
           "productId": "1",
-          "quantity": 4
+          "quantity": 1
         }
       ]
     },
     {
-      "id": "442b",
+      "id": "2ae3",
       "userId": 1,
       "date": "2024-03-25",
       "products": [
         {
-          "productId": "1",
+          "productId": "10",
+          "quantity": 4
+        },
+        {
+          "productId": "10",
+          "quantity": 8
+        },
+        {
+          "productId": "10",
+          "quantity": 4
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "92d3",
+      "userId": 2,
+      "date": "2024-03-25",
+      "products": [
+        {
+          "productId": "3",
+          "quantity": 1
+        },
+        {
+          "productId": "12",
+          "quantity": 1
+        },
+        {
+          "productId": "5",
           "quantity": 1
         }
       ]

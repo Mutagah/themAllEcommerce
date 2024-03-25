@@ -24,6 +24,8 @@ export class ProductComponent implements OnInit {
   categories: any;
   quantities: number[] = [1, 2, 3, 4, 5];
   numberOfItems: number = 1;
+  productArray: Array<object> = [];
+  receivedProducts: Array<object> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -96,19 +98,88 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(productDetails: any) {
-    const requiredProductData = {
-      userId: 1,
-      date: `${new Date().getFullYear()}-${String(
-        new Date().getMonth() + 1
-      ).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`,
-      products: [
-        { productId: productDetails.id, quantity: this.numberOfItems },
-      ],
-    };
-    this.cartService.addToCart(requiredProductData).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.router.navigate(['cart']);
+    // An array of object that build each and every time i call the function.
+    this.productArray.push({
+      productId: productDetails.id,
+      quantity: this.numberOfItems,
+    });
+
+    const userId = 2;
+    this.cartService.getAllCarts().subscribe({
+      next: (res) => {
+        // Checking if i have an existing cart with that userId
+        let myUserCart = res.filter(
+          (userCart: any) => userCart.userId === userId
+        );
+        // Checking if there is a record that matches the current date.
+        if (
+          myUserCart.length > 0 &&
+          myUserCart.find(
+            (userCart: any) =>
+              userCart.date ===
+              `${new Date().getFullYear()}-${String(
+                new Date().getMonth() + 1
+              ).padStart(2, '0')}-${String(new Date().getDate()).padStart(
+                2,
+                '0'
+              )}`
+          )
+        ) {
+          let cartId = myUserCart.find(
+            (userCart: any) =>
+              userCart.date ===
+              `${new Date().getFullYear()}-${String(
+                new Date().getMonth() + 1
+              ).padStart(2, '0')}-${String(new Date().getDate()).padStart(
+                2,
+                '0'
+              )}`
+          ).id;
+
+          this.cartService.getOneCart(cartId).subscribe({
+            next: (res) => {
+              this.cartService
+                .addMoreItemToUserCart(cartId, {
+                  userId: res.userId,
+                  date: res.date,
+                  products: this.productArray.concat(res.products),
+                })
+                .subscribe({
+                  next: (res) => {
+                    return res;
+                  },
+                  error: (error) => {
+                    return error;
+                  },
+                });
+            },
+          });
+        } else {
+          this.cartService
+            .addToCart({
+              userId: userId,
+              date: `${new Date().getFullYear()}-${String(
+                new Date().getMonth() + 1
+              ).padStart(2, '0')}-${String(new Date().getDate()).padStart(
+                2,
+                '0'
+              )}`,
+              products: [
+                {
+                  productId: productDetails.id,
+                  quantity: this.numberOfItems,
+                },
+              ],
+            })
+            .subscribe({
+              next: (res) => {
+                return res;
+              },
+              error: (error) => {
+                return error;
+              },
+            });
+        }
       },
     });
   }

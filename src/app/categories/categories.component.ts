@@ -41,7 +41,6 @@ export class CategoriesComponent implements OnInit {
   getMensClothings() {
     this.productService.getMensClothing().subscribe((mensClothing) => {
       this.mensData = mensClothing
-      console.log(this.mensData);
     })
   }
 
