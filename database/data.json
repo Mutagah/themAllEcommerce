@@ -266,14 +266,10 @@
       "products": [
         {
           "productId": "10",
-          "quantity": 4
+          "quantity": 25
         },
         {
-          "productId": "10",
-          "quantity": 8
-        },
-        {
-          "productId": "10",
+          "productId": "12",
           "quantity": 4
         },
         {
@@ -288,11 +284,11 @@
       "date": "2024-03-25",
       "products": [
         {
-          "productId": "3",
-          "quantity": 1
+          "productId": "12",
+          "quantity": 4
         },
         {
-          "productId": "12",
+          "productId": "3",
           "quantity": 1
         },
         {

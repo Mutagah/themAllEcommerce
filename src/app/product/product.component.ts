@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   categories: any;
   quantities: number[] = [1, 2, 3, 4, 5];
   numberOfItems: number = 1;
-  productArray: Array<object> = [];
+  // productArray: Array<object> = [];
   receivedProducts: Array<object> = [];
 
   constructor(
@@ -61,7 +61,6 @@ export class ProductComponent implements OnInit {
       });
 
       dialogRef.componentInstance.productUpdated.subscribe((result) => {
-        console.log('The modal was closed');
         this.snackBar.open('Product updated successfully', 'Close', {
           duration: 5000,
         });
@@ -98,13 +97,13 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(productDetails: any) {
-    // An array of object that build each and every time i call the function.
-    this.productArray.push({
-      productId: productDetails.id,
-      quantity: this.numberOfItems,
-    });
-
-    const userId = 2;
+    let productArray = [
+      {
+        productId: productDetails.id,
+        quantity: this.numberOfItems,
+      },
+    ];
+    const userId = 1;
     this.cartService.getAllCarts().subscribe({
       next: (res) => {
         // Checking if i have an existing cart with that userId
@@ -138,20 +137,25 @@ export class ProductComponent implements OnInit {
 
           this.cartService.getOneCart(cartId).subscribe({
             next: (res) => {
+              /* 
+              Add functionality where if the productId exists then you update the specific product 
+              */
+              res.products = res.products.filter((productInCart: any) => {
+                return productArray.some(
+                  (product: any) =>
+                    product.productId !== productInCart.productId
+                );
+              });
+              res.products.forEach((productInCart: any) => {
+                productArray.push(productInCart);
+              });
               this.cartService
                 .addMoreItemToUserCart(cartId, {
                   userId: res.userId,
                   date: res.date,
-                  products: this.productArray.concat(res.products),
+                  products: productArray,
                 })
-                .subscribe({
-                  next: (res) => {
-                    return res;
-                  },
-                  error: (error) => {
-                    return error;
-                  },
-                });
+                .subscribe({ next: (res) => res });
             },
           });
         } else {
