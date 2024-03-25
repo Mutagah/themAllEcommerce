@@ -23,8 +23,17 @@
           Product Count: {{ productData.rating.count }}
         </p>
         <div class="action-buttons">
-          <button mat-raised-button color="primary">
-            Add to Cart<mat-icon>shopping_cart</mat-icon>
+          <input
+            type="number"
+            style="text-align: center; width: 50px"
+            [(ngModel)]="numberOfItems"
+          />
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToCart(productData)"
+          >
+            Add {{ numberOfItems }} to Cart<mat-icon>shopping_cart</mat-icon>
           </button>
           <button
             mat-raised-button

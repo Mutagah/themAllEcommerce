@@ -5,7 +5,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-
 export class CartService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
+
+  productUrl = 'http://localhost:4000/cart';
+
+  addToCart(product: any): Observable<any> {
+    return this.httpClient.post(`${this.productUrl}`, product);
+  }
 }

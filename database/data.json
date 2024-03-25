@@ -243,5 +243,28 @@
       }
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "bcf2",
+      "userId": 1,
+      "date": "2024-03-25",
+      "products": [
+        {
+          "productId": "1",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "442b",
+      "userId": 1,
+      "date": "2024-03-25",
+      "products": [
+        {
+          "productId": "1",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
 }
