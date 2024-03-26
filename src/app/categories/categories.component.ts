@@ -9,47 +9,67 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   categoryId!: number;
-  jewelsData: any;
-  quantities: number[] = [1, 2, 3, 4, 5]; // Array of quantity values from 1 to 5
-  electronicsData: any;
-  mensData: any;
-  womensData:any
+  // jewelsData: any;
+  // quantities: number[] = [1, 2, 3, 4, 5];
+  // electronicsData: any;
+  // mensData: any;
+  // womensData: any
+  categoriesData: { [key: string]: any } = {};
+  Object: any;
+
 
   constructor(private productService: ProductsService, private router: Router) { }
 
 
   ngOnInit(): void {
-    this.getJewels();
-    this.getElectronics();
-    this.getElectronics();
-    this.getMensClothings();
-    this.getWomensClothings();
+    // this.getJewels();
+    // this.getElectronics();
+    // this.getElectronics();
+    // this.getMensClothings();
+    // this.getWomensClothings();
+
+    this.getCategoriesData();
   }
 
-  getJewels() {
-    this.productService.getJewels().subscribe((jewels) => {
-      this.jewelsData = jewels;
+  getCategoriesData() {
+    const categories = ['jewelery', 'electronics', 'men\'s%20clothing', 'women\'s%20clothing'];
+
+    categories.forEach(category => {
+      this.productService.getProductsByCategory(category).subscribe(data => {
+        this.categoriesData[category] = data;
+      });
     });
   }
 
-  getElectronics() {
-    this.productService.getElectronics().subscribe((electronics) => {
-      this.electronicsData = electronics;
-    });
-  }
 
-  getMensClothings() {
-    this.productService.getMensClothing().subscribe((mensClothing) => {
-      this.mensData = mensClothing
-      console.log(this.mensData);
-    })
-  }
+  //Begining of all categories
+  
+  // getJewels() {
+  //   this.productService.getJewels().subscribe((jewels) => {
+  //     this.jewelsData = jewels;
+  //   });
+  // }
 
-  getWomensClothings() {
-    this.productService.getWoMensClothing().subscribe((womensClothing) => {
-      this.womensData = womensClothing
-    })
-  }
+  // getElectronics() {
+  //   this.productService.getElectronics().subscribe((electronics) => {
+  //     this.electronicsData = electronics;
+  //   });
+  // }
+
+  // getMensClothings() {
+  //   this.productService.getMensClothing().subscribe((mensClothing) => {
+  //     this.mensData = mensClothing
+  //     console.log(this.mensData);
+  //   })
+  // }
+
+  // getWomensClothings() {
+  //   this.productService.getWoMensClothing().subscribe((womensClothing) => {
+  //     this.womensData = womensClothing
+  //   })
+  // }
+
+  //End of categories data
 
   navigateToProduct(id: any) {
     this.router.navigate(['product', id]);

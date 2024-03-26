@@ -32,6 +32,7 @@ export class CreateProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //Initialiezes a reactive form
     this.myForm = new FormGroup({
       title: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -42,6 +43,7 @@ export class CreateProductComponent implements OnInit {
       count: new FormControl('', Validators.required),
     });
 
+    //Checks if product is in update mode - then presents the product data
     if (this.data && this.data.product) {
       this.productData = this.data.product;
       this.updateMode = true;
@@ -72,7 +74,7 @@ export class CreateProductComponent implements OnInit {
       },
     };
 
-    if (this.updateMode && myForm.valid) {
+    if (this.updateMode && myForm.valid && myForm.touched) {
       this.productService
         .updateProduct(this.productData.id, formData)
         .subscribe((data) => {

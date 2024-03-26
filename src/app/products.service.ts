@@ -7,14 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   private baseURL = 'http://localhost:4000/products';
-  private categoryUrl = 'https://fakestoreapi.com/products/categories';
-  private jewels = 'https://fakestoreapi.com/products/category/jewelery';
-  private electronics =
-    'https://fakestoreapi.com/products/category/electronics?limit=4';
-  private mensClothing =
-    "https://fakestoreapi.com/products/category/men's%20clothing";
-  private womensClothing =
-    "https://fakestoreapi.com/products/category/women's%20clothing?limit=4";
+  private categoriesURL = 'https://fakestoreapi.com/products/categories';
+  // private jewels = 'https://fakestoreapi.com/products/category/jewelery';
+  // private electronics =
+  //   'https://fakestoreapi.com/products/category/electronics?limit=4';
+  // private mensClothing =
+  //   "https://fakestoreapi.com/products/category/men's%20clothing";
+  // private womensClothing =
+  //   "https://fakestoreapi.com/products/category/women's%20clothing?limit=4";
+  
+  private categoryURL = 'https://fakestoreapi.com/products/category';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,24 +40,33 @@ export class ProductsService {
 
   //Get Product Categories
   getAllProductCategories(): Observable<any> {
-    return this.httpClient.get<any>(this.categoryUrl);
+    return this.httpClient.get<any>(this.categoriesURL);
   }
 
-  getJewels(): Observable<any> {
-    return this.httpClient.get<any>(this.jewels);
+  // Get Products By Category - All the below products
+  // New Function
+  getProductsByCategory(category: string): Observable<any> {
+    let url = `${this.categoryURL}/${category}`;
+    return this.httpClient.get<any>(url);
   }
 
-  getElectronics(): Observable<any> {
-    return this.httpClient.get<any>(this.electronics);
-  }
+  // getJewels(): Observable<any> {
+  //   return this.httpClient.get<any>(this.jewels);
+  // }
 
-  getMensClothing(): Observable<any> {
-    return this.httpClient.get<any>(this.mensClothing);
-  }
+  // getElectronics(): Observable<any> {
+  //   return this.httpClient.get<any>(this.electronics);
+  // }
 
-  getWoMensClothing(): Observable<any> {
-    return this.httpClient.get<any>(this.womensClothing);
-  }
+  // getMensClothing(): Observable<any> {
+  //   return this.httpClient.get<any>(this.mensClothing);
+  // }
+
+  // getWoMensClothing(): Observable<any> {
+  //   return this.httpClient.get<any>(this.womensClothing);
+  // }
+
+  // End of Categories
 
   createProduct(product: any): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, product);

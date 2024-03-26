@@ -87,4 +87,8 @@ export class ProductComponent implements OnInit {
     });
     return this.categories;
   }
+
+  navigateToCart() {
+    this.router.navigate(['/cart']);
+  }
 }

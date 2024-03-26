@@ -23,7 +23,7 @@
           Product Count: {{ productData.rating.count }}
         </p>
         <div class="action-buttons">
-          <button mat-raised-button color="primary">
+          <button mat-raised-button color="primary" (click)="navigateToCart()">
             Add to Cart<mat-icon>shopping_cart</mat-icon>
           </button>
           <button
