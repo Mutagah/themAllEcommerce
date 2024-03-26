@@ -4,11 +4,11 @@
   align-items: center;
   justify-content: space-around;
   border-bottom: 2px solid black;
-
+  padding: 15px;
   .link {
     text-decoration: none;
     color: black;
-    font-weight: bold;
+    font-weight: light;
     font-size: 18px;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@
 .add-product-container {
   display: flex;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: light;
   cursor: pointer;
   margin-right: 31px;
   justify-content: center;

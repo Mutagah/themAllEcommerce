@@ -1,7 +1,13 @@
 .home-container {
-  background-color: #f5f5dc;
+  background-color: #d2d4dc;
   position: relative;
   height: max-content;
+  width: 85%;
+  margin: 0 auto;
+  .limit-input {
+    padding: 10px;
+    border-radius: 10px;
+  }
   .mat-card-container {
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +24,7 @@
       background-color: white;
       transition: box-shadow 0.3s;
       position: relative;
+      padding: 1rem;
     }
 
     .example-card.selected {
@@ -59,7 +66,7 @@
   h4 {
     text-transform: uppercase;
     font-weight: bold;
-    border-left: 7px solid #ff9900;
+    border-left: 7px solid #efbc9b;
     padding-left: 10px;
     margin-top: 20px;
     margin-left: 30px;

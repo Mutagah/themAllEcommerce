@@ -19,12 +19,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  addRemoveToggle: boolean = false;
   productId!: number;
   productData: any;
   categories: any;
   quantities: number[] = [1, 2, 3, 4, 5];
-  numberOfItems: number = 1;
-  // productArray: Array<object> = [];
+  numberOfItems!: number;
   receivedProducts: Array<object> = [];
 
   constructor(
@@ -41,6 +41,21 @@ export class ProductComponent implements OnInit {
       this.productId = params['id'];
       this.getProductDetails(this.productId);
       this.getProductCategories();
+      this.getProductInCart();
+    });
+  }
+
+  getProductInCart() {
+    this.cartService.getAllCarts().subscribe({
+      next: (res) =>
+        res.forEach((item: any) => {
+          item.products.forEach((res: any) => {
+            if (res.productId === this.productId) {
+              this.addRemoveToggle = true;
+              this.numberOfItems = res.quantity;
+            }
+          });
+        }),
     });
   }
 

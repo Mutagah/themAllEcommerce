@@ -299,12 +299,12 @@
       "date": "2024-03-26",
       "products": [
         {
-          "productId": "5",
-          "quantity": 18
+          "productId": "14",
+          "quantity": 1
         },
         {
-          "productId": "12",
-          "quantity": 3
+          "productId": "5",
+          "quantity": 1
         }
       ]
     }
