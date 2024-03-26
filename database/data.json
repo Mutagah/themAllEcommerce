@@ -265,10 +265,6 @@
       "date": "2024-03-25",
       "products": [
         {
-          "productId": "10",
-          "quantity": 25
-        },
-        {
           "productId": "12",
           "quantity": 4
         },
@@ -294,6 +290,21 @@
         {
           "productId": "5",
           "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ca0d",
+      "userId": 1,
+      "date": "2024-03-26",
+      "products": [
+        {
+          "productId": "5",
+          "quantity": 18
+        },
+        {
+          "productId": "12",
+          "quantity": 3
         }
       ]
     }

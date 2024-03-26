@@ -1,3 +1,54 @@
-<mat-card class="empty-cart">
-  <mat-card-content class="empty-cart-content"> Your cart is currenty empty </mat-card-content>
-</mat-card>
+<div *ngIf="!productId_Quantity; else cartBlock">
+  <mat-card class="empty-cart">
+    <mat-card-content class="empty-cart-content">
+      Your cart is currenty empty
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #cartBlock>
+  <h2>My cart</h2>
+  <div class="cart-container">
+    <!-- <div *ngFor="let product of productDetails"> -->
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Product Image Column -->
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef>Product Image</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          <img src="{{ product.image }}" alt="" width="150px" height="150px" />
+        </mat-cell>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{ product.title }} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          {{ product.price * 130 | currency : "Ksh " }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let product"> {{ product.quantity }} </mat-cell>
+      </ng-container>
+
+      <!-- Total Column -->
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          {{ product.price * 130 * product.quantity | currency : "ksh" }}
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+  <!-- </div> -->
+</ng-template>
