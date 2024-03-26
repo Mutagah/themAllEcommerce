@@ -1,8 +1,9 @@
 /*Angular imports */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /* Service import*/
 import { ProductsService } from '../products.service';
+import { CartService } from '../cart.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../create-product/create-product.component';
@@ -15,13 +16,31 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  id: any;
+export class HeaderComponent implements OnInit {
+  userId = 1;
+  matBadge = 0;
   categories: any;
   constructor(
     private productService: ProductsService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private cartService: CartService
+  ) { }
+
+  ngOnInit(): void {
+    this.cartService.getAllCarts().subscribe({
+      next: (res) => {
+        let uniqueProducts = new Set();
+        res
+          .filter((item: any) => item.userId === this.userId)
+          .forEach((cart: any) =>
+            cart.products.forEach((product: any) =>
+              uniqueProducts.add(product.productId)
+            )
+          );
+        this.matBadge = uniqueProducts.size;
+      },
+    });
+  }
 
   productModal(): void {
     /*

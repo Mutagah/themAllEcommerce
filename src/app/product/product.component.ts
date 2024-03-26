@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private cartService: CartService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -213,7 +213,6 @@ export class ProductComponent implements OnInit {
           item.products.forEach((productInCart: any) => {
             if (productInCart.productId === productDetails.id) {
               console.log('Hello guys');
-              
             }
           })
         );
