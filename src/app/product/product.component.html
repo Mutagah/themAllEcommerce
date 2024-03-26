@@ -15,16 +15,16 @@
         type="number"
         style="text-align: center; width: 50px"
         [(ngModel)]="numberOfItems"
-        [disabled]="addRemoveToggle"
+        [disabled]="removeProduct"
       />
       <button
         mat-raised-button
         color="primary"
-        (click)="addToCart(productData)"
+        (click)="cartFunctionality(productData)"
       >
-        {{ addRemoveToggle ? "Remove" : "Add" }}
+        {{ removeProduct ? "Remove" : "Add" }}
         {{ numberOfItems }}
-        {{ addRemoveToggle ? "from" : "to " }} Cart<mat-icon
+        {{ removeProduct ? "from" : "to " }} Cart<mat-icon
           >shopping_cart</mat-icon
         >
       </button>
