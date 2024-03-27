@@ -252,10 +252,6 @@
         {
           "productId": "15",
           "quantity": 3
-        },
-        {
-          "productId": "1",
-          "quantity": 1
         }
       ]
     },
@@ -267,10 +263,6 @@
         {
           "productId": "12",
           "quantity": 4
-        },
-        {
-          "productId": "3",
-          "quantity": 1
         }
       ]
     },
@@ -301,14 +293,6 @@
         {
           "productId": "4",
           "quantity": 4
-        },
-        {
-          "productId": "14",
-          "quantity": 1
-        },
-        {
-          "productId": "5",
-          "quantity": 1
         }
       ]
     }

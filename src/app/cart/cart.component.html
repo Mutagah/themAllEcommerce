@@ -9,7 +9,6 @@
 <ng-template #cartBlock>
   <h2>My cart</h2>
   <div class="cart-container">
-    <!-- <div *ngFor="let product of productDetails"> -->
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Product Image Column -->
       <ng-container matColumnDef="image">
@@ -41,7 +40,10 @@
 
       <!-- Total Column -->
       <ng-container matColumnDef="total">
-        <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="total-cell">
+          Total =
+          {{ getTotal(dataSource) * 130 | currency : "ksh" }}</mat-header-cell
+        >
         <mat-cell *matCellDef="let product">
           {{ product.price * 130 * product.quantity | currency : "ksh" }}
         </mat-cell>
@@ -50,5 +52,4 @@
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
   </div>
-  <!-- </div> -->
 </ng-template>

@@ -10,17 +10,27 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  displayedColumns: string[] = ['image', 'title', 'price', 'quantity', 'total'];
-
   productId_Quantity: Array<any> = [];
   productDetails: Array<any> = [];
   dataSource: Array<any> = [];
   combinedArray: Array<any> = [];
   addedProductIds = new Set<string>();
+  displayedColumns: string[] = ['image', 'title', 'price', 'quantity', 'total'];
   constructor(
     private cartService: CartService,
     private productService: ProductsService
   ) {}
+
+  getTotal(productArray: any) {
+    let productAmount = 0;
+    let total = 0;
+    productArray.forEach((product: any) => {
+      productAmount = product.price * product.quantity;
+      total += productAmount;
+    });
+    return total;
+  }
+
   ngOnInit(): void {
     let userId = 1;
     this.cartService.getAllCarts().subscribe({

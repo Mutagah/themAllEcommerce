@@ -217,5 +217,6 @@ export class ProductComponent implements OnInit {
           })
         );
     }
+    this.router.navigate(['cart']);
   }
 }
