@@ -292,7 +292,11 @@
       "products": [
         {
           "productId": "4",
-          "quantity": 4
+          "quantity": 2
+        },
+        {
+          "productId": "3",
+          "quantity": 0
         }
       ]
     }

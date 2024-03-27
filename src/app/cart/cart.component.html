@@ -44,7 +44,13 @@
         <ng-container matColumnDef="quantity">
           <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
           <mat-cell *matCellDef="let product" class="cart-cell">
-            {{ product.quantity }}
+            <button (click)="lessQuantity(product)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <label class="quantity-label">{{ product.quantity }}</label>
+            <button (click)="addQuantity(product)">
+              <mat-icon>add</mat-icon>
+            </button>
           </mat-cell>
         </ng-container>
 

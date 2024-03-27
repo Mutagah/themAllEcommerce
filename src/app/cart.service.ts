@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +26,13 @@ export class CartService {
     return this.httpClient.get(`${this.cartUrl}/${cartId}`);
   }
 
-  // patch user cart product
+  // adding to a user cart products
   addMoreItemToUserCart(cartId: any, product: any): Observable<any> {
+    return this.httpClient.patch(`${this.cartUrl}/${cartId}`, product);
+  }
+
+  // patch user cart product
+  patchUserCart(cartId: any, product: any) {
     return this.httpClient.patch(`${this.cartUrl}/${cartId}`, product);
   }
 }

@@ -31,8 +31,18 @@ h2 {
 .cart-cell {
   padding: 15px;
 }
-
+.quantity-label {
+  background-color: #efbc9b;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
 .total-cell {
   font-size: large;
   font-weight: bold;
+}
+button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
 }
