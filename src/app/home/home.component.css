@@ -29,7 +29,7 @@
     }
 
     .image-container {
-      margin-top: 15px;
+      margin-top: 20px;
       margin-bottom: 15px;
       justify-content: center;
       text-align: center;
@@ -69,7 +69,10 @@
     cursor: pointer;
   }
   input {
+    padding: 7px;
+    box-sizing: border-box;
     margin-right: 30px;
+    border-radius: 6px;
   }
 }
 .product-title {

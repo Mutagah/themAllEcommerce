@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   private baseURL = 'http://localhost:4000/products';
   private categoriesURL = 'https://fakestoreapi.com/products/categories';
-  
   private categoryURL = 'https://fakestoreapi.com/products/category';
 
   constructor(private httpClient: HttpClient) {}

@@ -241,6 +241,18 @@
         "rate": 4.7,
         "count": 5
       }
+    },
+    {
+      "id": "f74e",
+      "title": "Vans of the Wall",
+      "price": 22,
+      "description": "Off the wall",
+      "category": "men's clothing",
+      "image": "https://pictures-kenya.jijistatic.com/14606343_vans-maroon_620x620.webp",
+      "rating": {
+        "rate": 3.5,
+        "count": 33
+      }
     }
   ],
   "cart": []
