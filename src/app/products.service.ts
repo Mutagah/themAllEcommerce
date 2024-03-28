@@ -39,7 +39,10 @@ export class ProductsService {
     return this.httpClient.get<any>(url);
   }
 
-  createProduct(product: any): Observable<Object> {
+  //Updated the Create Product Method to include the Product Category
+  createProduct(product: any, category: string): Observable<Object> {
+    // Include category in the product object
+    product.category = category;
     return this.httpClient.post(`${this.baseURL}`, product);
   }
 

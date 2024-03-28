@@ -75,6 +75,8 @@ export class CreateProductComponent implements OnInit {
     };
 
     if (this.updateMode && myForm.valid && myForm.touched) {
+      
+    
       this.productService
         .updateProduct(this.productData.id, formData)
         .subscribe((data) => {
@@ -82,7 +84,10 @@ export class CreateProductComponent implements OnInit {
           this.productUpdated.emit('updated');
         });
     } else if (!this.updateMode && myForm.valid) {
-      this.productService.createProduct(formData).subscribe((data) => data);
+      // Extract category value from the form
+      const category = myForm.value.category;
+      
+      this.productService.createProduct(formData, category).subscribe((data) => data);
       this.snackBar.open('Product created successfully', 'Close', {
         duration: 5000,
       });

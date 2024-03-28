@@ -12,13 +12,27 @@
   </a>
 
   <!--Add product route-->
-  <div class="add-product-container" (click)="productModal()">
+  <a class="link add-product-container" (click)="productModal()">
     <mat-icon>note_add</mat-icon>
     Add Product
-  </div>
+  </a>
 
   <!-- Cart Link -->
   <a routerLink="cart" class="link"
     ><mat-icon>add_shopping_cart</mat-icon>Cart</a
   >
+
+  <form #searchBox="ngForm">
+    <div class="header-search">
+      <input
+        matInput
+        class="search-box"
+        placeholder="Search Product"
+        type="text"
+        name="searchText"
+        [(ngModel)]="searchText"
+      />
+      <!-- <mat-icon>search</mat-icon> -->
+    </div>
+  </form>
 </nav>

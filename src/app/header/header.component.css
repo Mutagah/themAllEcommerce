@@ -1,27 +1,42 @@
 .header-container {
-  height: 60px;
+  height: 65px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  background-color: #6e1818;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   .link {
     text-decoration: none;
-    color: black;
-    font-weight: bold;
+    color: white;
     font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-left: 10px;
   }
+}
+
+.header-search{
+  display: flex;
+  align-items: center;
+  margin-inline-start: 3px;
 }
 
 .add-product-container {
   display: flex;
-  font-size: 15px;
-  font-weight: bold;
   cursor: pointer;
-  margin-right: 31px;
   justify-content: center;
   align-items: center;
+}
+
+input {
+  padding: 7px;
+  box-sizing: border-box;
+  margin-right: 10px;
+  border-radius: 6px;
 }

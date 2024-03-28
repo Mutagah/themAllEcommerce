@@ -18,6 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class HeaderComponent {
   id: any;
   categories: any;
+  searchText: string = '';
+
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog
