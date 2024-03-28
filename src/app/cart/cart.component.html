@@ -8,7 +8,10 @@
 
 <ng-template #cartBlock>
   <div class="cart-block">
-    <h2>My cart</h2>
+    <div class="cart-header">
+      <h2>My cart</h2>
+      <button>Remove all from cart</button>
+    </div>
     <div class="cart-container">
       <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Product Image Column -->

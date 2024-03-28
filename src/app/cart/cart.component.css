@@ -11,6 +11,22 @@
 
 .cart-block {
   padding-bottom: 2rem;
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: 0 auto;
+    button {
+      height: 40px;
+      border-radius: 10px;
+      background-color: #e5e6eb;
+      cursor: pointer;
+      &:hover {
+        background-color: #ba1a1a;
+      }
+    }
+  }
 }
 
 h2 {
