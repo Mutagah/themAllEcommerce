@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductsService
-  ) { }
+  ) {}
 
   getTotal(productArray: any) {
     let productAmount = 0;
@@ -72,6 +72,7 @@ export class CartComponent implements OnInit {
           -Looping through the result array which ideally should have only one element and modifying the result array 
           -
          */
+
         this.cartService.getAllCarts().subscribe({
           next: (carts) => {
             const userCartIndex = carts.filter((cart: any) => {
@@ -84,18 +85,25 @@ export class CartComponent implements OnInit {
             });
             userCartIndex.forEach(
               (cartItem: any) =>
-              (cartItem.products = cartItem.products.filter(
-                (item: any) => item.productId !== targetedProduct.id
-              ))
+                (cartItem.products = cartItem.products.filter(
+                  (item: any) => item.productId !== targetedProduct.id
+                ))
             );
-            this.cartService
-              .patchUserCart(userCartIndex[0].id, {
-                products: userCartIndex[0].products,
-              })
-              .subscribe({ next: (res) => res });
             /*
             -Modyifying the existing record 
-            */
+            >> What if the products array length is zero? .I need to delete the whole cart
+           */
+            if (userCartIndex[0].products.length > 0) {
+              this.cartService
+                .patchUserCart(userCartIndex[0].id, {
+                  products: userCartIndex[0].products,
+                })
+                .subscribe({ next: (res) => res });
+            } else {
+              this.cartService.deleteCart(userCartIndex[0].id).subscribe({
+                next: (res) => res,
+              });
+            }
           },
         });
       }

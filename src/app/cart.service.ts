@@ -35,4 +35,8 @@ export class CartService {
   patchUserCart(cartId: any, product: any) {
     return this.httpClient.patch(`${this.cartUrl}/${cartId}`, product);
   }
+
+  deleteCart(cartId: any) {
+    return this.httpClient.delete(`${this.cartUrl}/${cartId}`);
+  }
 }
