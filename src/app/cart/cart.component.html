@@ -61,7 +61,14 @@
             {{ getTotal(dataSource) * 130 | currency : "ksh" }}</mat-header-cell
           >
           <mat-cell *matCellDef="let product" class="cart-cell">
-            {{ product.price * 130 * product.quantity | currency : "ksh" }}
+            <div class="price-action-container">
+              <div>
+                <button class="remove-cart">Remove from cart</button>
+              </div>
+              <div>
+                {{ product.price * 130 * product.quantity | currency : "Ksh" }}
+              </div>
+            </div>
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

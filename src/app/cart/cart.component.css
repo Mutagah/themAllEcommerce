@@ -46,3 +46,19 @@ button {
   border: none;
   cursor: pointer;
 }
+.price-action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.remove-cart {
+  padding: 10px;
+  background-color: #e5e6eb;
+  border-radius: 10px;
+
+  &:hover {
+    border: 2px solid #efbc9b;
+  }
+}

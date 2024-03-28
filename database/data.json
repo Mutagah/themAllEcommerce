@@ -256,17 +256,6 @@
       ]
     },
     {
-      "id": "2ae3",
-      "userId": 1,
-      "date": "2024-03-25",
-      "products": [
-        {
-          "productId": "12",
-          "quantity": 3
-        }
-      ]
-    },
-    {
       "id": "92d3",
       "userId": 2,
       "date": "2024-03-25",
@@ -282,21 +271,6 @@
         {
           "productId": "5",
           "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "ca0d",
-      "userId": 1,
-      "date": "2024-03-26",
-      "products": [
-        {
-          "productId": "4",
-          "quantity": 4
-        },
-        {
-          "productId": "3",
-          "quantity": 5
         }
       ]
     },
