@@ -90,7 +90,7 @@ export class CartComponent implements OnInit {
                 ))
             );
             /*
-            -Modyifying the existing record 
+            -Modifying the existing record 
             >> What if the products array length is zero? .I need to delete the whole cart
            */
             if (userCartIndex[0].products.length > 0) {

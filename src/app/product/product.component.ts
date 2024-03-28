@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private cartService: CartService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -121,12 +121,12 @@ export class ProductComponent implements OnInit {
           quantity: this.numberOfItems,
         },
       ];
-      const userId = 1;
+      // const userId = 1;
       this.cartService.getAllCarts().subscribe({
         next: (res) => {
           // Checking if i have an existing cart with that userId
           let myUserCart = res.filter(
-            (userCart: any) => userCart.userId === userId
+            (userCart: any) => userCart.userId === this.userId
           );
           // Checking if there is a record that matches the current date.
           if (
@@ -179,7 +179,7 @@ export class ProductComponent implements OnInit {
           } else {
             this.cartService
               .addToCart({
-                userId: userId,
+                userId: this.userId,
                 date: `${new Date().getFullYear()}-${String(
                   new Date().getMonth() + 1
                 ).padStart(2, '0')}-${String(new Date().getDate()).padStart(
@@ -205,17 +205,44 @@ export class ProductComponent implements OnInit {
         },
       });
     } else {
-      console.log(this.receivedProducts);
+      /*
+     Thought process
+     Have that id
+     Delete that product in cart
+     - Get to have the userID
+     - Get to have which specific cart are you deleting from
+     - Delete that specific product from the correct cart    
+     */
+      this.cartService.getAllCarts().subscribe({
+        next: (res) => {
+          let userCart = res.filter(
+            (cartItem: any) =>
+              cartItem.userId === this.userId &&
+              cartItem.products.find(
+                (product: any) => product.productId === productDetails.id
+              )
+          );
 
-      this.receivedProducts
-        .filter((item: any) => item.userId === this.userId)
-        .forEach((item: any) =>
-          item.products.forEach((productInCart: any) => {
-            if (productInCart.productId === productDetails.id) {
-              console.log('Hello guys');
-            }
-          })
-        );
+          userCart.forEach(
+            (cartItem: any) =>
+              (cartItem.products = cartItem.products.filter(
+                (item: any) => item.productId !== productDetails.id
+              ))
+          );
+
+          if (userCart[0].products.length > 0) {
+            this.cartService
+              .patchUserCart(userCart[0].id, {
+                products: userCart[0].products,
+              })
+              .subscribe({ next: (res) => res });
+          } else {
+            this.cartService.deleteCart(userCart[0].id).subscribe({
+              next: (res) => res,
+            });
+          }
+        },
+      });
     }
     this.router.navigate(['cart']);
   }
