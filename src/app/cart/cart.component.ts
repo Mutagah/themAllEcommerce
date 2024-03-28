@@ -66,6 +66,38 @@ export class CartComponent implements OnInit {
             });
           },
         });
+      } else if (targetedProduct.quantity === 0) {
+        /* Modifying that specific cart, so you have to have the ID
+          - Getting all carts and filtering according to the one that matches the user Id and targetdProduct Id
+          -Looping through the result array which ideally should have only one element and modifying the result array 
+          -
+         */
+        this.cartService.getAllCarts().subscribe({
+          next: (carts) => {
+            const userCartIndex = carts.filter((cart: any) => {
+              return (
+                cart.userId === this.userId &&
+                cart.products.find(
+                  (product: any) => product.productId === targetedProduct.id
+                )
+              );
+            });
+            userCartIndex.forEach(
+              (cartItem: any) =>
+              (cartItem.products = cartItem.products.filter(
+                (item: any) => item.productId !== targetedProduct.id
+              ))
+            );
+            this.cartService
+              .patchUserCart(userCartIndex[0].id, {
+                products: userCartIndex[0].products,
+              })
+              .subscribe({ next: (res) => res });
+            /*
+            -Modyifying the existing record 
+            */
+          },
+        });
       }
     });
   }

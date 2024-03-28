@@ -262,7 +262,7 @@
       "products": [
         {
           "productId": "12",
-          "quantity": 4
+          "quantity": 3
         }
       ]
     },
@@ -292,11 +292,26 @@
       "products": [
         {
           "productId": "4",
-          "quantity": 2
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "7769",
+      "userId": 1,
+      "date": "2024-03-27",
+      "products": [
+        {
+          "productId": "16",
+          "quantity": 3
         },
         {
-          "productId": "3",
-          "quantity": 0
+          "productId": "18",
+          "quantity": 1
+        },
+        {
+          "productId": "19",
+          "quantity": 2
         }
       ]
     }
