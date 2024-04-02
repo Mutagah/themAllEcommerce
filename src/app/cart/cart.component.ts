@@ -4,12 +4,22 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
 
+/*Angular material imports */
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteCartDialogComponent } from '../delete-cart-dialog/delete-cart-dialog.component';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  constructor(
+    private cartService: CartService,
+    private productService: ProductsService,
+    public dialog: MatDialog
+  ) {}
+
   userId = 1;
   productId_Quantity: Array<any> = [];
   productDetails: Array<any> = [];
@@ -17,10 +27,6 @@ export class CartComponent implements OnInit {
   combinedArray: Array<any> = [];
   addedProductIds = new Set<string>();
   displayedColumns: string[] = ['image', 'title', 'price', 'quantity', 'total'];
-  constructor(
-    private cartService: CartService,
-    private productService: ProductsService
-  ) { }
 
   getTotal(productArray: any) {
     let productAmount = 0;
@@ -85,9 +91,9 @@ export class CartComponent implements OnInit {
             });
             userCartIndex.forEach(
               (cartItem: any) =>
-              (cartItem.products = cartItem.products.filter(
-                (item: any) => item.productId !== targetedProduct.id
-              ))
+                (cartItem.products = cartItem.products.filter(
+                  (item: any) => item.productId !== targetedProduct.id
+                ))
             );
             /*
             -Modifying the existing record 
@@ -159,9 +165,9 @@ export class CartComponent implements OnInit {
         );
         currentUserProductCart.forEach(
           (cartItem: any) =>
-          (cartItem.products = cartItem.products.filter(
-            (product: any) => product.productId !== specificProduct.id
-          ))
+            (cartItem.products = cartItem.products.filter(
+              (product: any) => product.productId !== specificProduct.id
+            ))
         );
 
         if (currentUserProductCart[0].products.length > 0) {
@@ -182,6 +188,25 @@ export class CartComponent implements OnInit {
               Thought process
      -  Filter the user with that specific cart Item >> Must have the userId and that specific product Id
      -  Delete that specific product from that user and if the products array of that specific user will be empty then delete the whole cart if not the we need to make a clone of the existing products array and then remove the target product objected and leave the other products intact.
+     */
+  }
+
+  openDeleteCartDialog(): void {
+    this.cartService.getAllCarts().subscribe({
+      next: (res) => {
+        let userItemsInCart = res.filter(
+          (cart: any) => cart.userId === this.userId
+        );
+        this.dialog.open(DeleteCartDialogComponent, {
+          width: '350px',
+          data: userItemsInCart,
+        });
+      },
+    });
+    /*
+    - Have a method to get all carts
+    - Filter according to the number of users.
+
      */
   }
 

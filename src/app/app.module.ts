@@ -28,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
+import { DeleteCartDialogComponent } from './delete-cart-dialog/delete-cart-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
     CreateProductComponent,
     DeleteConfirmationComponent,
     CartComponent,
+    DeleteCartDialogComponent,
   ],
   imports: [
     BrowserModule,

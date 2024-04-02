@@ -10,7 +10,7 @@
   <div class="cart-block">
     <div class="cart-header">
       <h2>My cart</h2>
-      <button>Remove all from cart</button>
+      <button (click)="openDeleteCartDialog()">Remove all from cart</button>
     </div>
     <div class="cart-container">
       <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -66,7 +66,7 @@
           <mat-cell *matCellDef="let product" class="cart-cell">
             <div class="price-action-container">
               <div>
-                 <button
+                <button
                   class="remove-cart"
                   (click)="removeProductInCart(product)"
                 >
