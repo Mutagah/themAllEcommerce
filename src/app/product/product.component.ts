@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 /*Service import */
@@ -12,6 +12,7 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
 /*Angular material import */
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  @Output() incrementBadge = new EventEmitter();
   removeProduct: boolean = false;
   productId!: number;
   productData: any;
@@ -33,8 +35,9 @@ export class ProductComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private cartService: CartService
-  ) {}
+    private cartService: CartService,
+    private badgeService: BadgeService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -121,7 +124,6 @@ export class ProductComponent implements OnInit {
           quantity: this.numberOfItems,
         },
       ];
-      // const userId = 1;
       this.cartService.getAllCarts().subscribe({
         next: (res) => {
           // Checking if i have an existing cart with that userId
@@ -177,6 +179,8 @@ export class ProductComponent implements OnInit {
               },
             });
           } else {
+            /*
+            This is where we are adding a new cart item and this is where also our matbadge should be incremented using event emitter */
             this.cartService
               .addToCart({
                 userId: this.userId,
@@ -195,6 +199,7 @@ export class ProductComponent implements OnInit {
               })
               .subscribe({
                 next: (res) => {
+                  this.badgeService.incrementBadgeCount();
                   return res;
                 },
                 error: (error) => {
@@ -225,9 +230,9 @@ export class ProductComponent implements OnInit {
 
           userCart.forEach(
             (cartItem: any) =>
-              (cartItem.products = cartItem.products.filter(
-                (item: any) => item.productId !== productDetails.id
-              ))
+            (cartItem.products = cartItem.products.filter(
+              (item: any) => item.productId !== productDetails.id
+            ))
           );
 
           if (userCart[0].products.length > 0) {
@@ -235,15 +240,22 @@ export class ProductComponent implements OnInit {
               .patchUserCart(userCart[0].id, {
                 products: userCart[0].products,
               })
-              .subscribe({ next: (res) => res });
+              .subscribe({
+                next: (res) => {
+                  this.badgeService.decrementBadgeCount();
+                  return res;
+                },
+              });
           } else {
             this.cartService.deleteCart(userCart[0].id).subscribe({
-              next: (res) => res,
+              next: (res) => {
+                this.badgeService.decrementBadgeCount();
+                return res;
+              },
             });
           }
         },
       });
     }
-    this.router.navigate(['cart']);
   }
 }

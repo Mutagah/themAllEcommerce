@@ -10,6 +10,7 @@ import { CreateProductComponent } from '../create-product/create-product.compone
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
+import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-header',
@@ -23,10 +24,19 @@ export class HeaderComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
-    private cartService: CartService
-  ) { }
+    private cartService: CartService,
+    private badgeService: BadgeService
+  ) {}
 
   ngOnInit(): void {
+    this.updateBadgeCount();
+    /* Listens to any change in badge Count and does the necessary update*/
+    this.badgeService.badgeCount$.subscribe((countChange) => {
+      this.matBadge += countChange;
+    });
+  }
+
+  updateBadgeCount() {
     this.cartService.getAllCarts().subscribe({
       next: (res) => {
         let uniqueProducts = new Set();
