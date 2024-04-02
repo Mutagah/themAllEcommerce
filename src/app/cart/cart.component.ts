@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductsService
-  ) {}
+  ) { }
 
   getTotal(productArray: any) {
     let productAmount = 0;
@@ -85,9 +85,9 @@ export class CartComponent implements OnInit {
             });
             userCartIndex.forEach(
               (cartItem: any) =>
-                (cartItem.products = cartItem.products.filter(
-                  (item: any) => item.productId !== targetedProduct.id
-                ))
+              (cartItem.products = cartItem.products.filter(
+                (item: any) => item.productId !== targetedProduct.id
+              ))
             );
             /*
             -Modifying the existing record 
@@ -145,6 +145,44 @@ export class CartComponent implements OnInit {
         });
       }
     });
+  }
+
+  removeProductInCart(specificProduct: any) {
+    this.cartService.getAllCarts().subscribe({
+      next: (res) => {
+        let currentUserProductCart = res.filter(
+          (cart: any) =>
+            cart.userId === this.userId &&
+            cart.products.find(
+              (product: any) => product.productId === specificProduct.id
+            )
+        );
+        currentUserProductCart.forEach(
+          (cartItem: any) =>
+          (cartItem.products = cartItem.products.filter(
+            (product: any) => product.productId !== specificProduct.id
+          ))
+        );
+
+        if (currentUserProductCart[0].products.length > 0) {
+          this.cartService
+            .patchUserCart(currentUserProductCart[0].id, {
+              products: currentUserProductCart[0].products,
+            })
+            .subscribe({ next: (res) => res });
+        } else {
+          this.cartService.deleteCart(currentUserProductCart[0].id).subscribe({
+            next: (res) => res,
+          });
+        }
+      },
+    });
+
+    /*
+              Thought process
+     -  Filter the user with that specific cart Item >> Must have the userId and that specific product Id
+     -  Delete that specific product from that user and if the products array of that specific user will be empty then delete the whole cart if not the we need to make a clone of the existing products array and then remove the target product objected and leave the other products intact.
+     */
   }
 
   ngOnInit(): void {
