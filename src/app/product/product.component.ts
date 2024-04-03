@@ -25,9 +25,7 @@ export class ProductComponent implements OnInit {
   productId!: number;
   productData: any;
   categories: any;
-  quantities: number[] = [1, 2, 3, 4, 5];
   numberOfItems: number = 1;
-  receivedProducts: Array<object> = [];
   userId = 1;
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +35,7 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private badgeService: BadgeService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -51,10 +49,9 @@ export class ProductComponent implements OnInit {
   getProductInCart() {
     this.cartService.getAllCarts().subscribe({
       next: (res) => {
-        this.receivedProducts = res;
         res.forEach((item: any) => {
           item.products.forEach((res: any) => {
-            if (res.productId === this.productId) {
+            if (res.productId === this.productId && item.userId === 1) {
               this.removeProduct = true;
               this.numberOfItems = res.quantity;
             }
@@ -232,9 +229,9 @@ export class ProductComponent implements OnInit {
 
           userCart.forEach(
             (cartItem: any) =>
-            (cartItem.products = cartItem.products.filter(
-              (item: any) => item.productId !== productDetails.id
-            ))
+              (cartItem.products = cartItem.products.filter(
+                (item: any) => item.productId !== productDetails.id
+              ))
           );
 
           if (userCart[0].products.length > 0) {
