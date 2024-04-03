@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 /*Service import */
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
+import { BadgeService } from '../badge.service';
 
 /*Component import */
 import { CreateProductComponent } from '../create-product/create-product.component';
@@ -12,7 +13,6 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
 /*Angular material import */
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-product',
@@ -118,6 +118,7 @@ export class ProductComponent implements OnInit {
 
   cartFunctionality(productDetails: any) {
     if (!this.removeProduct) {
+      this.removeProduct = true;
       let productArray = [
         {
           productId: productDetails.id,
@@ -218,6 +219,7 @@ export class ProductComponent implements OnInit {
      - Get to have which specific cart are you deleting from
      - Delete that specific product from the correct cart    
      */
+      this.removeProduct = false;
       this.cartService.getAllCarts().subscribe({
         next: (res) => {
           let userCart = res.filter(
