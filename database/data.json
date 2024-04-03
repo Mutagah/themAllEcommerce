@@ -279,10 +279,7 @@
       "userId": 1,
       "date": "2024-03-27",
       "products": [
-        {
-          "productId": "16",
-          "quantity": 3
-        },
+        
         {
           "productId": "18",
           "quantity": 1
