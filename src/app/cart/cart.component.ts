@@ -4,9 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
 
+/*Component imports */
+import { DeleteCartDialogComponent } from '../delete-cart-dialog/delete-cart-dialog.component';
+
 /*Angular material imports */
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteCartDialogComponent } from '../delete-cart-dialog/delete-cart-dialog.component';
+import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,8 +20,9 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductsService,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private badgeService: BadgeService
+  ) { }
 
   userId = 1;
   productId_Quantity: Array<any> = [];
@@ -73,45 +77,10 @@ export class CartComponent implements OnInit {
           },
         });
       } else if (targetedProduct.quantity === 0) {
-        /* Modifying that specific cart, so you have to have the ID
-          - Getting all carts and filtering according to the one that matches the user Id and targetdProduct Id
-          -Looping through the result array which ideally should have only one element and modifying the result array 
-          -
-         */
-
-        this.cartService.getAllCarts().subscribe({
-          next: (carts) => {
-            const userCartIndex = carts.filter((cart: any) => {
-              return (
-                cart.userId === this.userId &&
-                cart.products.find(
-                  (product: any) => product.productId === targetedProduct.id
-                )
-              );
-            });
-            userCartIndex.forEach(
-              (cartItem: any) =>
-                (cartItem.products = cartItem.products.filter(
-                  (item: any) => item.productId !== targetedProduct.id
-                ))
-            );
-            /*
-            -Modifying the existing record 
-            >> What if the products array length is zero? .I need to delete the whole cart
-           */
-            if (userCartIndex[0].products.length > 0) {
-              this.cartService
-                .patchUserCart(userCartIndex[0].id, {
-                  products: userCartIndex[0].products,
-                })
-                .subscribe({ next: (res) => res });
-            } else {
-              this.cartService.deleteCart(userCartIndex[0].id).subscribe({
-                next: (res) => res,
-              });
-            }
-          },
-        });
+        this.productId_Quantity = this.productId_Quantity.filter(
+          (item: any) => item.productId !== targetedProduct.id
+        );
+        this.removeProductInCart(targetedProduct);
       }
     });
   }
@@ -154,6 +123,12 @@ export class CartComponent implements OnInit {
   }
 
   removeProductInCart(specificProduct: any) {
+    this.dataSource = this.dataSource.filter(
+      (product: any) => product.id !== specificProduct.id
+    );
+    this.productId_Quantity = this.productId_Quantity.filter(
+      (item: any) => item.productId !== specificProduct.id
+    );
     this.cartService.getAllCarts().subscribe({
       next: (res) => {
         let currentUserProductCart = res.filter(
@@ -165,9 +140,9 @@ export class CartComponent implements OnInit {
         );
         currentUserProductCart.forEach(
           (cartItem: any) =>
-            (cartItem.products = cartItem.products.filter(
-              (product: any) => product.productId !== specificProduct.id
-            ))
+          (cartItem.products = cartItem.products.filter(
+            (product: any) => product.productId !== specificProduct.id
+          ))
         );
 
         if (currentUserProductCart[0].products.length > 0) {
@@ -175,10 +150,18 @@ export class CartComponent implements OnInit {
             .patchUserCart(currentUserProductCart[0].id, {
               products: currentUserProductCart[0].products,
             })
-            .subscribe({ next: (res) => res });
+            .subscribe({
+              next: (res) => {
+                this.badgeService.decrementBadgeCount();
+                res;
+              },
+            });
         } else {
           this.cartService.deleteCart(currentUserProductCart[0].id).subscribe({
-            next: (res) => res,
+            next: (res) => {
+              this.badgeService.decrementBadgeCount();
+              res;
+            },
           });
         }
       },
@@ -210,7 +193,7 @@ export class CartComponent implements OnInit {
      */
   }
 
-  ngOnInit(): void {
+  getItemsInCart() {
     this.cartService.getAllCarts().subscribe({
       next: (res) => {
         /* 
@@ -219,7 +202,11 @@ export class CartComponent implements OnInit {
         */
 
         res
-          .filter((item: any) => item.userId === this.userId)
+          .filter(
+            (item: any) =>
+              item.userId === this.userId &&
+              item.products.filter((product: any) => product.quantity !== 0)
+          )
           .forEach((cartItem: any) =>
             cartItem.products.forEach((product: any) =>
               this.productId_Quantity.push({
@@ -271,5 +258,8 @@ export class CartComponent implements OnInit {
         });
       },
     });
+  }
+  ngOnInit(): void {
+    this.getItemsInCart();
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!productId_Quantity; else cartBlock">
+<div *ngIf="productId_Quantity.length === 0; else cartBlock">
   <mat-card class="empty-cart">
     <mat-card-content class="empty-cart-content">
       Your cart is currenty empty

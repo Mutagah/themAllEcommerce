@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 /*Service import */
@@ -20,7 +20,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @Output() incrementBadge = new EventEmitter();
   removeProduct: boolean = false;
   productId!: number;
   productData: any;

@@ -1,16 +1,16 @@
 /*Angular imports */
 import { Component, OnInit } from '@angular/core';
 
-/* Service import*/
+/*Service imports */
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
+import { BadgeService } from '../badge.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../create-product/create-product.component';
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
-import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-header',
