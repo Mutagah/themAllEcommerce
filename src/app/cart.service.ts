@@ -7,5 +7,12 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class CartService {
+  cartProducts: any[] = [];
+
   constructor() {}
+
+  addProductToCart(product:any){
+    let currentProduct = {...product, count: 1};
+    this.cartProducts.push(currentProduct);
+  }
 }

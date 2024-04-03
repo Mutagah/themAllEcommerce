@@ -3,7 +3,6 @@ import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
@@ -75,8 +74,6 @@ export class CreateProductComponent implements OnInit {
     };
 
     if (this.updateMode && myForm.valid && myForm.touched) {
-      
-    
       this.productService
         .updateProduct(this.productData.id, formData)
         .subscribe((data) => {

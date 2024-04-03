@@ -16,16 +16,32 @@
         <p class="product-price">
           {{ productData.price * 130 | currency : "Ksh " }}
         </p>
+        <p class="product-category">
+          Product Category: {{ productData.category }}
+        </p>
         <p class="product-rating">
           Product Rating: {{ productData.rating.rate }}
         </p>
         <p class="product-score">
           Product Count: {{ productData.rating.count }}
         </p>
+
+        <!-- Cart Button Functionality -->
         <div class="action-buttons">
-          <button mat-raised-button color="primary" (click)="navigateToCart()">
+          <!-- Add to Cart Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToCart(productData)"
+            *ngIf="!isProductInCart"
+          >
             Add to Cart<mat-icon>shopping_cart</mat-icon>
           </button>
+          <!-- Go to cart button  -->
+          <button mat-raised-button color="primary" *ngIf="isProductInCart">
+            Go to Cart<mat-icon>shopping_cart</mat-icon>
+          </button>
+
           <button
             mat-raised-button
             color="accent"

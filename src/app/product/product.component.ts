@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProductComponent } from '../create-product/create-product.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product',
@@ -15,14 +16,16 @@ export class ProductComponent implements OnInit {
   productId!: number;
   productData: any;
   categories: any;
-  quantities: number[] = [1, 2, 3, 4, 5];
+  //Variable will be used to show and hide the two cart buttons
+  isProductInCart: boolean = false;  
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -62,20 +65,16 @@ export class ProductComponent implements OnInit {
   }
 
   deleteProduct(productId: any) {
-
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       width: '300px',
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.productService.deleteProduct(productId).subscribe((deletedProduct) => {
           this.snackBar.open('Product deleted successfully', 'Close', {
             duration: 5000, 
           });
-    
-          this.router.navigate(['home']);
-          
+          this.router.navigate(['home']);  
         });
       }
     });
@@ -88,7 +87,11 @@ export class ProductComponent implements OnInit {
     return this.categories;
   }
 
-  navigateToCart() {
-    this.router.navigate(['/cart']);
+  // Add to Cart Functionality
+  addToCart(productData: any) {
+    console.log(productData);
+    this.cartService.addProductToCart(productData);
+    this.isProductInCart = true;
+    //this.router.navigate(['/cart']);
   }
 }
