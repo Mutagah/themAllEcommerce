@@ -1,8 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
+
+/*Service imports */
+import { CartService } from '../cart.service';
 
 /*Angular material imports */
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-delete-cart-dialog',
@@ -10,6 +12,7 @@ import { CartService } from '../cart.service';
   styleUrls: ['./delete-cart-dialog.component.css'],
 })
 export class DeleteCartDialogComponent {
+  @Output() deletedCartItems = new EventEmitter<void>();
   constructor(
     public dialogRef: MatDialogRef<DeleteCartDialogComponent>,
     private cartService: CartService,
@@ -17,12 +20,15 @@ export class DeleteCartDialogComponent {
   ) {}
 
   userId = 1;
-
   deleteCart() {
     this.data.forEach((item: any) =>
       this.cartService.deleteCart(item.id).subscribe({
-        next: (res) => res,
+        next: (res) => {
+          this.deletedCartItems.emit(item.id);
+          return res;
+        },
       })
     );
+    this.dialogRef.close();
   }
 }

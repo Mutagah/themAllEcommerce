@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 /*Service imports */
 import { CartService } from '../cart.service';
 import { ProductsService } from '../products.service';
+import { BadgeService } from '../badge.service';
 
 /*Component imports */
 import { DeleteCartDialogComponent } from '../delete-cart-dialog/delete-cart-dialog.component';
 
 /*Angular material imports */
 import { MatDialog } from '@angular/material/dialog';
-import { BadgeService } from '../badge.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
     private productService: ProductsService,
     public dialog: MatDialog,
     private badgeService: BadgeService
-  ) { }
+  ) {}
 
   userId = 1;
   productId_Quantity: Array<any> = [];
@@ -140,9 +140,9 @@ export class CartComponent implements OnInit {
         );
         currentUserProductCart.forEach(
           (cartItem: any) =>
-          (cartItem.products = cartItem.products.filter(
-            (product: any) => product.productId !== specificProduct.id
-          ))
+            (cartItem.products = cartItem.products.filter(
+              (product: any) => product.productId !== specificProduct.id
+            ))
         );
 
         if (currentUserProductCart[0].products.length > 0) {
@@ -180,9 +180,19 @@ export class CartComponent implements OnInit {
         let userItemsInCart = res.filter(
           (cart: any) => cart.userId === this.userId
         );
-        this.dialog.open(DeleteCartDialogComponent, {
+        const dialogRef = this.dialog.open(DeleteCartDialogComponent, {
           width: '350px',
           data: userItemsInCart,
+          /*
+           - Find a way to filter and update the data source instantly
+           - 
+          */
+        });
+        dialogRef.componentInstance.deletedCartItems.subscribe(() => {
+          this.dataSource = [];
+          this.productId_Quantity = [];
+          this.addedProductIds.clear();
+          this.badgeService.resetBadgeCount();
         });
       },
     });

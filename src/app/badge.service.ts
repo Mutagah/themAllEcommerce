@@ -17,4 +17,8 @@ export class BadgeService {
   decrementBadgeCount(): void {
     this.badgeCountSubject.next(-1);
   }
+
+  resetBadgeCount(): void {
+    this.badgeCountSubject.next(0);
+  }
 }
