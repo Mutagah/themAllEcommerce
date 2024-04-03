@@ -10,7 +10,9 @@
   <div class="cart-block">
     <div class="cart-header">
       <h2>My cart</h2>
-      <button (click)="openDeleteCartDialog()">Remove all from cart</button>
+      <button (click)="openDeleteCartDialog()" class="remove-all">
+        Remove all from cart
+      </button>
     </div>
     <div class="cart-container">
       <mat-table [dataSource]="dataSource" class="mat-elevation-z8">

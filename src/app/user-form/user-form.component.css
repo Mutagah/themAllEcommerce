@@ -1,0 +1,47 @@
+form {
+  margin-top: 10px;
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+
+.form-container {
+  margin: 1rem;
+  h1 {
+    text-align: center;
+    color: #4a5eba;
+  }
+}
+
+form {
+  padding-left: 1rem;
+}
+
+.button-container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.form-button:hover {
+  background-color: #4a5eba;
+  color: white;
+}
+
+.hint {
+  color: red;
+}
+
+.paired-inputs {
+  display: flex;
+  justify-content: space-around;
+}
+
+.firststep-button-container {
+  text-align: center;
+}

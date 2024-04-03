@@ -1,4 +1,10 @@
 <nav class="header-container">
+  <!-- <mat-toolbar> -->
+  <div class="main-icon">
+    <mat-icon>menu</mat-icon>
+    themAll
+  </div>
+
   <!-- home routing -->
   <a routerLink="home" class="link">
     <mat-icon>home</mat-icon>
@@ -6,10 +12,7 @@
   </a>
 
   <!-- categories routing -->
-  <a routerLink="categories" class="link">
-    <mat-icon>reorder</mat-icon>
-    Categories
-  </a>
+  <a routerLink="categories" class="link"> Categories </a>
 
   <!--Add product route-->
   <div class="add-product-container" (click)="productModal()">
@@ -18,8 +21,11 @@
   </div>
 
   <!-- Cart Link -->
-
-  <div matBadge={{matBadge}} matBadgeOverlap="false" class="demo-section">
+  <div matBadge="{{ matBadge }}" matBadgeOverlap="false" class="demo-section">
     <a routerLink="cart" class="link">Cart</a>
   </div>
+
+  <a routerLink="/users" class="link">All users</a>
+  <a routerLink="/createuser" class="link">Create user</a>
+  <!-- </mat-toolbar> -->
 </nav>

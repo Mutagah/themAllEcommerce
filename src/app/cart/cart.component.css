@@ -17,10 +17,11 @@
     align-items: center;
     width: 85%;
     margin: 0 auto;
-    button {
+    .remove-all {
       height: 40px;
       border-radius: 10px;
       background-color: #e5e6eb;
+      padding: 10px;
       cursor: pointer;
       &:hover {
         background-color: #ba1a1a;

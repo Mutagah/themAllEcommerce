@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+/*Services imports */
+import { UsersService } from './users.service';
 
 /*Component imports */
 import { AppComponent } from './app.component';
@@ -15,20 +18,31 @@ import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { DeleteCartDialogComponent } from './delete-cart-dialog/delete-cart-dialog.component';
+import { UsersComponent } from './users/users.component';
+import { SingleUserDialogComponent } from './single-user-dialog/single-user-dialog.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
-/*Angular imports */
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+/* Angular Material imports */
 import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { DeleteCartDialogComponent } from './delete-cart-dialog/delete-cart-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -41,28 +55,39 @@ import { DeleteCartDialogComponent } from './delete-cart-dialog/delete-cart-dial
     DeleteConfirmationComponent,
     CartComponent,
     DeleteCartDialogComponent,
+    UsersComponent,
+    SingleUserDialogComponent,
+    SnackBarComponent,
+    UserFormComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    NoopAnimationsModule,
     MatCardModule,
     MatSlideToggleModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
     MatDividerModule,
-    MatDialogModule,
-    MatIconModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     MatBadgeModule,
     MatTableModule,
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatStepperModule,
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
