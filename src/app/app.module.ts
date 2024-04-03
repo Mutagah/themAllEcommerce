@@ -1,3 +1,4 @@
+/*Angular imports */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*Services imports */
 import { UsersService } from './users.service';
+import { ProductsService } from './products.service';
+import { CartService } from './cart.service';
+import { BadgeService } from './badge.service';
 
 /*Component imports */
 import { AppComponent } from './app.component';
@@ -87,7 +91,7 @@ import { MatCardModule } from '@angular/material/card';
     MatGridListModule,
     MatStepperModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, BadgeService, ProductsService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
