@@ -18,9 +18,10 @@
   </a>
 
   <!-- Cart Link -->
-  <a routerLink="cart" class="link"
-    ><mat-icon>add_shopping_cart</mat-icon>Cart</a
-  >
+  <div routerLink="cart" class="link">
+    <mat-icon>add_shopping_cart</mat-icon>
+    <div class="cart-items" *ngIf="cartItemCount">{{cartItemCount}}</div>
+  </div>
 
   <form #searchBox="ngForm">
     <div class="header-search">

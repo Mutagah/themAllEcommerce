@@ -1,3 +1,26 @@
-<mat-card class="empty-cart">
-  <mat-card-content class="empty-cart-content"> Your cart is currenty empty </mat-card-content>
-</mat-card>
+<div class="container">
+  <!-- Empty Cart Content -->
+  <div class="empty" *ngIf="!cartItems.length">
+    <mat-card class="empty-cart">
+      <mat-card-content class="empty-cart-content">
+        Your cart is currently empty
+      </mat-card-content>
+    </mat-card>
+    <button
+      mat-raised-button
+      color="primary"
+      class="add-to-cart-button"
+      [routerLink]="'/home'"
+    >
+      Shop Now
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+
+  <!-- Cart Content -->
+  <div class="cart-content" *ngIf="cartItems.length">
+    <div class="items-container">
+      <app-cart-item [productData]="cartItem" *ngFor="let cartItem of cartItems"></app-cart-item>
+    </div>
+  </div>
+</div>

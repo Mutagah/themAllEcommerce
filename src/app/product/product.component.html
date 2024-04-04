@@ -38,7 +38,13 @@
             Add to Cart<mat-icon>shopping_cart</mat-icon>
           </button>
           <!-- Go to cart button  -->
-          <button mat-raised-button color="primary" *ngIf="isProductInCart">
+          <button
+            mat-raised-button
+            color="primary"
+            *ngIf="isProductInCart"
+            [routerLink]="'/cart'"
+
+          >
             Go to Cart<mat-icon>shopping_cart</mat-icon>
           </button>
 

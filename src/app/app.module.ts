@@ -26,6 +26,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     CreateProductComponent,
     DeleteConfirmationComponent,
     CartComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

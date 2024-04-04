@@ -1,14 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit{
-  @Input() productData!: any;
+  cartItems: any[] = [];
+
+  constructor(private cartService: CartService){}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.cartItems = this.cartService.getAllCartItems();
   }
 }

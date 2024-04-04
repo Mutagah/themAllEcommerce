@@ -1,5 +1,5 @@
 /*Angular imports */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /* Service import*/
 import { ProductsService } from '../products.service';
@@ -9,27 +9,33 @@ import { CreateProductComponent } from '../create-product/create-product.compone
 
 /*Angular Material imports */
 import { MatDialog } from '@angular/material/dialog';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   id: any;
   categories: any;
   searchText: string = '';
+  cartItemCount: any;
 
   constructor(
     private productService: ProductsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cartService: CartService
   ) {}
 
+  //Displaying the Cart Item Count on the Navbar
+  ngOnInit(): void {
+    this.cartService.cartSubject.subscribe((cartItems: any) => {
+      this.cartItemCount = cartItems.length;
+    });
+  }
+
   productModal(): void {
-    /*
-  1. Fetch data ya product
-  2. In the success reponse open the modal
-  3.  */
     this.productService.getAllProductCategories().subscribe({
       next: (res) => {
         const dialogRef = this.dialog.open(CreateProductComponent, {
