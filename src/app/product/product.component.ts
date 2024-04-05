@@ -92,6 +92,5 @@ export class ProductComponent implements OnInit {
     console.log(productData);
     this.cartService.addProductToCart(productData);
     this.isProductInCart = true;
-    //this.router.navigate(['/cart']);
   }
 }

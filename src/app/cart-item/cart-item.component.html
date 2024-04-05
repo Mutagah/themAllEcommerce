@@ -1,49 +1,46 @@
-<!-- <div class="product-container" *ngIf="productData">
-  <div class="product-image">
-    <img [src]="productData.image" alt="Product Image" />
-  </div>
-  <div class="product-details">
-    <h1 class="product-title">{{ productData.title }}</h1>
-    <p class="product-description">{{ productData.description }}</p>
-    <p class="product-price">
-      {{ productData.price * 130 | currency : "Ksh " }}
-    </p>
-    <p class="product-category">Product Category: {{ productData.category }}</p>
-    <p class="product-rating">Product Rating: {{ productData.rating.rate }}</p>
-    <p class="product-score">Product Count: {{ productData.rating.count }}</p>
-  </div>
-</div> -->
-
-<div class="product-card">
+<div class="container">
   <div class="left-container">
-    <div class="image">
-      <img
-        class="product-thumbnail"
-        [src]="productData.image"
-        alt="Product Image"
-      />
-    </div>
-    <div class="counter">
-      <!-- <button
-        mat-raised-button
-        color="primary"
-        class="btn-theme"
-        (click)=""
-        [disabled]="productData.count == 1"
-      >
-        <mat-icon class="action-icon">remove_circle_outline</mat-icon>
-      </button> -->
-      <div class="count">{{ productData.count }}</div>
-      <!-- <button mat-raised-button color="primary" class="btn-theme" (click)="">
-        <mat-icon class="action-icon">add_circle_outline</mat-icon>
-      </button> -->
+    <div class="product-container" *ngIf="productData">
+      <div class="product-image">
+        <img [src]="productData.image" alt="Product Image" />
+      </div>
+      <div class="product-details">
+        <h1 class="product-title">{{ productData.title }}</h1>
+        <p class="product-description">{{ productData.description }}</p>
+
+        <div class="details">
+          <p>
+            {{ productData.price * 130 | currency : "Ksh " }}
+          </p>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="productData.count == 1"
+          >
+            <mat-icon class="action-icon">remove_circle_outline</mat-icon>
+          </button>
+          <p class="product-count">{{ productData.count }}</p>
+          <button mat-raised-button color="accent">
+            <mat-icon class="action-icon">add_circle_outline</mat-icon>
+          </button>
+          <!-- <p class="product-category">Product Category: {{ productData.category }}</p>
+          <p class="product-rating">Product Rating: {{ productData.rating.rate }}</p>
+          <p class="product-score">Product Count: {{ productData.rating.count }}</p> -->
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Display Price Details -->
   <div class="right-container">
-    <h2>{{ productData.title }}</h2>
-    <h3>{{ productData.price }}</h3>
-    <!-- <button mat-raised-button color="primary" class="btn-theme w-fit" (click)="">
+    <h2>Cart Summary</h2>
+    <div>
+      <h3 class="discounted-price">{{ discountedPrice * 130 | currency : "Ksh " }}</h3>
+      <p>{{ itemPrice * 130 | currency : "Ksh " }}</p>
+      <p>{{discount}}% Off</p>
+    </div>
+    <button mat-raised-button color="primary" class="btn-theme w-fit">
       Remove
-    </button> -->
+    </button>
   </div>
 </div>

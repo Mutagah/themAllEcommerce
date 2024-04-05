@@ -3,12 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 220px;
 
   .empty{
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 220px;
   }
 }
 
@@ -25,14 +25,4 @@
 
 .add-to-cart-button {
   width: 180px;
-}
-
-.cart-content{
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-
-  .items-container{
-    padding: 5px;
-  }
 }
