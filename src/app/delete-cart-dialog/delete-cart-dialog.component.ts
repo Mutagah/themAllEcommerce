@@ -2,6 +2,7 @@ import { Component, Inject, Output, EventEmitter } from '@angular/core';
 
 /*Service imports */
 import { CartService } from '../cart.service';
+import { BadgeService } from '../badge.service';
 
 /*Angular material imports */
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,7 +17,8 @@ export class DeleteCartDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<DeleteCartDialogComponent>,
     private cartService: CartService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private badgeService: BadgeService
   ) {}
 
   userId = 1;
@@ -25,6 +27,7 @@ export class DeleteCartDialogComponent {
       this.cartService.deleteCart(item.id).subscribe({
         next: (res) => {
           this.deletedCartItems.emit(item.id);
+          this.badgeService.resetBadgeCount();
           return res;
         },
       })

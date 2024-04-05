@@ -32,7 +32,12 @@ export class HeaderComponent implements OnInit {
     this.updateBadgeCount();
     /* Listens to any change in badge Count and does the necessary update*/
     this.badgeService.badgeCount$.subscribe((countChange) => {
-      this.matBadge += countChange;
+      // Modidy this function so that when the countChange is
+      if (countChange === 0) {
+        this.matBadge = countChange;
+      } else {
+        this.matBadge += countChange;
+      }
     });
   }
 
