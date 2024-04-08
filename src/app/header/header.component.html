@@ -25,7 +25,48 @@
     <a routerLink="cart" class="link">Cart</a>
   </div>
 
-  <a routerLink="/users" class="link">All users</a>
   <a routerLink="/createuser" class="link">Create user</a>
   <!-- </mat-toolbar> -->
 </nav>
+<mat-drawer-container class="sidebar">
+  <mat-drawer opened="true" mode="side" style="width: 230px">
+    <mat-nav-list style="padding: 15px">
+      <div class="side-nav">
+        <div>
+          <mat-list-item>
+            <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
+          </mat-list-item>
+          <mat-list-item>
+            <a routerLink="categories" class="link">
+              <mat-icon>menu</mat-icon>
+              Categories
+            </a>
+          </mat-list-item>
+          <mat-list-item>
+            <a routerLink="home" class="link">
+              <mat-icon>person</mat-icon>
+              Profile
+            </a>
+          </mat-list-item>
+          <mat-list-item>
+            <a routerLink="users" class="link">
+              <mat-icon>group</mat-icon>
+              Users
+            </a>
+          </mat-list-item>
+        </div>
+        <div>
+          <mat-list-item>
+            <a routerLink="users" class="link">
+              <mat-icon>settings</mat-icon>
+              Admin
+            </a>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

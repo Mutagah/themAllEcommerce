@@ -47,6 +47,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -90,8 +92,10 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatGridListModule,
     MatStepperModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [UsersService, BadgeService, ProductsService, CartService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

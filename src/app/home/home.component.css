@@ -2,8 +2,6 @@
   background-color: #d2d4dc;
   position: relative;
   height: max-content;
-  width: 85%;
-  margin: 0 auto;
   .limit-input {
     padding: 10px;
     border-radius: 10px;

@@ -10,6 +10,7 @@ form {
 
 .form-container {
   margin: 1rem;
+  height: 85vh;
   h1 {
     text-align: center;
     color: #4a5eba;
