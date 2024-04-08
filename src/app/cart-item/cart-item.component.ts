@@ -25,4 +25,19 @@ export class CartItemComponent implements OnInit {
     this.itemPrice =
       this.cartService.getPriceDetailsInCartItem(productData).price;
   }
+
+  decreaseItemCount(productData: any) {
+    this.cartService.decreaseProductCountInCart(productData);
+    // Update price details
+    this.getPriceDetails(productData);
+  }
+
+  increaseItemCount(productData: any) {
+    this.cartService.increaseProductCountInCart(productData);
+    this.getPriceDetails(productData);
+  }
+
+  removeItem(productData: any) {
+    this.cartService.removeItemFromCart(productData);
+  }
 }

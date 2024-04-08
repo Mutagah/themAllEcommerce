@@ -1,51 +1,111 @@
-.container {
-  position: relative;
+.product-card {
+  padding: 4px;
   display: flex;
-  flex-direction: row;
+  flex: start;
+  min-height: 250px;
+  max-width: 70%;
+  border: 1px solid #ffe6c6;
+  background-color: #ffe6c6;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  /* justify-content: start; */
+  /* position: relative;
+  display: flex;
+  flex-direction: row; */
 }
 
-.left-container {
-  flex: 0 0 70%; /* 55% width */
-  margin-right: 5px;
+/* .left-container {
+
+} */
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  /* padding: 5px;
+  text-align: center; */
+}
+
+.product-thumbnail{
+  width: 100px;
+  border-radius: 5px;
+}
+
+.counter{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.btn-theme {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  color: white;
+  outline: none;
+  background-color: rgb(255, 102, 0);
+}
+
+.product-count{
+  width: 50px;
+  text-align: center;
+}
+
+.action-icon{
+  width: 20px;
 }
 
 .right-container {
   display: flex;
   flex-direction: column;
-  flex: 0 0 26%; /* 40% width */
+  margin-left: 5px;
+  /* flex: 0 0 26%;
   margin: 20px;
   border: 1px solid #ccc;
-  min-height: 20vh;
+  min-height: 20vh; */
 }
 
+.discounted-price{
+  display: inline-block;
+}
+
+.item-price{
+  margin-left: 2px;
+}
+
+.discount{
+  margin-left: 2px;
+}
+
+.w-fit{
+  width: fit-content;
+  margin-top: auto;
+  right: 0;
+  top: 0;
+}
+
+/* End of New Styling */
+
+
 .product-container {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   border: 1px solid #ccc;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: hidden; */
   background-color: #fff;
-  align-items: center;
+  /* align-items: center;
   justify-content: space-evenly;
   margin: 20px;
   position: relative;
-  min-height: 20vh;
-}
-
-.product-image {
-  padding: 5px;
-  text-align: center;
+  min-height: 20vh; */
 }
 
 .product-image img {
   max-width: 100%;
   height: 15vh;
   margin: 5px;
-}
-
-.product-details {
-  flex: 1.5;
-  padding: 15px;
 }
 
 .product-title {
@@ -76,17 +136,4 @@
   margin-bottom: 20px;
 }
 
-.btn-theme {
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  border: none;
-  padding: 5px;
-  color: white;
-  outline: none;
-  background-color: rgb(255, 102, 0);
-}
 
-.discounted-price{
-  display: inline-block;
-}

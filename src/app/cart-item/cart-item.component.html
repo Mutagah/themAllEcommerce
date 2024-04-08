@@ -1,45 +1,52 @@
-<div class="container">
+<div class="product-card">
   <div class="left-container">
+    <!-- Note Product Container -->
     <div class="product-container" *ngIf="productData">
       <div class="product-image">
-        <img [src]="productData.image" alt="Product Image" />
+        <img class="product-thumbnail" [src]="productData.image" alt="Product Image" />
       </div>
-      <div class="product-details">
-        <h1 class="product-title">{{ productData.title }}</h1>
-        <p class="product-description">{{ productData.description }}</p>
+      <div class="counter">
+        <button
+          mat-raised-button
+          class="btn-theme"
+          [disabled]="productData.count == 1"
+          (click)="decreaseItemCount(productData)"
+        >
+          <mat-icon class="action-icon">remove_circle_outline</mat-icon>
+        </button>
 
-        <div class="details">
-          <p>
-            {{ productData.price * 130 | currency : "Ksh " }}
-          </p>
-          <button
-            mat-raised-button
-            color="primary"
-            [disabled]="productData.count == 1"
-          >
-            <mat-icon class="action-icon">remove_circle_outline</mat-icon>
-          </button>
-          <p class="product-count">{{ productData.count }}</p>
-          <button mat-raised-button color="accent">
-            <mat-icon class="action-icon">add_circle_outline</mat-icon>
-          </button>
-          <!-- <p class="product-category">Product Category: {{ productData.category }}</p>
-          <p class="product-rating">Product Rating: {{ productData.rating.rate }}</p>
-          <p class="product-score">Product Count: {{ productData.rating.count }}</p> -->
-        </div>
+        <p class="product-count">{{ productData.count }}</p>
+
+        <button
+          mat-raised-button
+          class="btn-theme"
+          (click)="increaseItemCount(productData)"
+        >
+          <mat-icon class="action-icon">add_circle_outline</mat-icon>
+        </button>
       </div>
     </div>
+    <!-- End of Product Container -->
+
   </div>
+  <!-- End of Left Container -->
 
-  <!-- Display Price Details -->
+  <!-- Right Container -->
   <div class="right-container">
-    <h2>Cart Summary</h2>
+    <h2>{{ productData.title }}</h2>
     <div>
-      <h3 class="discounted-price">{{ discountedPrice * 130 | currency : "Ksh " }}</h3>
-      <p>{{ itemPrice * 130 | currency : "Ksh " }}</p>
-      <p>{{discount}}% Off</p>
+      <h3 class="discounted-price">
+        Discounted Price: {{ discountedPrice * 130 | currency : "Ksh " }}
+      </h3>
+      <p class="item-price">Item Price: {{ itemPrice * 130 | currency : "Ksh " }}</p>
+      <p class="discount">{{discount}}% Off</p>
     </div>
-    <button mat-raised-button color="primary" class="btn-theme w-fit">
+    <button
+      mat-raised-button
+      color="primary"
+      class="btn-theme w-fit"
+      (click)="removeItem(productData)"
+    >
       Remove
     </button>
   </div>

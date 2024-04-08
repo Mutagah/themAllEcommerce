@@ -1,0 +1,24 @@
+<div class="price-details">
+  <h2>PRICE DETAILS</h2>
+  <div class="price">
+    <p>Price({{ cartItems.length }})</p>
+    <p>{{ cartItemsPrice | currency : "KSH" }}</p>
+  </div>
+  <div class="discount">
+    <p>Discount</p>
+    <p>{{ cartItemsDiscount | currency : "KSH" }}</p>
+  </div>
+  <div class="delivery">
+    <p>Delivery Charges</p>
+    <p *ngIf="!deliveryCharge">FREE</p>
+    <p *ngIf="deliveryCharge">{{ deliveryCharge }}</p>
+  </div>
+  <div class="total">
+    <h5>Total Amount</h5>
+    <h5>
+      {{
+        cartItemsPrice - cartItemsDiscount + deliveryCharge | currency : "KSH"
+      }}
+    </h5>
+  </div>
+</div>
