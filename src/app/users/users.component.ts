@@ -72,12 +72,26 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     /*
-    as HTMLInputElement is a type assertion or type casting > A way to inform Typescript about the specific type of an object when typescript cannot infer it on its own 
-    Trim method is used to remove whitespaces
+    as HTMLInputElement is a type assertion or type casting > A way to inform Typescript about the specific type of an object when typescript cannot infer it on its own.
     */
-    this.dataSource.filter = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
+    if ((event.target as HTMLInputElement).value.length === 0) {
+      this.getAllUsers();
+    } else {
+    }
+    const name = (event.target as HTMLInputElement).value.split(' ');
+    this.userService
+      .getUserwithNames(
+        name[0].charAt(0).toUpperCase() + name[0].slice(1),
+        name[1].charAt(0).toUpperCase() + name[1].slice(1)
+      )
+      .subscribe({
+        next: (res) =>
+          (this.dataSource.data = res.map((user: any) => ({
+            ...user,
+            firstname: user.name.firstname,
+            lastname: user.name.lastname,
+          }))),
+      });
   }
 
   viewUserDetails(userId: number) {

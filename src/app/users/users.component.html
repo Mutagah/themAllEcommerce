@@ -1,15 +1,22 @@
 <div class="table-container">
   <div class="table-top">
     <h2>Users table</h2>
-    <mat-form-field>
-      <mat-label>Search user:</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Enter the firstname"
-        #input
-      />
-    </mat-form-field>
+    <!-- <mat-form-field>
+      <mat-label>Search user by first and last name:</mat-label>
+      <input (keyup)="applyFilter($event)" placeholder="Enter names" />
+    </mat-form-field> -->
+    <input
+      type="text"
+      style="
+        height: 45px;
+        width: 220px;
+        border-radius: 10px;
+        text-align: center;
+      "
+      placeholder="Enter the first name & last name"
+      (keydown.enter)="applyFilter($event)"
+    />
+
     <form
       #templateForm="ngForm"
       (keydown.enter)="$event.preventDefault(); submitFetchValue(templateForm)"
@@ -74,11 +81,11 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
       <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
+      <!-- <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">
           No data matching the filter "{{ input.value }}"
         </td>
-      </tr>
+      </tr> -->
     </table>
 
     <mat-paginator

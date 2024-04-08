@@ -10,15 +10,19 @@ export class UsersService {
   fakeStoreUsersUrl = 'https://fakestoreapi.com/users';
   usersUrl = 'http://localhost:4000/users';
 
-
   getAllUsers(): Observable<any> {
     return this.httpClient.get(this.usersUrl);
   }
 
-  
   // getting a single user
   getSpecificUser(userId: number): Observable<any> {
     return this.httpClient.get(`${this.usersUrl}/${userId}`);
+  }
+
+  getUserwithNames(firstName: string, lastName: string): Observable<any> {
+    return this.httpClient.get(
+      `${this.usersUrl}?name.firstname=${firstName}&name.lastname=${lastName}`
+    );
   }
 
   // Get Limited Number of users
@@ -37,7 +41,6 @@ export class UsersService {
     return this.httpClient.post(`${this.usersUrl}`, userData);
   }
 
-
   // updating a user
   patchUser(userId: number, userData: object) {
     return this.httpClient.patch(`${this.usersUrl}/${userId}`, userData);
@@ -46,5 +49,4 @@ export class UsersService {
   deleteUser(userId: number): Observable<any> {
     return this.httpClient.delete(`${this.usersUrl}/${userId}`);
   }
-  
 }
