@@ -2,9 +2,10 @@
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: 2px solid black;
   padding: 5px;
+  padding: 0 20px;
 
   .main-icon {
     color: black;

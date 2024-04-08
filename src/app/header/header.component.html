@@ -1,7 +1,9 @@
 <nav class="header-container">
   <!-- <mat-toolbar> -->
   <div class="main-icon">
-    <mat-icon>menu</mat-icon>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
     themAll
   </div>
 
@@ -29,7 +31,7 @@
   <!-- </mat-toolbar> -->
 </nav>
 <mat-drawer-container class="sidebar">
-  <mat-drawer opened="true" mode="side" style="width: 230px">
+  <mat-drawer opened="false" mode="side" style="width: 230px" #drawer>
     <mat-nav-list style="padding: 15px">
       <div class="side-nav">
         <div>
@@ -52,6 +54,9 @@
             <a routerLink="users" class="link">
               <mat-icon>group</mat-icon>
               Users
+              <div style="margin-left: auto">
+                <mat-icon>expand_more</mat-icon>
+              </div>
             </a>
           </mat-list-item>
         </div>
