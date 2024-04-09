@@ -7,7 +7,7 @@
   padding: 0 20px;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 100;
 
   .link {
     text-decoration: none;
@@ -24,9 +24,7 @@
 .header-search{
   display: flex;
   align-items: center;
-  background-color: white;  
   margin-inline-start: 3px;
-  border-radius: 10px;
 }
 
 .add-product-container {
@@ -40,7 +38,7 @@ input {
   padding: 7px;
   box-sizing: border-box;
   margin-right: 10px;
-  border: none;
+  border-radius: 6px;
 }
 
 .cart-items{
