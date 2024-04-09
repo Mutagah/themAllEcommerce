@@ -8,7 +8,7 @@
       <div class="counter">
         <button
           mat-raised-button
-          class="btn-theme"
+          class="decrease"
           [disabled]="productData.count == 1"
           (click)="decreaseItemCount(productData)"
         >
@@ -19,7 +19,7 @@
 
         <button
           mat-raised-button
-          class="btn-theme"
+          class="btn-theme increase"
           (click)="increaseItemCount(productData)"
         >
           <mat-icon class="action-icon">add_circle_outline</mat-icon>
@@ -34,20 +34,19 @@
   <!-- Right Container -->
   <div class="right-container">
     <h2>{{ productData.title }}</h2>
-    <div>
-      <h3 class="discounted-price">
+    <div class="price-details">
+      <p class="discounted-price">
         Discounted Price: {{ discountedPrice * 130 | currency : "Ksh " }}
-      </h3>
+      </p>
       <p class="item-price">Item Price: {{ itemPrice * 130 | currency : "Ksh " }}</p>
-      <p class="discount">{{discount}}% Off</p>
+      <p class="discount">{{discount}}%  Off</p>
     </div>
     <button
       mat-raised-button
       color="primary"
-      class="btn-theme w-fit"
+      class="w-fit"
       (click)="removeItem(productData)"
-    >
-      Remove
+    ><mat-icon>delete</mat-icon>
     </button>
   </div>
 </div>

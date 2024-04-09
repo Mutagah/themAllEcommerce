@@ -1,8 +1,8 @@
 .container {
   margin: 0 75px;
   margin-top: 20px;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   /* justify-content: center;
   align-items: center; */
 
@@ -40,9 +40,9 @@
 .btn-checkout{
   text-align: center;
   position: fixed;
-  right: 127px;
-  top: 300px;
-  width: 350px;
+  right: 125px;
+  top: 310px;
+  width: 355px;
 }
 
 .cart-content{
@@ -53,5 +53,5 @@
 
 .items-container{
   margin-right: 5px;
-  max-width: 80%;
+  width: 80%;
 }

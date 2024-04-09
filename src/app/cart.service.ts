@@ -79,10 +79,10 @@ export class CartService {
     };
     cartItems.forEach((productData: any) => {
       billingDetails.price =
-        billingDetails.price + productData.price * productData.count;
+        ((billingDetails.price + productData.price * productData.count) * 130);
       billingDetails.discount =
-        (billingDetails.discount / 100) * productData.price * productData.count;
-      billingDetails.price >= 25
+        ((billingDetails.discount / 100) * productData.price * productData.count * 130);
+      billingDetails.price >= 1500
         ? (billingDetails.delivery = 0)
         : (billingDetails.delivery = 200);
     });
