@@ -1,0 +1,23 @@
+<div class="home-container">
+  <div *ngFor="let category of categoriesData | keyvalue" class="trending-movies">
+    <div class="top">
+      <h4>{{ category.key }}</h4>
+    </div>
+    <div class="mat-card-container">
+      <mat-card class="example-card" *ngFor="let product of category.value" (click)="navigateToProduct(product.id)">
+        <div class="image-container">
+          <img mat-card-image [src]="product.image" width="160" height="160" alt="">
+        </div>
+        <mat-card-content class="card-content">
+          {{ product.title }}<br />
+          <button mat-button color="accent">
+            {{ product.price * 130 | currency : "Ksh " }}
+          </button>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+          <mat-icon color="primary">shop_two</mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

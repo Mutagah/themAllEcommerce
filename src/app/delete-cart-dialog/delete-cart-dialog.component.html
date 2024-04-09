@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Delete Products from Cart</h2>
+<mat-dialog-content>
+  Would you like to delete all products from your cart?
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-footer">
+  <button mat-button mat-dialog-close>No</button>
+  <button
+    mat-button
+    mat-dialog-close
+    cdkFocusInitial
+    (click)="deleteCart()"
+    class="delete-cart"
+  >
+    Yes
+  </button>
+</mat-dialog-actions>

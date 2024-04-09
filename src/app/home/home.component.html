@@ -1,1 +1,50 @@
-<p>home works!</p>
+<div class="home-container">
+  <div class="trending-movies">
+    <div class="top">
+      <h4>All Products</h4>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+        <input
+          matInput
+          placeholder="Product Limit"
+          type="number"
+          [(ngModel)]="limitControl"
+          name="limitControl"
+          (input)="onInputChange()"
+          class="limit-input"
+        />
+      </form>
+    </div>
+  </div>
+
+  <div class="mat-card-container">
+    <mat-card
+      class="example-card"
+      *ngFor="let product of productData?.slice(0, limitControl)"
+      (click)="navigateToProduct(product.id)"
+    >
+      <div class="image-container">
+        <img
+          mat-card-image
+          [src]="product.image"
+          width="150"
+          height="160"
+          alt=""
+        />
+      </div>
+      <mat-card-content
+        class="card-content"
+        style="justify-content: space-between"
+      >
+        <div class="product-title">{{ product.title }}</div>
+        <div class="product-price">
+          <button mat-button color="primary">
+            {{ product.price * 130 | currency : "Ksh " }}
+          </button>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <mat-icon color="primary">add_shopping_cart</mat-icon>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

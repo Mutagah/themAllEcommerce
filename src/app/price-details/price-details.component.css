@@ -1,0 +1,36 @@
+.price-details{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: fit-content;
+    border: 1px solid #ffe6c6;
+    background-color: #ffe6c6;
+    border-radius: 10px;
+    position: fixed;
+    right: 120px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.discount{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delivery{
+    display: flex;
+    justify-content: space-between;
+}
+
+.total{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    border-top: 1px dashed gray;
+    padding-top: 10px;
+}

@@ -1,0 +1,139 @@
+<nav class="header-container">
+  <div class="main-icon">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon class="main-name">menu</mat-icon>
+    </button>
+    <a routerLink="home" class="main-name">themAll</a>
+  </div>
+
+  <form #searchBox="ngForm">
+    <div class="header-search">
+      <mat-icon>search</mat-icon>
+      <input
+        matInput
+        class="search-box"
+        placeholder="Search Product"
+        type="text"
+        name="searchText"
+        [(ngModel)]="searchText"
+      />
+    </div>
+  </form>
+
+  <div class="right-header-nav">
+    <div class="link">
+      <mat-icon>person_outline</mat-icon>
+      <a routerLink="profile" class="link">Account</a>
+    </div>
+
+    <!-- Cart Link -->
+    <div matBadge="{{ matBadge }}" matBadgeOverlap="false" class="demo-section">
+      <a routerLink="cart" class="link">Cart</a>
+    </div>
+  </div>
+</nav>
+
+<mat-drawer-container class="sidebar">
+  <mat-drawer
+    opened="false"
+    mode="side"
+    style="width: 230px; background-color: #fefef8"
+    #drawer
+  >
+    <mat-nav-list style="padding: 15px">
+      <div class="side-nav">
+        <div>
+          <mat-list-item>
+            <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
+          </mat-list-item>
+          <mat-list-item>
+            <a routerLink="categories" class="link">
+              <mat-icon>menu</mat-icon>
+              Categories
+            </a>
+          </mat-list-item>
+          <div (click)="toggleProductDropDown()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>menu</mat-icon>
+                Products
+                <div style="margin-left: auto">
+                  <mat-icon
+                    [@indicatorRotate]="
+                      displayProductDropDown ? 'expanded' : 'collapsed'
+                    "
+                    >expand_more</mat-icon
+                  >
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="displayProductDropDown">
+              <mat-list-item>
+                <div
+                  class="add-product-container"
+                  (click)="productModal()"
+                  style="margin: auto"
+                >
+                  <mat-icon>note_add</mat-icon>
+                  Add Product
+                </div>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+          <mat-list-item>
+            <a routerLink="home" class="link">
+              <mat-icon>person_outline</mat-icon>
+              Account
+            </a>
+          </mat-list-item>
+          <div (click)="toggleUserDropDownArrow()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>people</mat-icon>
+                User
+                <div style="margin-left: auto">
+                  <mat-icon
+                    [@indicatorRotate]="
+                      displayUserDropDown ? 'expanded' : 'collapsed'
+                    "
+                    >expand_more</mat-icon
+                  >
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="displayUserDropDown">
+              <mat-list-item>
+                <a
+                  routerLink="users"
+                  class="link"
+                  style="display: flex; justify-content: center"
+                >
+                  All Users
+                </a>
+              </mat-list-item>
+              <mat-list-item>
+                <a
+                  routerLink="/createuser"
+                  class="link"
+                  style="display: flex; justify-content: center"
+                  >Create user</a
+                >
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+        </div>
+        <div>
+          <mat-list-item>
+            <a routerLink="users" class="link">
+              <mat-icon>settings</mat-icon>
+              Admin
+            </a>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

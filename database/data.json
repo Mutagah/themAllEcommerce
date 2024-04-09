@@ -285,6 +285,17 @@
         },
         {
           "productId": "19",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "21a3",
+      "userId": 1,
+      "date": "2024-04-09",
+      "products": [
+        {
+          "productId": "1",
           "quantity": 2
         }
       ]
@@ -307,8 +318,8 @@
       "username": "johnd",
       "password": "m38rmF$",
       "name": {
-        "firstname": "john",
-        "lastname": "doe"
+        "firstname": "John",
+        "lastname": "Doe"
       },
       "phone": "1-570-236-7033",
       "__v": 0
@@ -329,8 +340,8 @@
       "username": "mor_2314",
       "password": "83r5^_",
       "name": {
-        "firstname": "david",
-        "lastname": "morrison"
+        "firstname": "David",
+        "lastname": "Morrison"
       },
       "phone": "1-570-236-7033",
       "__v": 0
@@ -371,11 +382,11 @@
       },
       "id": "4",
       "email": "don@gmail.com",
-      "username": "donero",
-      "password": "ewedon",
+      "username": "Donero",
+      "password": "Ewedon",
       "name": {
-        "firstname": "don",
-        "lastname": "romer"
+        "firstname": "Don",
+        "lastname": "Romer"
       },
       "phone": "1-765-789-6734",
       "__v": 0
@@ -396,8 +407,8 @@
       "username": "derek",
       "password": "jklg*_56",
       "name": {
-        "firstname": "derek",
-        "lastname": "powell"
+        "firstname": "Derek",
+        "lastname": "Powell"
       },
       "phone": "1-956-001-1945",
       "__v": 0
@@ -418,8 +429,8 @@
       "username": "david_r",
       "password": "3478*#54",
       "name": {
-        "firstname": "david",
-        "lastname": "russell"
+        "firstname": "David",
+        "lastname": "Russell"
       },
       "phone": "1-678-345-9856",
       "__v": 0
@@ -440,8 +451,8 @@
       "username": "snyder",
       "password": "f238&@*$",
       "name": {
-        "firstname": "miriam",
-        "lastname": "snyder"
+        "firstname": "Miriam",
+        "lastname": "Snyder"
       },
       "phone": "1-123-943-0563",
       "__v": 0
@@ -462,8 +473,8 @@
       "username": "hopkins",
       "password": "William56$hj",
       "name": {
-        "firstname": "william",
-        "lastname": "hopkins"
+        "firstname": "William",
+        "lastname": "Hopkins"
       },
       "phone": "1-478-001-0890",
       "__v": 0
@@ -484,8 +495,8 @@
       "username": "kate_h",
       "password": "kfejk@*_",
       "name": {
-        "firstname": "kate",
-        "lastname": "hale"
+        "firstname": "Kate",
+        "lastname": "Hale"
       },
       "phone": "1-678-456-1934",
       "__v": 0
@@ -506,8 +517,8 @@
       "username": "jimmie_k",
       "password": "klein*#%*",
       "name": {
-        "firstname": "jimmie",
-        "lastname": "klein"
+        "firstname": "Jimmie",
+        "lastname": "Klein"
       },
       "phone": "1-104-001-4567",
       "__v": 0

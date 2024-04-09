@@ -1,0 +1,64 @@
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+small {
+  color: red;
+}
+
+.small {
+  font-size: 12px; /* Reduce font size of small error messages */
+}
+
+h2 {
+  text-align: center;
+}
+
+.modal-body {
+  background: white;
+  padding: 25px;
+}
+
+.close-button {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  max-width: 380px; /* Reduce max-width of the form container */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+label {
+  width: 100%;
+  padding: 5px 0; /* Reduce padding of labels */
+  text-align: center; /* Center align the labels */
+}
+
+.input-error {
+  color: red;
+  margin: 15px;
+}
+input {
+  width: 100%;
+  border-radius: 7px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 7px; /* Adjust padding of inputs */
+  box-sizing: border-box; /* Include padding in input width */
+  border-radius: 6px;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}

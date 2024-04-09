@@ -1,0 +1,47 @@
+<div class="product-container" *ngIf="productData">
+  <div class="product-image">
+    <img [src]="productData.image" alt="Product Image" />
+  </div>
+  <div class="product-details">
+    <h1 class="product-title">{{ productData.title }}</h1>
+    <p class="product-description">{{ productData.description }}</p>
+    <p class="product-price">
+      {{ productData.price * 130 | currency : "Ksh " }}
+    </p>
+    <p class="product-rating">Product Rating: {{ productData.rating.rate }}</p>
+    <p class="product-score">Product Count: {{ productData.rating.count }}</p>
+    <div class="action-buttons">
+      <input
+        type="number"
+        style="text-align: center; width: 50px"
+        [(ngModel)]="numberOfItems"
+        [disabled]="removeProduct"
+      />
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="cartFunctionality(productData)"
+      >
+        {{ removeProduct ? "Remove" : "Add" }}
+        {{ numberOfItems }}
+        {{ removeProduct ? "from" : "to " }} Cart<mat-icon
+          >shopping_cart</mat-icon
+        >
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="updateProduct(productData.id)"
+      >
+        Update Product <mat-icon>open_in_new</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct(productData.id)"
+      >
+        Delete Product <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
