@@ -3,7 +3,6 @@ import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
@@ -32,6 +31,7 @@ export class CreateProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //Initialiezes a reactive form
     this.myForm = new FormGroup({
       title: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -42,6 +42,7 @@ export class CreateProductComponent implements OnInit {
       count: new FormControl('', Validators.required),
     });
 
+    //Checks if product is in update mode - then presents the product data
     if (this.data && this.data.product) {
       this.productData = this.data.product;
       this.updateMode = true;
@@ -72,7 +73,7 @@ export class CreateProductComponent implements OnInit {
       },
     };
 
-    if (this.updateMode && myForm.valid) {
+    if (this.updateMode && myForm.valid && myForm.touched) {
       this.productService
         .updateProduct(this.productData.id, formData)
         .subscribe((data) => {
@@ -80,7 +81,10 @@ export class CreateProductComponent implements OnInit {
           this.productUpdated.emit('updated');
         });
     } else if (!this.updateMode && myForm.valid) {
-      this.productService.createProduct(formData).subscribe((data) => data);
+      // Extract category value from the form
+      const category = myForm.value.category;
+      
+      this.productService.createProduct(formData, category).subscribe((data) => data);
       this.snackBar.open('Product created successfully', 'Close', {
         duration: 5000,
       });

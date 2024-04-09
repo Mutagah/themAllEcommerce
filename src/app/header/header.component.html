@@ -6,11 +6,24 @@
     <a routerLink="home" class="main-name">themAll</a>
   </div>
 
-  <!--Account Routing  -->
+  <form #searchBox="ngForm">
+    <div class="header-search">
+      <mat-icon>search</mat-icon>
+      <input
+        matInput
+        class="search-box"
+        placeholder="Search Product"
+        type="text"
+        name="searchText"
+        [(ngModel)]="searchText"
+      />
+    </div>
+  </form>
+
   <div class="right-header-nav">
     <div class="link">
       <mat-icon>person_outline</mat-icon>
-      <a routerLink="profile" class="link">Profile</a>
+      <a routerLink="profile" class="link">Account</a>
     </div>
 
     <!-- Cart Link -->
@@ -21,7 +34,12 @@
 </nav>
 
 <mat-drawer-container class="sidebar">
-  <mat-drawer opened="false" mode="side" style="width: 230px" #drawer>
+  <mat-drawer
+    opened="false"
+    mode="side"
+    style="width: 230px; background-color: #fefef8"
+    #drawer
+  >
     <mat-nav-list style="padding: 15px">
       <div class="side-nav">
         <div>

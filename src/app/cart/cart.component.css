@@ -1,3 +1,19 @@
+.container {
+  margin: 0 75px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+
+  .empty{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 220px;
+  }
+}
+
 .empty-cart {
   margin: 0 auto;
   text-align: center;

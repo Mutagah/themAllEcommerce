@@ -1,0 +1,154 @@
+.product-card {
+  padding: 4px;
+  display: flex;
+  flex: start;
+  height: fit-content;
+  max-width: 80%;
+  border: 1px solid #ffe6c6;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  color: black;
+  transition: box-shadow 0.3s;
+  /* position: relative;
+  flex-direction: row; */
+}
+
+
+/* .left-container {
+
+} */
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  width: 100px;
+}
+
+.product-thumbnail{
+  max-width: 100%;
+  height: 15vh;
+  margin: 5px;
+}
+
+.counter{
+  display: flex;
+  justify-content: end;
+  position: relative;
+  margin-top: 21px;
+  bottom: 5px;
+  width: 100%;
+  position: absolute;
+  right: 5px;
+}
+
+.btn-theme {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  color: white;
+  outline: none;
+  background-color: rgb(255, 102, 0);
+}
+
+.decrease{
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+.increase{
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+.product-count{
+  width: 50px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.action-icon{
+  width: 20px;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+
+  h2{
+    margin-left: 10px;
+  }
+}
+
+.price-details{
+  margin-left: 10px;
+}
+
+.discounted-price{
+  display: inline-block;
+}
+
+.item-price{
+  margin-left: 2px;
+}
+
+.discount{
+  margin-left: 2px;
+}
+
+.w-fit{
+  width: fit-content;
+  bottom: 0;
+  right: 0;
+}
+
+/* End of New Styling */
+
+
+.product-container {
+  border-right: 2px dotted solid #ccc;
+  border-radius: 5px;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: 15vh;
+  margin: 5px;
+  background-color: #ffe6c6;
+}
+
+.product-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #555;
+}
+
+.product-rating {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.product-score {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+
