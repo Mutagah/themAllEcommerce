@@ -4,9 +4,14 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid black;
-  padding: 5px;
-  padding: 0 20px;
+  padding: 0 25px;
 
+  .right-header-nav {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
   .main-icon {
     color: black;
     font-size: 20px;
@@ -33,7 +38,16 @@
   justify-content: space-between;
   height: 85vh;
 }
-
+.main-name {
+  text-decoration: none;
+  color: black;
+  font-weight: light;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
 .link {
   text-decoration: none;
   color: black;

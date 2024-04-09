@@ -1,5 +1,12 @@
 /*Angular imports */
 import { Component, OnInit } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 /*Service imports */
 import { ProductsService } from '../products.service';
@@ -16,11 +23,23 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  animations: [
+    trigger('indicatorRotate', [
+      state('collapsed', style({ transform: 'rotate(0deg)' })),
+      state('expanded', style({ transform: 'rotate(180deg)' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4,0.0,0.2,1)')
+      ),
+    ]),
+  ],
 })
 export class HeaderComponent implements OnInit {
   userId = 1;
   matBadge = 0;
   categories: any;
+  displayUserDropDown: boolean = false;
+  displayProductDropDown: Boolean = false;
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
@@ -81,5 +100,13 @@ export class HeaderComponent implements OnInit {
       },
     });
     return this.categories;
+  }
+
+  toggleUserDropDownArrow() {
+    this.displayUserDropDown = !this.displayUserDropDown;
+  }
+
+  toggleProductDropDown() {
+    this.displayProductDropDown = !this.displayProductDropDown;
   }
 }
