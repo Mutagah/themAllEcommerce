@@ -1,7 +1,6 @@
 .price-details{
     display: flex;
     flex-direction: column;
-    padding: 4px;
     width: 350px;
     height: fit-content;
     border: 1px solid #ffe6c6;
@@ -9,6 +8,8 @@
     border-radius: 10px;
     position: fixed;
     right: 120px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .price{
