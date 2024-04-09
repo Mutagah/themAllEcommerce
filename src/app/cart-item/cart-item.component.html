@@ -3,7 +3,11 @@
     <!-- Note Product Container -->
     <div class="product-container" *ngIf="productData">
       <div class="product-image">
-        <img class="product-thumbnail" [src]="productData.image" alt="Product Image" />
+        <img
+          class="product-thumbnail"
+          [src]="productData.image"
+          alt="Product Image"
+        />
       </div>
       <div class="counter">
         <button
@@ -14,9 +18,7 @@
         >
           <mat-icon class="action-icon">remove_circle_outline</mat-icon>
         </button>
-
         <p class="product-count">{{ productData.count }}</p>
-
         <button
           mat-raised-button
           class="btn-theme increase"
@@ -27,7 +29,6 @@
       </div>
     </div>
     <!-- End of Product Container -->
-
   </div>
   <!-- End of Left Container -->
 
@@ -35,18 +36,17 @@
   <div class="right-container">
     <h2>{{ productData.title }}</h2>
     <div class="price-details">
-      <p class="discounted-price">
-        Discounted Price: {{ discountedPrice * 130 | currency : "Ksh " }}
+      <p class="item-price">
+        Item Price: {{ itemPrice * 130 | currency : "Ksh " }}
       </p>
-      <p class="item-price">Item Price: {{ itemPrice * 130 | currency : "Ksh " }}</p>
-      <p class="discount">{{discount}}%  Off</p>
     </div>
     <button
       mat-raised-button
       color="primary"
       class="w-fit"
       (click)="removeItem(productData)"
-    ><mat-icon class="delete">delete</mat-icon>
+    >
+      <mat-icon class="delete">delete</mat-icon>
     </button>
   </div>
 </div>

@@ -8,11 +8,8 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
   providedIn: 'root',
 })
 export class CartService {
-  // An array containing productData
   cartProducts: any[] = [];
   cartSubject = new Subject();
-  //Discount - Percentage
-  discount: number = 10;
 
   constructor(private dialog: MatDialog) {}
 
@@ -28,10 +25,7 @@ export class CartService {
   //Cart Price Details
   getPriceDetailsInCartItem(product: any) {
     let priceDetails = {
-      discountedPrice:
-        product.price * product.count -
-        (this.discount / 100) * (product.price * product.count),
-      price: product.price * product.count,
+      price: product.price * product.count
     };
     return priceDetails;
   }
@@ -66,7 +60,6 @@ export class CartService {
       if (result) {
         // Find the item index
         const index = this.cartProducts.findIndex((productData) => productData.id === product.id);
-  
         if (index !== -1) {
           // Remove the item from the cartProducts array using the index
           this.cartProducts.splice(index, 1);
@@ -82,17 +75,16 @@ export class CartService {
     // A single object with various attributes
     let billingDetails = {
       price: 0,
-      discount: this.discount,
       delivery: 0,
+      total: 0
     };
     cartItems.forEach((productData: any) => {
-      billingDetails.price =
-        ((billingDetails.price + productData.price * productData.count) * 130);
-      billingDetails.discount =
-        ((billingDetails.discount / 100) * productData.price * productData.count * 130);
-      billingDetails.price >= 1500
+      billingDetails.price = productData.price * productData.count;
+      billingDetails.total += billingDetails.price;
+      
+      billingDetails.total >= 100
         ? (billingDetails.delivery = 0)
-        : (billingDetails.delivery = 200);
+        : (billingDetails.delivery = 5);
     });
     return billingDetails;
   }

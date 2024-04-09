@@ -10,8 +10,8 @@ export class PriceDetailsComponent implements OnInit {
   // Inherited from the Cart Component
   cartItems: any[] = [];
   cartItemsPrice: any;
-  cartItemsDiscount: any;
   deliveryCharge: any;
+  cartItemsTotal: any;
 
   constructor(private cartService: CartService) {}
 
@@ -27,7 +27,7 @@ export class PriceDetailsComponent implements OnInit {
   getBillingDetails() {
     let billingDetails = this.cartService.getBilling(this.cartItems);
     this.cartItemsPrice = billingDetails.price;
-    this.cartItemsDiscount = billingDetails.discount;
     this.deliveryCharge = billingDetails.delivery;
+    this.cartItemsTotal = billingDetails.total;
   }
 }

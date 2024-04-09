@@ -1,24 +1,19 @@
-  <div class="price-details">
-  <h2>PRICE DETAILS</h2>
+<div class="price-details">
+  <h3>CART SUMMARY ({{ cartItems.length }})</h3>
   <div class="price">
-    <p>Price({{ cartItems.length }})</p>
-    <p>{{ cartItemsPrice | currency : "KSH" }}</p>
-  </div>
-  <div class="discount">
-    <p>Discount</p>
-    <p>{{ cartItemsDiscount | currency : "KSH" }}</p>
+    <p>Items Price</p>
+    <p>{{ cartItemsTotal * 130 | currency : "Ksh " }}</p>
   </div>
   <div class="delivery">
     <p>Delivery Charges</p>
     <p *ngIf="!deliveryCharge">FREE</p>
-    <p *ngIf="deliveryCharge">{{ deliveryCharge }}</p>
+    <p *ngIf="deliveryCharge">{{ deliveryCharge * 130 | currency : "Ksh " }}</p>
   </div>
   <div class="total">
-    <h5>Total Amount</h5>
-    <h5>
-      {{
-        cartItemsPrice - cartItemsDiscount + deliveryCharge | currency : "KSH"
-      }}
-    </h5>
+    <h4>Subtotal</h4>
+    <h4>
+      {{ (cartItemsTotal + deliveryCharge) * 130 | currency : "Ksh " }}
+    </h4>
   </div>
+  <button mat-raised-button color="checkout">Checkout</button>
 </div>

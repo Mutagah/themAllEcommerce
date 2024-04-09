@@ -1,70 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Page</title>
-  </head>
-  <body>
-    <div class="product-container" *ngIf="productData">
-      <div class="product-image">
-        <img [src]="productData.image" alt="Product Image" />
-      </div>
-      <div class="product-details">
-        <h1 class="product-title">{{ productData.title }}</h1>
-        <p class="product-description">{{ productData.description }}</p>
-        <p class="product-price">
-          {{ productData.price * 130 | currency : "Ksh " }}
-        </p>
-        <p class="product-category">
-          Product Category: {{ productData.category }}
-        </p>
-        <p class="product-rating">
-          Product Rating: {{ productData.rating.rate }}
-        </p>
-        <p class="product-score">
-          Product Count: {{ productData.rating.count }}
-        </p>
+<div class="product-container" *ngIf="productData">
+  <div class="product-image">
+    <img [src]="productData.image" alt="Product Image" />
+  </div>
+  <div class="product-details">
+    <h1 class="product-title">{{ productData.title }}</h1>
+    <p class="product-description">{{ productData.description }}</p>
+    <p class="product-rating">Product Rating: {{ productData.rating.rate }}</p>
+    <p class="product-score">Product Count: {{ productData.rating.count }}</p>
+    <p class="product-price">{{ productData.price * 130 | currency : "Ksh " }}</p>
 
-        <!-- Cart Button Functionality -->
-        <div class="action-buttons">
-          <!-- Add to Cart Button -->
-          <button
-            mat-raised-button
-            color="primary"
-            class="btn-theme"
-            (click)="addToCart(productData)"
-            *ngIf="!isProductInCart"
-          >
-            Add to Cart<mat-icon>shopping_cart</mat-icon>
-          </button>
-          <!-- Go to cart button  -->
-          <button
-            mat-raised-button
-            color="primary"
-            *ngIf="isProductInCart"
-            [routerLink]="'/cart'"
+    <!-- Cart Button Functionality -->
+    <div class="action-buttons">
+      <!-- Add to Cart Button -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="btn-theme"
+        (click)="addToCart(productData)"
+        *ngIf="!isProductInCart"
+      >
+        Add to Cart<mat-icon>add_shopping_cart</mat-icon>
+      </button>
+      <!-- Go to cart button  -->
+      <button
+        mat-raised-button
+        color="success"
+        *ngIf="isProductInCart"
+        [routerLink]="'/home'"
+      >
+        Continue Shopping<mat-icon>shopping_cart</mat-icon>
+      </button>
 
-          >
-            Go to Cart<mat-icon>shopping_cart</mat-icon>
-          </button>
-
-          <button
-            mat-raised-button
-            color="accent"
-            (click)="updateProduct(productData.id)"
-          >
-            Update Product <mat-icon>open_in_new</mat-icon>
-          </button>
-          <button
-            mat-raised-button
-            color="warn"
-            (click)="deleteProduct(productData.id)"
-          >
-            Delete Product <mat-icon>delete_forever</mat-icon>
-          </button>
-        </div>
-      </div>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="updateProduct(productData.id)"
+      >
+        Update Product <mat-icon>open_in_new</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct(productData.id)"
+      >
+        Delete Product <mat-icon>delete_forever</mat-icon>
+      </button>
     </div>
-  </body>
-</html>
+  </div>
+</div>

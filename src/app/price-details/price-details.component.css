@@ -8,16 +8,17 @@
     border-radius: 10px;
     position: fixed;
     right: 120px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 5px;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.51);
+
+
+    h3{
+        font-weight: bold;
+        border-bottom: 1px dashed gray;
+    }
 }
 
 .price{
-    display: flex;
-    justify-content: space-between;
-}
-
-.discount{
     display: flex;
     justify-content: space-between;
 }
@@ -33,4 +34,13 @@
     margin-top: 3px;
     border-top: 1px dashed gray;
     padding-top: 10px;
+
+    h4{
+        font-weight: bold;
+    }
+}
+
+.mat-checkout{
+    background-color: orangered;
+    color: white;
 }
