@@ -4,9 +4,15 @@
 >
 <mat-dialog-actions>
   <div class="dialog-buttons">
-    <button mat-raised-button color="primary" mat-dialog-close>No</button>
     <button
       mat-raised-button
+      color="primary" 
+      mat-dialog-close
+    >No
+    </button>
+    <button
+      mat-raised-button
+      class="yes-btn"
       color="warn"
       [mat-dialog-close]="true"
       cdkFocusInitial

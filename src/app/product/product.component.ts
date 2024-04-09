@@ -89,8 +89,12 @@ export class ProductComponent implements OnInit {
 
   // Add to Cart Functionality
   addToCart(productData: any) {
-    console.log(productData);
     this.cartService.addProductToCart(productData);
     this.isProductInCart = true;
+    
+    // Display snackbar message
+    this.snackBar.open('Product successfully added to the cart', 'Close', {
+      duration: 4000, // Adjust as needed
+    });
   }
 }

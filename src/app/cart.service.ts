@@ -1,6 +1,8 @@
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,7 @@ export class CartService {
   //Discount - Percentage
   discount: number = 10;
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   addProductToCart(product: any) {
     let currentProduct = { ...product, count: 1 };
@@ -56,17 +58,23 @@ export class CartService {
 
   //Change this to ngMaterial dialog
   removeItemFromCart(product: any) {
-    let removeConfirm = window.confirm('Are you sure?');
-    if (removeConfirm) {
-      // Find the item index
-      let index = this.cartProducts.findIndex((productData) => {
-        return productData.id === product.id;
-      });
-      // Remove the item from the cartProducts array using the index
-      this.cartProducts.splice(index, 1);
-      // Sending the updated cartProduct value/s
-      this.cartSubject.next(this.cartProducts);
-    }
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      data: { product }
+    });
+  
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        // Find the item index
+        const index = this.cartProducts.findIndex((productData) => productData.id === product.id);
+  
+        if (index !== -1) {
+          // Remove the item from the cartProducts array using the index
+          this.cartProducts.splice(index, 1);
+          // Sending the updated cartProduct value/s
+          this.cartSubject.next(this.cartProducts);
+        }
+      }
+    });
   }
 
   //Billing Details

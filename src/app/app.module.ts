@@ -28,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { PriceDetailsComponent } from './price-details/price-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PriceDetailsComponent } from './price-details/price-details.component';
     CartComponent,
     CartItemComponent,
     PriceDetailsComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
