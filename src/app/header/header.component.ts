@@ -41,7 +41,9 @@ export class HeaderComponent implements OnInit {
   categories: any;
   searchText: string = '';
   displayUserDropDown: boolean = false;
-  displayProductDropDown: Boolean = false;
+  displayProductDropDown: boolean = false;
+  accountHeaderDropDown: boolean = false;
+  sidebarAccountDropDown: boolean = false;
 
   constructor(
     private productService: ProductsService,
@@ -110,5 +112,13 @@ export class HeaderComponent implements OnInit {
 
   toggleProductDropDown() {
     this.displayProductDropDown = !this.displayProductDropDown;
+  }
+
+  toggleAccountHeaderDropdown() {
+    this.accountHeaderDropDown = !this.accountHeaderDropDown;
+  }
+
+  toggleSidebarAccountDropdown() {
+    this.sidebarAccountDropDown = !this.sidebarAccountDropDown;
   }
 }

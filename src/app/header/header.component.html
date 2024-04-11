@@ -20,10 +20,16 @@
     </div>
   </form>
 
+  <!--Account drop down  -->
   <div class="right-header-nav">
-    <div class="link">
+    <div class="link" (click)="toggleAccountHeaderDropdown()">
       <mat-icon>person_outline</mat-icon>
-      <a routerLink="profile" class="link">Account</a>
+      <a class="link">Account</a>
+      <mat-icon
+        [@indicatorRotate]="accountHeaderDropDown ? 'expanded' : 'collapsed'"
+      >
+        expand_more
+      </mat-icon>
     </div>
 
     <!-- Cart Link -->
@@ -80,12 +86,24 @@
               </mat-list-item>
             </mat-nav-list>
           </div>
-          <mat-list-item>
-            <a routerLink="home" class="link">
-              <mat-icon>person_outline</mat-icon>
-              Account
-            </a>
-          </mat-list-item>
+
+          <div (click)="toggleSidebarAccountDropdown()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>person_outline</mat-icon>
+                Account
+                <div style="margin-left: auto">
+                  <mat-icon
+                    [@indicatorRotate]="
+                      sidebarAccountDropDown ? 'expanded' : 'collapsed'
+                    "
+                    >expand_more</mat-icon
+                  >
+                </div>
+              </a>
+            </mat-list-item>
+          </div>
+
           <div (click)="toggleUserDropDownArrow()">
             <mat-list-item>
               <a class="link">
