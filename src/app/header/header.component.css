@@ -55,3 +55,28 @@ input {
   text-align: center;
   padding: 2px;
 }
+
+.mat-primary{
+  color: orangered;
+}
+
+/* Start Of Dropdown Styling */
+.dropdown-container{
+  position: absolute;
+}
+
+.dropdown-list{
+  width: fit-content;
+  border: 1px solid orangered;
+  background-color: orangered;
+  position: relative;
+  top: 60px;
+  left: 820px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.dropdown-list-item{
+  text-transform: capitalize;
+  cursor: pointer;
+}

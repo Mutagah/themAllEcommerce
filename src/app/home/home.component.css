@@ -81,3 +81,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.mat-primary{
+  color: orangered;
+}
+
+.product-price{
+  background-color: white;
+  color: orangered;
+}

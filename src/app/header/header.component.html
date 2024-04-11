@@ -2,7 +2,7 @@
   <!-- home routing -->
   <a routerLink="home" class="link">
     <mat-icon>home</mat-icon>
-    Home
+    Shop
   </a>
 
   <!-- categories routing -->
@@ -20,9 +20,25 @@
   <!-- Cart Link -->
   <div routerLink="cart" class="link">
     <mat-icon>add_shopping_cart</mat-icon>
-    <div class="cart-items" *ngIf="cartItemCount">{{cartItemCount}}</div>
+    <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
   </div>
 
+  <!-- Sort Button -->
+  <button mat-raised-button color="primary" (click)="showSortMenu()">
+    Sort
+  </button>
+  <div class="dropdown-container" *ngIf="isSortMenuVisible">
+    <div class="dropdown-list">
+      <span
+        class="dropdown-list-item"
+        *ngFor="let criterion of criteria"
+        (click)="sortProducts(criterion)"
+        >{{ criterion }}</span
+      >
+    </div>
+  </div>
+
+  <!-- Search Product -->
   <form #searchBox="ngForm">
     <div class="header-search">
       <input

@@ -22,7 +22,7 @@ export class CartService {
     return this.cartProducts;
   }
 
-  //Cart Price Details
+  //Cart Price Details - Used In CartItem Component
   getPriceDetailsInCartItem(product: any) {
     let priceDetails = {
       price: product.price * product.count
@@ -31,7 +31,7 @@ export class CartService {
   }
 
   increaseProductCountInCart(product: any) {
-    //Will give us a particular index object in the cartProducts array
+    //Will give us a particular index object of the cartProducts array
     let index = this.cartProducts.findIndex((productData) => {
       return productData.id === product.id;
     });
@@ -70,7 +70,7 @@ export class CartService {
     });
   }
 
-  //Billing Details
+  //Billing Details - Called in Price Details Component
   getBilling(cartItems: any) {
     // A single object with various attributes
     let billingDetails = {
@@ -82,7 +82,7 @@ export class CartService {
       billingDetails.price = productData.price * productData.count;
       billingDetails.total += billingDetails.price;
       
-      billingDetails.total >= 100
+      billingDetails.total >= 200
         ? (billingDetails.delivery = 0)
         : (billingDetails.delivery = 5);
     });

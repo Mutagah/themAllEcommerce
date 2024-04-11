@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+    // Sort - getSortedProducts
+    this.productService.sortSubject.subscribe((sortCriterion:any) => {
+      this.productData = this.productService.sortProducts(sortCriterion);
+    })
   }
 
   getAllProducts() {
