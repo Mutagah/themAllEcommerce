@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
   displayProductDropDown: boolean = false;
   accountHeaderDropDown: boolean = false;
   sidebarAccountDropDown: boolean = false;
+  userLoggedIn: boolean = false;
 
   constructor(
     private productService: ProductsService,
@@ -55,11 +56,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateBadgeCount();
-    // this.authService.login('john@gmail.com', 'm38rmF$');
-    this.authService.login('mor_2314', '83r5^_');
+    this.authService
+      .login('john@gmail.com', 'm38rmF$')
+      .subscribe({ next: (user) => console.log(user) });
+
+    this.authService
+      .isAuthenticated()
+      .subscribe((value) => (this.userLoggedIn = value));
+
     /* Listens to any change in badge Count and does the necessary update*/
     this.badgeService.badgeCount$.subscribe((countChange) => {
-      // Modidy this function so that when the countChange is
       if (countChange === 0) {
         this.matBadge = countChange;
       } else {
@@ -104,6 +110,10 @@ export class HeaderComponent implements OnInit {
       },
     });
     return this.categories;
+  }
+
+  logOut() {
+    this.authService.logout();
   }
 
   toggleUserDropDownArrow() {

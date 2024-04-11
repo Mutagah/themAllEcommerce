@@ -4,13 +4,16 @@ import { Injectable } from '@angular/core';
 /*Service imports */
 import { UsersService } from './users.service';
 
+/*RXjs imports */
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private isLogged = new Subject<boolean>();
   constructor(private userService: UsersService) {}
   // When the page loads for the first time all the users are logged out
-  isLogged: boolean = false;
+
   user!: any;
 
   isValidEmail(email: string): boolean {
@@ -19,34 +22,34 @@ export class AuthService {
   }
 
   login(loginId: string, password: string) {
-    this.userService.getAllUsers().subscribe({
-      next: (res) => {
-        if (this.isValidEmail(loginId)) {
-          this.user = res.find(
-            (user: any) => user.email === loginId && user.password === password
-          );
-        } else {
-          this.user = res.find(
-            (user: any) =>
-              user.username === loginId && user.password === password
-          );
-        }
-        if (this.user === undefined) {
-          this.isLogged = false;
-        } else {
-          this.isLogged = true;
-        }
-        return this.user;
-      },
-      error: (err) => err,
-      complete: () => this.user,
+    return new Observable((observer) => {
+      this.userService.getAllUsers().subscribe({
+        next: (res) => {
+          if (this.isValidEmail(loginId)) {
+            this.user = res.find(
+              (user: any) =>
+                user.email === loginId && user.password === password
+            );
+            this.isLogged.next(true);
+          } else {
+            this.user = res.find(
+              (user: any) =>
+                user.username === loginId && user.password === password
+            );
+            this.isLogged.next(true);
+          }
+          observer.next(this.user);
+          observer.complete();
+        },
+        error: (err) => observer.error(err),
+      });
     });
   }
 
   logout() {
-    this.isLogged = false;
+    this.isLogged.next(false);
   }
-  
+
   isAuthenticated() {
     return this.isLogged;
   }
