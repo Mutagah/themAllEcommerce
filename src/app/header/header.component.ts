@@ -12,6 +12,7 @@ import {
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
 import { BadgeService } from '../badge.service';
+import { AuthService } from '../auth.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../create-product/create-product.component';
@@ -34,11 +35,10 @@ import { MatDialog } from '@angular/material/dialog';
     ]),
   ],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   userId = 1;
   matBadge = 0;
   categories: any;
-  // cartItemCount: any;
   searchText: string = '';
   displayUserDropDown: boolean = false;
   displayProductDropDown: Boolean = false;
@@ -47,11 +47,14 @@ export class HeaderComponent implements OnInit{
     private productService: ProductsService,
     private dialog: MatDialog,
     private cartService: CartService,
-    private badgeService: BadgeService
+    private badgeService: BadgeService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.updateBadgeCount();
+    // this.authService.login('john@gmail.com', 'm38rmF$');
+    this.authService.login('mor_2314', '83r5^_');
     /* Listens to any change in badge Count and does the necessary update*/
     this.badgeService.badgeCount$.subscribe((countChange) => {
       // Modidy this function so that when the countChange is
