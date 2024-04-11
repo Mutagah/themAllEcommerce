@@ -34,12 +34,15 @@ import { MatDialog } from '@angular/material/dialog';
     ]),
   ],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit{
   userId = 1;
   matBadge = 0;
   categories: any;
+  // cartItemCount: any;
+  searchText: string = '';
   displayUserDropDown: boolean = false;
   displayProductDropDown: Boolean = false;
+
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
@@ -77,10 +80,6 @@ export class HeaderComponent implements OnInit {
   }
 
   productModal(): void {
-    /*
-  1. Fetch data ya product
-  2. In the success reponse open the modal
-  3.  */
     this.productService.getAllProductCategories().subscribe({
       next: (res) => {
         const dialogRef = this.dialog.open(CreateProductComponent, {

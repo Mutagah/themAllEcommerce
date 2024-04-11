@@ -279,13 +279,23 @@
       "userId": 1,
       "date": "2024-03-27",
       "products": [
-        
         {
           "productId": "18",
           "quantity": 1
         },
         {
           "productId": "19",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "21a3",
+      "userId": 1,
+      "date": "2024-04-09",
+      "products": [
+        {
+          "productId": "1",
           "quantity": 2
         }
       ]

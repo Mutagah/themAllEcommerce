@@ -9,45 +9,34 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   categoryId!: number;
-  jewelsData: any;
-  quantities: number[] = [1, 2, 3, 4, 5]; // Array of quantity values from 1 to 5
-  electronicsData: any;
-  mensData: any;
-  womensData:any
+  categoriesData: { [key: string]: any } = {};
 
-  constructor(private productService: ProductsService, private router: Router) { }
-
+  constructor(
+    private productService: ProductsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getJewels();
-    this.getElectronics();
-    this.getElectronics();
-    this.getMensClothings();
-    this.getWomensClothings();
+    console.log(this.categoriesData);
+    this.getCategoriesData();
   }
 
-  getJewels() {
-    this.productService.getJewels().subscribe((jewels) => {
-      this.jewelsData = jewels;
+  getCategoriesData() {
+    const categories = [
+      'jewelery',
+      'electronics',
+      "men's%20clothing",
+      "women's%20clothing",
+    ];
+
+    categories.forEach((category) => {
+      this.productService.getProductsByCategory(category).subscribe((data) => {
+        if (!this.categoriesData.hasOwnProperty(category)) {
+          this.categoriesData[category] = [];
+        }
+        this.categoriesData[category] = data;
+      });
     });
-  }
-
-  getElectronics() {
-    this.productService.getElectronics().subscribe((electronics) => {
-      this.electronicsData = electronics;
-    });
-  }
-
-  getMensClothings() {
-    this.productService.getMensClothing().subscribe((mensClothing) => {
-      this.mensData = mensClothing
-    })
-  }
-
-  getWomensClothings() {
-    this.productService.getWoMensClothing().subscribe((womensClothing) => {
-      this.womensData = womensClothing
-    })
   }
 
   navigateToProduct(id: any) {

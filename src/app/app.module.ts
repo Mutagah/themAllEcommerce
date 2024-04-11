@@ -98,4 +98,4 @@ import { MatListModule } from '@angular/material/list';
   providers: [UsersService, BadgeService, ProductsService, CartService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

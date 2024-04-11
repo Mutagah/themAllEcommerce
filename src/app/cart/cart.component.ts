@@ -192,7 +192,6 @@ export class CartComponent implements OnInit {
           this.dataSource = [];
           this.productId_Quantity = [];
           this.addedProductIds.clear();
-          
         });
       },
     });

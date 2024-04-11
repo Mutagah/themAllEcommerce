@@ -7,14 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   private baseURL = 'http://localhost:4000/products';
-  private categoryUrl = 'https://fakestoreapi.com/products/categories';
-  private jewels = 'https://fakestoreapi.com/products/category/jewelery';
-  private electronics =
-    'https://fakestoreapi.com/products/category/electronics?limit=4';
-  private mensClothing =
-    "https://fakestoreapi.com/products/category/men's%20clothing";
-  private womensClothing =
-    "https://fakestoreapi.com/products/category/women's%20clothing?limit=4";
+  private categoriesURL = 'https://fakestoreapi.com/products/categories';
+  private categoryURL = 'https://fakestoreapi.com/products/category';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -36,28 +30,19 @@ export class ProductsService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
 
-  //Get Product Categories
   getAllProductCategories(): Observable<any> {
-    return this.httpClient.get<any>(this.categoryUrl);
+    return this.httpClient.get<any>(this.categoriesURL);
   }
 
-  getJewels(): Observable<any> {
-    return this.httpClient.get<any>(this.jewels);
+  getProductsByCategory(category: string): Observable<any> {
+    let url = `${this.categoryURL}/${category}`;
+    return this.httpClient.get<any>(url);
   }
 
-  getElectronics(): Observable<any> {
-    return this.httpClient.get<any>(this.electronics);
-  }
-
-  getMensClothing(): Observable<any> {
-    return this.httpClient.get<any>(this.mensClothing);
-  }
-
-  getWoMensClothing(): Observable<any> {
-    return this.httpClient.get<any>(this.womensClothing);
-  }
-
-  createProduct(product: any): Observable<Object> {
+  //Updated the Create Product Method to include the Product Category
+  createProduct(product: any, category: string): Observable<Object> {
+    // Include category in the product object
+    product.category = category;
     return this.httpClient.post(`${this.baseURL}`, product);
   }
 

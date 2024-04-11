@@ -89,7 +89,6 @@ export class ProductComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       width: '300px',
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.productService
