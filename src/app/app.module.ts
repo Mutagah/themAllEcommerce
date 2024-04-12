@@ -28,6 +28,7 @@ import { SingleUserDialogComponent } from './single-user-dialog/single-user-dial
 import { UserFormComponent } from './user-form/user-form.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { LoginComponent } from './login/login.component';
 
 /* Angular Material imports */
 import { MatSelectModule } from '@angular/material/select';
@@ -66,6 +67,7 @@ import { MatListModule } from '@angular/material/list';
     SnackBarComponent,
     UserFormComponent,
     DeleteDialogComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

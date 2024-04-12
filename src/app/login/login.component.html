@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div class="child-container">
+    <img src="../../assets/login/undraw_web_shopping_re_owap.svg" alt="" />
+  </div>
+  <div class="child-container">
+    <h2 class="main-header">Welcome to themAll</h2>
+    <h5 class="sub-header">Type your email/username and password to log in</h5>
+    <form class="login-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Username or Email</mat-label>
+        <!--Conditionally have type so that validations also switch-->
+        <input matInput type="text" class="input" />
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <!-- Password input field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" class="input" />
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <p>
+        Don't have an account?
+        <a style="color: #ff0000; text-decoration: none" href="create-account"
+          >click here</a
+        >
+      </p>
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+</div>
