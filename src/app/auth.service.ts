@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   logout() {
-    this.isLogged.next(false);
+    window.localStorage.clear();
   }
 
   isAuthenticated() {

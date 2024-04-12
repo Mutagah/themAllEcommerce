@@ -56,14 +56,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateBadgeCount();
-    this.authService
-      .login('john@gmail.com', 'm38rmF$')
-      .subscribe({ next: (user) => console.log(user) });
 
-    this.authService
-      .isAuthenticated()
-      .subscribe((value) => (this.userLoggedIn = value));
-
+    if (window.localStorage.getItem('token') !== null) {
+      this.userLoggedIn = true;
+    }
     /* Listens to any change in badge Count and does the necessary update*/
     this.badgeService.badgeCount$.subscribe((countChange) => {
       if (countChange === 0) {
@@ -114,6 +110,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
+    this.userLoggedIn = false;
   }
 
   toggleUserDropDownArrow() {

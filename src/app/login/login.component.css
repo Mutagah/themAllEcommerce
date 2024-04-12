@@ -45,3 +45,7 @@ button {
     cursor: pointer;
   }
 }
+small {
+  color: red;
+  font-size: 12px;
+}
