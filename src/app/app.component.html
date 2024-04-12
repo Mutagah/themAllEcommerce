@@ -1,1 +1,2 @@
-<app-header></app-header>
+<app-header *ngIf="!isExcluded()"></app-header>
+<app-login *ngIf="isExcluded()"></app-login>

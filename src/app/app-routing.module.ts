@@ -9,6 +9,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'createuser', component: UserFormComponent },
   { path: 'edituser/:id', component: UserFormComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
