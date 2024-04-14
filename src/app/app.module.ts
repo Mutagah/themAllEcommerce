@@ -15,6 +15,9 @@ import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { PriceDetailsComponent } from './price-details/price-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 /*Angular imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -26,9 +29,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CartItemComponent } from './cart-item/cart-item.component';
-import { PriceDetailsComponent } from './price-details/price-details.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { SearchPipe } from './search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CartItemComponent,
     PriceDetailsComponent,
     CheckoutComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MatIconModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -14,6 +14,10 @@ export class ProductsService {
   sortCriterion:any;
   filteredProducts:any;
   sortSubject = new Subject();
+  // Search Variable
+  searchText: any = '';
+  // Sending data to the home component through the searchSubject variable
+  searchSubject = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -74,5 +78,11 @@ export class ProductsService {
         break;
     }
     return this.filteredProducts;
+  }
+
+  // Pass the searchText value from the header component to the service
+  getSearchString(searchText:any){
+    this.searchText = searchText;
+    this.searchSubject.next(this.searchText);
   }
 }

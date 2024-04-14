@@ -24,9 +24,7 @@
   </div>
 
   <!-- Sort Button -->
-  <button mat-raised-button color="primary" (click)="showSortMenu()">
-    Sort
-  </button>
+  <mat-icon class="sort" (click)="showSortMenu()">sort</mat-icon>
   <div class="dropdown-container" *ngIf="isSortMenuVisible">
     <div class="dropdown-list">
       <span
@@ -48,6 +46,7 @@
         type="text"
         name="searchText"
         [(ngModel)]="searchText"
+        (keyup)="searchProduct(searchText)"
       />
       <!-- <mat-icon>search</mat-icon> -->
     </div>

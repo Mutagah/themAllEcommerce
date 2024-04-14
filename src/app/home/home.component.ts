@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   productData: any;
   categories!: string;
   id: any;
+  // Value from the Service
+  searchText: any;
 
   limitControl: any; // Initialize form input with a default limit value
 
@@ -25,6 +27,11 @@ export class HomeComponent implements OnInit {
     // Sort - getSortedProducts
     this.productService.sortSubject.subscribe((sortCriterion:any) => {
       this.productData = this.productService.sortProducts(sortCriterion);
+    })
+    // Search Text
+    this.productService.searchSubject.subscribe((searchString:any) => {
+      // Equate variable to the searchText value that we got from the service
+      this.searchText = searchString;
     })
   }
 

@@ -11,13 +11,13 @@
 
   .link {
     text-decoration: none;
-    color: white;
-    font-size: 15px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-left: 10px;
   }
 }
 
@@ -39,6 +39,7 @@ input {
   box-sizing: border-box;
   margin-right: 10px;
   border-radius: 6px;
+  border: none;
 }
 
 .cart-items{
@@ -60,7 +61,11 @@ input {
   color: orangered;
 }
 
-/* Start Of Dropdown Styling */
+/* Start Of Sort Button Dropdown Styling */
+.sort{
+  cursor: pointer;
+}
+
 .dropdown-container{
   position: absolute;
 }
@@ -74,9 +79,12 @@ input {
   left: 820px;
   border-radius: 5px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdown-list-item{
   text-transform: capitalize;
   cursor: pointer;
+  border-bottom: 1px solid grey;
 }
