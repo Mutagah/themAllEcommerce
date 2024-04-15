@@ -124,13 +124,14 @@
                 </a>
               </mat-list-item>
               <mat-list-item>
-                <div
+                <a
+                  routerLink="login"
+                  [queryParams]="{ logout: true }"
                   class="link"
                   style="display: flex; justify-content: center"
-                  (click)="logOut()"
                 >
                   Log out
-                </div>
+                </a>
               </mat-list-item>
             </mat-nav-list>
           </div>

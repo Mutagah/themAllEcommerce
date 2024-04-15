@@ -9,6 +9,8 @@ export class AppComponent {
   title = 'themAll';
   constructor(private router: Router) {}
   isExcluded() {
-    return this.router.url === '/login';
+    return (
+      this.router.url === '/login' || this.router.url === '/login?logout=true'
+    );
   }
 }

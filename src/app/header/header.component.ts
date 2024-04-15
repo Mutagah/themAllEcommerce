@@ -1,5 +1,4 @@
 /*Angular imports */
-import { Component, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -7,6 +6,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 /*Service imports */
 import { ProductsService } from '../products.service';
@@ -51,11 +52,17 @@ export class HeaderComponent implements OnInit {
     private dialog: MatDialog,
     private cartService: CartService,
     private badgeService: BadgeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.updateBadgeCount();
+    this.activeRoute.queryParamMap.subscribe((queries) => {
+      if (Boolean(queries.get('logout'))) {
+        this.authService.logout();
+      }
+    });
 
     if (window.localStorage.getItem('token') !== null) {
       this.userLoggedIn = true;
@@ -110,6 +117,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
+    alert('You have successfully logged out');
     this.userLoggedIn = false;
   }
 
