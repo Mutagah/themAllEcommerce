@@ -84,8 +84,7 @@ export class HeaderComponent implements OnInit {
     this.isSortMenuVisible = !this.isSortMenuVisible;
   }
 
-  // Sort/Filter products by price
-  // check this method
+  // Sort products by price
   sortProducts(criterion: any) {
     this.productService.getSortCriterion(criterion);
   }

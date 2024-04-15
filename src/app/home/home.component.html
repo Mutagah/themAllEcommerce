@@ -36,9 +36,9 @@
       >
         <div class="product-title">{{ product.title }}</div>
         <div class="product-price">
-          <button mat-button color="primary">
+          <p class="currency">
             {{ product.price * 130 | currency : "Ksh " }}
-          </button>
+          </p>
         </div>
       </mat-card-content>
       <mat-card-actions class="card-actions">

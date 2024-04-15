@@ -11,8 +11,8 @@ export class ProductsService {
   private categoryURL = 'https://fakestoreapi.com/products/category';
 
   products: any[] = [];
-  sortCriterion:any;
-  filteredProducts:any;
+  sortCriterion: any;
+  filteredProducts: any;
   sortSubject = new Subject();
   // Search Variable
   searchText: any = '';
@@ -22,12 +22,14 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
   // All/Filtered Products Array
-  getAllProducts(){
-    return this.httpClient.get(this.baseURL).pipe(map((product: any) =>{
-      this.products = product;
-      this.filteredProducts = this.products;
-      return product;
-    }));
+  getAllProducts() {
+    return this.httpClient.get(this.baseURL).pipe(
+      map((product: any) => {
+        this.products = product;
+        this.filteredProducts = this.products;
+        return product;
+      })
+    );
   }
 
   getProduct(id: any): Observable<any> {
@@ -57,20 +59,32 @@ export class ProductsService {
   }
 
   // Get Sort Criterion i.e Low to High or Vice Versa
-  getSortCriterion(criterion:any){
+  getSortCriterion(criterion: any) {
     this.sortCriterion = criterion;
     this.sortSubject.next(this.sortCriterion);
   }
 
   // Sort Products Functionality
-  sortProducts(criteria:any){
-    switch(criteria){
+  sortProducts(criteria: any) {
+    switch (criteria) {
       case 'Price(Low to High)':
         this.filteredProducts.sort((a: any, b: any) => {
-          if(a.price < b.price){
+          if (a.price < b.price) {
             return -1;
           }
-          if(a.price > b.price){
+          if (a.price > b.price) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+
+      case 'Price(High to Low)':
+        this.filteredProducts.sort((a: any, b: any) => {
+          if (a.price > b.price) {
+            return -1;
+          }
+          if (a.price < b.price) {
             return 1;
           }
           return 0;
@@ -81,7 +95,7 @@ export class ProductsService {
   }
 
   // Pass the searchText value from the header component to the service
-  getSearchString(searchText:any){
+  getSearchString(searchText: any) {
     this.searchText = searchText;
     this.searchSubject.next(this.searchText);
   }

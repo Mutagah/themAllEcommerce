@@ -62,9 +62,9 @@
   justify-content: space-between;
 }
 
-.mat-success {
-  background-color: green;
-  color: #fff;
+.mat-continue{
+  background-color: orangered;
+  color: white;
 }
 
 .mat-accent{
