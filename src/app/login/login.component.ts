@@ -26,6 +26,7 @@ export class LoginComponent {
     this.authService.login(form.value.loginId, form.value.password).subscribe({
       next: (res: any) => {
         window.localStorage.setItem('token', res.username);
+        window.localStorage.setItem('role', res.role);
         this.router.navigate(['/home']);
       },
     });
