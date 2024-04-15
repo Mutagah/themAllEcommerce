@@ -61,7 +61,7 @@
 .sidebar {
   height: 90vh;
   color: black;
-  background-color: #ffe6c6;
+  background-color: aliceblue
 }
 
 .side-nav {
@@ -123,6 +123,7 @@ input {
   cursor: pointer;
   font-size: 28px;
   align-items: center;
+  color: black;
 }
 
 .dropdown-container{
@@ -131,15 +132,13 @@ input {
 
 .dropdown-list{
   width: fit-content;
-  border: 1px solid orangered;
-  background-color: orangered;
+  border-bottom: 1px solid black;
+  color: black;
   position: relative;
-  top: 60px;
-  left: 820px;
-  border-radius: 5px;
-  padding: 10px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
+  left: 8px;
 }
 
 .dropdown-list-item{

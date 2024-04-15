@@ -7,7 +7,7 @@
   </div>
 
   <!-- Sort Button -->
-  <mat-icon class="sort" (click)="showSortMenu()">sort</mat-icon>
+  <!-- <mat-icon class="sort" (click)="showSortMenu()">sort</mat-icon>
   <div class="dropdown-container" *ngIf="isSortMenuVisible">
     <div class="dropdown-list">
       <span
@@ -17,7 +17,7 @@
         >{{ criterion }}</span
       >
     </div>
-  </div>
+  </div> -->
 
   <form #searchBox="ngForm">
     <div class="header-search">
@@ -43,9 +43,8 @@
     <!-- Cart Link -->
     <div routerLink="cart" class="link">
       <mat-icon>add_shopping_cart</mat-icon>
-      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>Cart
     </div>
-
   </div>
 </nav>
 
@@ -53,7 +52,7 @@
   <mat-drawer
     opened="false"
     mode="side"
-    style="width: 230px; background-color: #fefef8"
+    style="width: 230px; background-color: #ffe6c6"
     #drawer
   >
     <mat-nav-list style="padding: 15px">
@@ -62,12 +61,16 @@
           <mat-list-item>
             <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
           </mat-list-item>
+
+          <!-- Categories Dropdown -->
           <mat-list-item>
             <a routerLink="categories" class="link">
               <mat-icon>menu</mat-icon>
               Categories
             </a>
           </mat-list-item>
+
+          <!-- Products Dropdown -->
           <div (click)="toggleProductDropDown()">
             <mat-list-item>
               <a class="link">
@@ -96,12 +99,43 @@
               </mat-list-item>
             </mat-nav-list>
           </div>
+
+          <div (click)="showSortMenu()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>sort</mat-icon>
+                Sort Products
+                <div style="margin-left: auto">
+                  <mat-icon
+                    [@indicatorRotate]="
+                      isSortMenuVisible ? 'expanded' : 'collapsed'
+                    "
+                    >expand_more</mat-icon
+                  >
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="isSortMenuVisible">
+              <mat-list-item>
+                <div
+                  class="dropdown-list"
+                  *ngFor="let criterion of criteria"
+                  (click)="sortProducts(criterion)"
+                >
+                  {{ criterion }}
+                </div>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+
+
           <mat-list-item>
             <a routerLink="home" class="link">
               <mat-icon>person_outline</mat-icon>
               Account
             </a>
           </mat-list-item>
+
           <div (click)="toggleUserDropDownArrow()">
             <mat-list-item>
               <a class="link">
