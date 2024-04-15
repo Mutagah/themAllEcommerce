@@ -50,6 +50,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { MatListModule } from '@angular/material/list';
     UserFormComponent,
     DeleteDialogComponent,
     LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

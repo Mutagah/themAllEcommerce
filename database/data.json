@@ -317,6 +317,7 @@
       "email": "john@gmail.com",
       "username": "johnd",
       "password": "m38rmF$",
+      "role": "admin",
       "name": {
         "firstname": "John",
         "lastname": "Doe"
@@ -339,6 +340,7 @@
       "email": "morrison@gmail.com",
       "username": "mor_2314",
       "password": "83r5^_",
+      "role": "supplier",
       "name": {
         "firstname": "David",
         "lastname": "Morrison"
@@ -361,6 +363,7 @@
       "email": "kevin@gmail.com",
       "username": "kevinryan",
       "password": "kev02937@",
+      "role": "customer",
       "name": {
         "firstname": "Kevin",
         "lastname": "Ryan"
@@ -384,6 +387,7 @@
       "email": "don@gmail.com",
       "username": "Donero",
       "password": "Ewedon",
+      "role": "admin",
       "name": {
         "firstname": "Don",
         "lastname": "Romer"
@@ -406,6 +410,7 @@
       "email": "derek@gmail.com",
       "username": "derek",
       "password": "jklg*_56",
+      "role": "supplier",
       "name": {
         "firstname": "Derek",
         "lastname": "Powell"
@@ -428,6 +433,7 @@
       "email": "david_r@gmail.com",
       "username": "david_r",
       "password": "3478*#54",
+      "role": "customer",
       "name": {
         "firstname": "David",
         "lastname": "Russell"
@@ -450,6 +456,7 @@
       "email": "miriam@gmail.com",
       "username": "snyder",
       "password": "f238&@*$",
+      "role": "admin",
       "name": {
         "firstname": "Miriam",
         "lastname": "Snyder"
@@ -472,6 +479,7 @@
       "email": "william@gmail.com",
       "username": "hopkins",
       "password": "William56$hj",
+      "role": "supplier",
       "name": {
         "firstname": "William",
         "lastname": "Hopkins"
@@ -494,6 +502,7 @@
       "email": "kate@gmail.com",
       "username": "kate_h",
       "password": "kfejk@*_",
+      "role": "customer",
       "name": {
         "firstname": "Kate",
         "lastname": "Hale"
@@ -516,6 +525,7 @@
       "email": "jimmie@gmail.com",
       "username": "jimmie_k",
       "password": "klein*#%*",
+      "role": "admin",
       "name": {
         "firstname": "Jimmie",
         "lastname": "Klein"
@@ -538,6 +548,7 @@
       "email": "owen150@gmail.com",
       "username": "michael",
       "password": "michael",
+      "role": "supplier",
       "name": {
         "firstname": "Michael",
         "lastname": "Owen"
