@@ -10,15 +10,59 @@ import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import {
+  canActivateAdminRoutes,
+  canActivateSupplierRoutes,
+  canActivateCustomerRoutes,
+} from './auth.guard';
 
 const routes: Routes = [
+  //accessible by everyone
   { path: 'home', component: HomeComponent },
-  { path: 'product/:id', component: ProductComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'createuser', component: UserFormComponent },
-  { path: 'edituser/:id', component: UserFormComponent },
+
+  //accessible by customers
+  {
+    path: 'product/:id',
+    component: ProductComponent,
+    data: { requiredRoles: ['customer'] },
+    canActivate: [canActivateAdminRoutes, canActivateSupplierRoutes],
+  },
+  //accessible by customers and admin
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    data: { requiredRoles: ['customer', 'admin'] },
+    canActivate: [canActivateSupplierRoutes],
+  },
+  //accessible by supplier and customer
+  {
+    path: 'cart',
+    component: CartComponent,
+    data: { requiredRoles: ['supplier', 'customer'] },
+    canActivate: [canActivateAdminRoutes],
+  },
+  //accessible only admin
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: { requiredRoles: ['admin'] },
+    canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
+  },
+  //accessible by admin only
+  {
+    path: 'createuser',
+    component: UserFormComponent,
+    data: { requiredRoles: ['admin'] },
+    canActivate: [canActivateCustomerRoutes, canActivateCustomerRoutes],
+  },
+  //accessible by admin only
+  {
+    path: 'edituser/:id',
+    component: UserFormComponent,
+    data: { requiredRoles: 'admin' },
+    canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
+  },
+  //accessible by all everyone
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
