@@ -141,8 +141,10 @@ input {
   left: 8px;
 }
 
-.dropdown-list-item{
-  text-transform: capitalize;
+.add-product{
+  display: flex;
+  font-size: 18px;
+  font-weight: light;
   cursor: pointer;
-  border-bottom: 1px solid grey;
+  color: black;
 }

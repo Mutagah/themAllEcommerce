@@ -62,43 +62,16 @@
             <a routerLink="home" class="link"><mat-icon>home</mat-icon>Home</a>
           </mat-list-item>
 
-          <!-- Categories Dropdown -->
           <mat-list-item>
-            <a routerLink="categories" class="link">
-              <mat-icon>menu</mat-icon>
-              Categories
-            </a>
+            <div
+              class="add-product"
+              (click)="productModal()"
+              style="margin: auto"
+            >
+              <mat-icon>note_add</mat-icon>
+              Add Product
+            </div>
           </mat-list-item>
-
-          <!-- Products Dropdown -->
-          <div (click)="toggleProductDropDown()">
-            <mat-list-item>
-              <a class="link">
-                <mat-icon>menu</mat-icon>
-                Products
-                <div style="margin-left: auto">
-                  <mat-icon
-                    [@indicatorRotate]="
-                      displayProductDropDown ? 'expanded' : 'collapsed'
-                    "
-                    >expand_more</mat-icon
-                  >
-                </div>
-              </a>
-            </mat-list-item>
-            <mat-nav-list *ngIf="displayProductDropDown">
-              <mat-list-item>
-                <div
-                  class="add-product-container"
-                  (click)="productModal()"
-                  style="margin: auto"
-                >
-                  <mat-icon>note_add</mat-icon>
-                  Add Product
-                </div>
-              </mat-list-item>
-            </mat-nav-list>
-          </div>
 
           <div (click)="showSortMenu()">
             <mat-list-item>
@@ -106,11 +79,7 @@
                 <mat-icon>sort</mat-icon>
                 Sort Products
                 <div style="margin-left: auto">
-                  <mat-icon
-                    [@indicatorRotate]="
-                      isSortMenuVisible ? 'expanded' : 'collapsed'
-                    "
-                    >expand_more</mat-icon
+                  <mat-icon>expand_more</mat-icon
                   >
                 </div>
               </a>
@@ -128,6 +97,13 @@
             </mat-nav-list>
           </div>
 
+          <!-- Categories Dropdown -->
+          <mat-list-item>
+            <a routerLink="categories" class="link">
+              <mat-icon>menu</mat-icon>
+              Categories
+            </a>
+          </mat-list-item>
 
           <mat-list-item>
             <a routerLink="home" class="link">
