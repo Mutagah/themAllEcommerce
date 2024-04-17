@@ -14,10 +14,14 @@ export class ProductsService {
   sortCriterion: any;
   filteredProducts: any;
   sortSubject = new Subject();
-  // Search Variable
+  // Search Text Variable
   searchText: any = '';
-  // Sending data to the home component through the searchSubject variable
+  // Sending the searchText value to the home component via the searchSubject - Inter Component Communication
   searchSubject = new Subject();
+  // Price Filter Variable
+  priceFilter: any;
+  // Sending the priceFilter value to the home component via the priceFilterSubject - Inter Component Communication
+  priceFilterSubject = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -92,6 +96,20 @@ export class ProductsService {
         break;
     }
     return this.filteredProducts;
+  }
+
+  // Get the priceFilter Value i.e. Price, from the Side Navigation Drawer inside the Header Component
+  getPriceFilter(price: any) {
+    this.priceFilter = price;
+    // Pass this value to the Home Component via the priceFilterSubject
+    this.priceFilterSubject.next(this.priceFilter);
+  }
+
+  // Received From the Home Component
+  getFilteredProductsByPrice(price: any) {
+    return (this.filteredProducts = this.products.filter((product: any) => {
+      return product.price <= price;
+    }));
   }
 
   // Pass the searchText value from the header component to the service

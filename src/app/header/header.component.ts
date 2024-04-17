@@ -43,6 +43,8 @@ export class HeaderComponent implements OnInit {
   criteria: any[] = ['Price(Low to High)', 'Price(High to Low)'];
   displayUserDropDown: boolean = false;
   displayProductDropDown: Boolean = false;
+  isPriceFiltersVisible: boolean = false;
+  priceFilters = [100, 300];
 
   constructor(
     private productService: ProductsService,
@@ -99,5 +101,15 @@ export class HeaderComponent implements OnInit {
 
   toggleProductDropDown() {
     this.displayProductDropDown = !this.displayProductDropDown;
+  }
+
+  // Price Filters
+  showPriceFilters() {
+    this.isPriceFiltersVisible = !this.isPriceFiltersVisible;
+  }
+
+  // Pass the selected priceFilter value to the Product Service
+  filterProductsByPrice(priceFilter: any) {
+    this.productService.getPriceFilter(priceFilter);
   }
 }

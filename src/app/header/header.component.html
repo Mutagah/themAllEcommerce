@@ -43,7 +43,8 @@
     <!-- Cart Link -->
     <div routerLink="cart" class="link">
       <mat-icon>add_shopping_cart</mat-icon>
-      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>Cart
+      <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
+      Cart
     </div>
   </div>
 </nav>
@@ -73,14 +74,14 @@
             </div>
           </mat-list-item>
 
+          <!-- Sort Menu -->
           <div (click)="showSortMenu()">
             <mat-list-item>
               <a class="link">
                 <mat-icon>sort</mat-icon>
                 Sort Products
                 <div style="margin-left: auto">
-                  <mat-icon>expand_more</mat-icon
-                  >
+                  <mat-icon>expand_more</mat-icon>
                 </div>
               </a>
             </mat-list-item>
@@ -92,6 +93,30 @@
                   (click)="sortProducts(criterion)"
                 >
                   {{ criterion }}
+                </div>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+
+          <!-- Price Filters -->
+          <div (click)="showPriceFilters()">
+            <mat-list-item>
+              <a class="link">
+                <mat-icon>sort</mat-icon>
+                Price Filter
+                <div style="margin-left: auto">
+                  <mat-icon>expand_more</mat-icon>
+                </div>
+              </a>
+            </mat-list-item>
+            <mat-nav-list *ngIf="isPriceFiltersVisible">
+              <mat-list-item>
+                <div
+                  class="dropdown-list"
+                  *ngFor="let priceFilter of priceFilters"
+                  (click)="filterProductsByPrice(priceFilter)"
+                >
+                  Upto {{ priceFilter * 100 | currency: 'Ksh ' }}
                 </div>
               </mat-list-item>
             </mat-nav-list>
