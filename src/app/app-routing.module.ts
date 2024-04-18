@@ -10,6 +10,7 @@ import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import {
   canActivateAdminRoutes,
   canActivateSupplierRoutes,
@@ -64,6 +65,7 @@ const routes: Routes = [
   },
   //accessible by all everyone
   { path: 'login', component: LoginComponent },
+  { path: 'create-account', component: SignUpComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];

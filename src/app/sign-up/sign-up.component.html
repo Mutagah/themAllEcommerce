@@ -1,1 +1,151 @@
-<p>sign-up works!</p>
+<div class="main-container">
+  <div class="child-container">
+    <img src="../../assets/login/undraw_add_to_cart_re_wrdo.svg" alt="" />
+  </div>
+  <div class="child-container">
+    <h2 class="main-header">themAll</h2>
+    <h5 class="sub-header">Enter your details to create account with us</h5>
+    <mat-stepper linear>
+      <!--First step  -->
+      <mat-step [stepControl]="emailUsernameDetails">
+        <form class="login-form" [formGroup]="emailUsernameDetails">
+          <ng-template matStepLabel> Enter email: </ng-template>
+
+          <div class="paired-input-container">
+            <!--Email input field  -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                class="input"
+                required
+              />
+              <mat-hint>
+                <small> email is a required field </small>
+              </mat-hint>
+            </mat-form-field>
+
+            <!-- Username input field -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="username"
+                class="input"
+                required
+              />
+              <mat-hint>
+                <small> username is a required field </small>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <p>
+            Already have an account?
+            <a style="color: #ff0000; text-decoration: none" href="login">
+              click here to login
+            </a>
+          </p>
+          <button mat-button matStepperNext>Next</button>
+          <!-- <button type="submit">Sign Up</button> -->
+        </form>
+      </mat-step>
+
+      <!--Second step  -->
+      <mat-step [stepControl]="nameDetails">
+        <form class="login-form" [formGroup]="nameDetails">
+          <ng-template matStepLabel> Enter name </ng-template>
+          <div class="paired-input-container">
+            <!--Email input field  -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>First name</mat-label>
+              <input
+                matInput
+                type="text"
+                class="input"
+                formControlName="firstName"
+                required
+              />
+              <mat-hint>
+                <small> first name is a required field </small>
+              </mat-hint>
+            </mat-form-field>
+
+            <!-- Password input field -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>Last name</mat-label>
+              <input
+                matInput
+                type="text"
+                class="input"
+                formControlName="lastName"
+                required
+              />
+              <mat-hint>
+                <small> last name is a required field </small>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <p>
+            Already have an account?
+            <a style="color: #ff0000; text-decoration: none" href="login">
+              click here to login
+            </a>
+          </p>
+          <button mat-button matStepperNext>Next</button>
+          <!-- <button type="submit">Sign Up</button> -->
+        </form>
+      </mat-step>
+
+      <!--Third step  -->
+      <mat-step [stepControl]="passwordData">
+        <form class="login-form" [formGroup]="passwordData">
+          <ng-template matStepLabel> Enter password </ng-template>
+          <div class="paired-input-container">
+            <!--Email input field  -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                type="password"
+                class="input"
+                formControlName="password"
+                required
+              />
+              <mat-hint>
+                <small> password is a required field </small>
+              </mat-hint>
+            </mat-form-field>
+
+            <!-- Password input field -->
+            <mat-form-field appearance="outline" class="form-fields">
+              <mat-label>Last name</mat-label>
+              <input
+                matInput
+                type="password"
+                class="input"
+                formControlName="passwordConfirmation"
+                required
+              />
+              <mat-hint>
+                <small> password does not match </small>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <p>
+            Already have an account?
+            <a style="color: #ff0000; text-decoration: none" href="login">
+              click here to login
+            </a>
+          </p>
+          <button type="submit">Sign Up</button>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
