@@ -5,7 +5,7 @@
   <div class="child-container">
     <h2 class="main-header">themAll</h2>
     <h5 class="sub-header">Enter your details to create account with us</h5>
-    <mat-stepper linear>
+    <mat-stepper>
       <!--First step  -->
       <mat-step [stepControl]="emailUsernameDetails">
         <form class="login-form" [formGroup]="emailUsernameDetails">
@@ -50,7 +50,6 @@
             </a>
           </p>
           <button mat-button matStepperNext>Next</button>
-          <!-- <button type="submit">Sign Up</button> -->
         </form>
       </mat-step>
 
@@ -96,8 +95,10 @@
               click here to login
             </a>
           </p>
-          <button mat-button matStepperNext>Next</button>
-          <!-- <button type="submit">Sign Up</button> -->
+          <div class="button-container">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
         </form>
       </mat-step>
 
