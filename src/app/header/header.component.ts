@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   accountHeaderDropDown: boolean = false;
   sidebarAccountDropDown: boolean = false;
   userLoggedIn: boolean = false;
-
+  disableMatBadge: boolean = false;
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
@@ -63,11 +63,14 @@ export class HeaderComponent implements OnInit {
         this.authService.logout();
       }
     });
-
+    if (window.localStorage.getItem('role') === 'admin') {
+      this.disableMatBadge === true;
+    }
     if (window.localStorage.getItem('token') !== null) {
       this.userLoggedIn = true;
     }
     /* Listens to any change in badge Count and does the necessary update*/
+
     this.badgeService.badgeCount$.subscribe((countChange) => {
       if (countChange === 0) {
         this.matBadge = countChange;

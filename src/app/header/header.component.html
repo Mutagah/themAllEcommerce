@@ -33,9 +33,18 @@
     </div>
 
     <!-- Cart Link -->
-    <div matBadge="{{ matBadge }}" matBadgeOverlap="false" class="demo-section">
+
+    <div
+      matBadge="{{ matBadge }}"
+      matBadgeOverlap="false"
+      class="demo-section"
+      *ngIf="disableMatBadge; else elseBlock"
+    >
       <a routerLink="cart" class="link">Cart</a>
     </div>
+    <ng-template #elseBlock
+      ><a routerLink="cart" class="link">Cart</a></ng-template
+    >
   </div>
 </nav>
 
