@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlName, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -11,18 +15,18 @@ export class SignUpComponent implements OnInit {
   passwordData!: FormGroup;
   ngOnInit(): void {
     this.emailUsernameDetails = new FormGroup({
-      email: new FormControl(),
-      username: new FormControl(),
+      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
     });
 
     this.nameDetails = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
     });
 
     this.passwordData = new FormGroup({
-      password: new FormControl(),
-      passwordConfirmation: new FormControl(),
+      password: new FormControl('', Validators.required),
+      passwordConfirmation: new FormControl('', Validators.required),
     });
   }
 }

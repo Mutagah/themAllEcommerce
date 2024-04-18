@@ -5,7 +5,7 @@
   <div class="child-container">
     <h2 class="main-header">themAll</h2>
     <h5 class="sub-header">Enter your details to create account with us</h5>
-    <mat-stepper>
+    <mat-stepper linear>
       <!--First step  -->
       <mat-step [stepControl]="emailUsernameDetails">
         <form class="login-form" [formGroup]="emailUsernameDetails">
@@ -22,7 +22,12 @@
                 class="input"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  emailUsernameDetails.get('email')?.touched &&
+                  emailUsernameDetails.get('email')?.invalid
+                "
+              >
                 <small> email is a required field </small>
               </mat-hint>
             </mat-form-field>
@@ -37,7 +42,12 @@
                 class="input"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  emailUsernameDetails.get('username')?.touched &&
+                  emailUsernameDetails.get('username')?.invalid
+                "
+              >
                 <small> username is a required field </small>
               </mat-hint>
             </mat-form-field>
@@ -68,7 +78,12 @@
                 formControlName="firstName"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  nameDetails.get('firstName')?.touched &&
+                  nameDetails.get('firstName')?.invalid
+                "
+              >
                 <small> first name is a required field </small>
               </mat-hint>
             </mat-form-field>
@@ -83,7 +98,12 @@
                 formControlName="lastName"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  nameDetails.get('lastName')?.touched &&
+                  nameDetails.get('lastName')?.invalid
+                "
+              >
                 <small> last name is a required field </small>
               </mat-hint>
             </mat-form-field>
@@ -117,14 +137,19 @@
                 formControlName="password"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  passwordData.get('password')?.touched &&
+                  passwordData.get('password')?.invalid
+                "
+              >
                 <small> password is a required field </small>
               </mat-hint>
             </mat-form-field>
 
             <!-- Password input field -->
             <mat-form-field appearance="outline" class="form-fields">
-              <mat-label>Last name</mat-label>
+              <mat-label>Confirm Password</mat-label>
               <input
                 matInput
                 type="password"
@@ -132,7 +157,12 @@
                 formControlName="passwordConfirmation"
                 required
               />
-              <mat-hint>
+              <mat-hint
+                *ngIf="
+                  passwordData.get('password')?.touched &&
+                  passwordData.get('password')?.invalid
+                "
+              >
                 <small> password does not match </small>
               </mat-hint>
             </mat-form-field>
@@ -144,7 +174,10 @@
               click here to login
             </a>
           </p>
-          <button type="submit">Sign Up</button>
+          <div class="button-container">
+            <button mat-button matStepperPrevious>Back</button>
+            <button type="submit">Sign Up</button>
+          </div>
         </form>
       </mat-step>
     </mat-stepper>
