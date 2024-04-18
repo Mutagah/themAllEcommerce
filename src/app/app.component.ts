@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'themAll';
   constructor(private router: Router) {}
-  isExcluded() {
+  isLoginPage() {
     return (
       this.router.url === '/login' || this.router.url === '/login?logout=true'
     );
+  }
+
+  isCreateAccountPage() {
+    return this.router.url === '/create-account';
   }
 }

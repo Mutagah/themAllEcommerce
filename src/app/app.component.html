@@ -1,2 +1,3 @@
-<app-header *ngIf="!isExcluded()"></app-header>
-<app-login *ngIf="isExcluded()"></app-login>
+<app-header *ngIf="!isLoginPage() && !isCreateAccountPage()"></app-header>
+<app-login *ngIf="isLoginPage() && !isCreateAccountPage()"></app-login>
+<app-sign-up *ngIf="isCreateAccountPage() && !isLoginPage()"></app-sign-up>
