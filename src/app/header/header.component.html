@@ -38,7 +38,7 @@
       matBadge="{{ matBadge }}"
       matBadgeOverlap="false"
       class="demo-section"
-      *ngIf="disableMatBadge; else elseBlock"
+      *ngIf="!disableMatBadge; else elseBlock"
     >
       <a routerLink="cart" class="link">Cart</a>
     </div>
@@ -185,7 +185,7 @@
           <mat-list-item>
             <a routerLink="users" class="link">
               <mat-icon>settings</mat-icon>
-              Admin
+              {{userRole.charAt(0).toUpperCase() + userRole.slice(1)}}
             </a>
           </mat-list-item>
         </div>

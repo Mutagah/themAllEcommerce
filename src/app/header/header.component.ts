@@ -47,7 +47,8 @@ export class HeaderComponent implements OnInit {
   sidebarAccountDropDown: boolean = false;
   userLoggedIn: boolean = false;
   disableMatBadge: boolean = false;
-  constructor(
+  userRole !:any
+    constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
     private cartService: CartService,
@@ -57,6 +58,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userRole = window.localStorage.getItem('role')
     this.updateBadgeCount();
     this.activeRoute.queryParamMap.subscribe((queries) => {
       if (Boolean(queries.get('logout'))) {
@@ -64,7 +66,7 @@ export class HeaderComponent implements OnInit {
       }
     });
     if (window.localStorage.getItem('role') === 'admin') {
-      this.disableMatBadge === true;
+      this.disableMatBadge = true;
     }
     if (window.localStorage.getItem('token') !== null) {
       this.userLoggedIn = true;
