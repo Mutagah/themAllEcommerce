@@ -29,6 +29,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 /* Angular Material imports */
 import { MatSelectModule } from '@angular/material/select';
@@ -50,7 +51,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import {MatMenuModule} from '@angular/material/menu'
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatStepperModule,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule
   ],
   providers: [UsersService, BadgeService, ProductsService, CartService],
   bootstrap: [AppComponent],

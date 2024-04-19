@@ -43,8 +43,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    .account-button {
+      background-color: #ebaaaa;
+      border: none;
+      cursor: pointer;
+    }
   }
-
   .link {
     text-decoration: none;
     color: black;

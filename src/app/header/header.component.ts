@@ -7,7 +7,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 /*Service imports */
 import { ProductsService } from '../products.service';
@@ -47,8 +47,8 @@ export class HeaderComponent implements OnInit {
   sidebarAccountDropDown: boolean = false;
   userLoggedIn: boolean = false;
   disableMatBadge: boolean = false;
-  userRole !:any
-    constructor(
+  userRole!: any;
+  constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
     private cartService: CartService,
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userRole = window.localStorage.getItem('role')
+    this.userRole = window.localStorage.getItem('role');
     this.updateBadgeCount();
     this.activeRoute.queryParamMap.subscribe((queries) => {
       if (Boolean(queries.get('logout'))) {
@@ -80,6 +80,14 @@ export class HeaderComponent implements OnInit {
         this.matBadge += countChange;
       }
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Close the dropdown if clicked outside of the account button
+    if (!(event.target as HTMLElement).closest('.account-button')) {
+      this.accountHeaderDropDown = false;
+    }
   }
 
   updateBadgeCount() {

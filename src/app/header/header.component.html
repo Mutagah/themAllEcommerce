@@ -22,14 +22,21 @@
 
   <!--Account drop down  -->
   <div class="right-header-nav">
-    <div class="link" (click)="toggleAccountHeaderDropdown()">
-      <mat-icon>person_outline</mat-icon>
-      <a class="link">Account</a>
-      <mat-icon
-        [@indicatorRotate]="accountHeaderDropDown ? 'expanded' : 'collapsed'"
-      >
-        expand_more
-      </mat-icon>
+    <div
+      class="account-button link"
+      mat-button
+      [matMenuTriggerFor]="account"
+      (click)="toggleAccountHeaderDropdown()"
+    >
+      <div class="link">
+        <mat-icon>person_outline</mat-icon>
+        <a class="link">Account</a>
+        <mat-icon
+          [@indicatorRotate]="accountHeaderDropDown ? 'expanded' : 'collapsed'"
+        >
+          expand_more
+        </mat-icon>
+      </div>
     </div>
 
     <!-- Cart Link -->
@@ -47,6 +54,24 @@
     >
   </div>
 </nav>
+
+<mat-menu #account="matMenu">
+  <div *ngIf="!userLoggedIn">
+    <button mat-menu-item (click)="toggleAccountHeaderDropdown()">
+      <a routerLink="login" class="link">Log in</a>
+    </button>
+  </div>
+  <div *ngIf="userLoggedIn">
+    <button mat-menu-item (click)="toggleAccountHeaderDropdown()">
+      <a routerLink="login" class="link">Profile</a>
+    </button>
+    <button mat-menu-item (click)="toggleAccountHeaderDropdown()">
+      <a routerLink="login" class="link" [queryParams]="{ logout: true }">
+        Log out
+      </a>
+    </button>
+  </div>
+</mat-menu>
 
 <mat-drawer-container class="sidebar">
   <mat-drawer
@@ -185,7 +210,7 @@
           <mat-list-item>
             <a routerLink="users" class="link">
               <mat-icon>settings</mat-icon>
-              {{userRole}}
+              {{ userRole }}
             </a>
           </mat-list-item>
         </div>
