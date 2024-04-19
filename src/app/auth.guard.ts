@@ -34,6 +34,9 @@ export const canActivateSupplierRoutes = () => {
       data: {
         message: 'Access to route denied',
       },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
     return false;
   } else {
@@ -49,6 +52,9 @@ export const canActivateCustomerRoutes = () => {
       data: {
         message: 'Access to route denied',
       },
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
     return false;
   } else {
