@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   categoryId!: number;
-  categoriesData: { [key: string]: any } = {};
+  categoriesData: any;
 
   constructor(
     private productService: ProductsService,
@@ -17,8 +17,17 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.categoriesData);
     this.getCategoriesData();
+
+    this.productService.productCategorySubject.subscribe((category:any) => {
+      // Get All Products then Filter them by Category
+      this.productService.getAllProducts().subscribe((res) => {
+        this.categoriesData = res;
+        // Pass Category Value to the Product Service for Filtering
+        this.categoriesData = this.productService.getFilteredProductsByCategory(category);
+        console.log(this.categoriesData);
+      });
+    });
   }
 
   getCategoriesData() {

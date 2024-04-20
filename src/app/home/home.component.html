@@ -34,12 +34,8 @@
         class="card-content"
         style="justify-content: space-between"
       >
-        <div class="product-title">{{ product.title }}</div>
-        <div class="product-price">
-          <p class="currency">
-            {{ product.price * 130 | currency : "Ksh " }}
-          </p>
-        </div>
+        {{ product.title }} <br />
+          <p class="currency">{{ product.price * 130 | currency : "Ksh " }}</p>
       </mat-card-content>
       <mat-card-actions class="card-actions">
         <mat-icon color="primary">add_shopping_cart</mat-icon>

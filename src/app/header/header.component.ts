@@ -9,7 +9,7 @@ import {
   trigger,
 } from '@angular/animations';
 
-/* Service import*/
+/* Service import */
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
 
@@ -36,15 +36,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HeaderComponent implements OnInit {
   id: any;
-  categories: any;
   searchText: any = '';
   cartItemCount: any;
   isSortMenuVisible: boolean = false;
   criteria: any[] = ['Price(Low to High)', 'Price(High to Low)'];
   displayUserDropDown: boolean = false;
-  displayProductDropDown: Boolean = false;
+  displayProductDropDown: boolean = false;
   isPriceFiltersVisible: boolean = false;
-  priceFilters = [100, 300];
+  priceFilters = [100, 500, 1000];
+
+  categories: any;
+  isCategoriesVisible: boolean = false;
 
   constructor(
     private productService: ProductsService,
@@ -57,8 +59,13 @@ export class HeaderComponent implements OnInit {
     this.cartService.cartSubject.subscribe((cartItems: any) => {
       this.cartItemCount = cartItems.length;
     });
+
+    this.productService.getAllProducts().subscribe((res) => {
+      this.categories = this.productService.getAllCategories();
+    })
   }
 
+  // Review
   productModal(): void {
     this.productService.getAllProductCategories().subscribe({
       next: (res) => {
@@ -72,6 +79,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  // Review
   getProductCategories() {
     this.productService.getAllProductCategories().subscribe({
       next: (res) => {
@@ -80,6 +88,8 @@ export class HeaderComponent implements OnInit {
     });
     return this.categories;
   }
+
+  
 
   // Open Sort Menu - Sets isSortMenuVisible to true
   showSortMenu() {
@@ -90,6 +100,20 @@ export class HeaderComponent implements OnInit {
   sortProducts(criterion: any) {
     this.productService.getSortCriterion(criterion);
   }
+
+
+  // Category Filters
+  showCategories(){
+    this.isPriceFiltersVisible = false;
+    this.isCategoriesVisible = !this.isCategoriesVisible;
+  }
+
+  // Pass the selected category value to the Product Service
+  filterProductsByCategory(category: any){
+    this.productService.getProductCategory(category);
+    this.isCategoriesVisible = false;
+  }
+
 
   searchProduct(searchText: any) {
     this.productService.getSearchString(searchText);
@@ -105,6 +129,7 @@ export class HeaderComponent implements OnInit {
 
   // Price Filters
   showPriceFilters() {
+    this.isCategoriesVisible = false;
     this.isPriceFiltersVisible = !this.isPriceFiltersVisible;
   }
 

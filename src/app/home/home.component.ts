@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
@@ -54,12 +54,6 @@ export class HomeComponent implements OnInit {
 
   navigateToProduct(id: any) {
     this.router.navigate(['product', id]);
-  }
-
-  getProductCategories() {
-    this.productService.getAllProductCategories().subscribe((data) => {
-      this.categories = data;
-    });
   }
 
   onSubmit(myForm: any) {

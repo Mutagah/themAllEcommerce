@@ -11,16 +11,18 @@ export class ProductsService {
   private categoryURL = 'https://fakestoreapi.com/products/category';
 
   products: any[] = [];
-  sortCriterion: any;
   filteredProducts: any;
+
+  sortCriterion: any;
   sortSubject = new Subject();
-  // Search Text Variable
+
+  productCategory: any;
+  productCategorySubject = new Subject();
+
   searchText: any = '';
-  // Sending the searchText value to the home component via the searchSubject - Inter Component Communication
   searchSubject = new Subject();
-  // Price Filter Variable
+
   priceFilter: any;
-  // Sending the priceFilter value to the home component via the priceFilterSubject - Inter Component Communication
   priceFilterSubject = new Subject();
 
   constructor(private httpClient: HttpClient) {}
@@ -40,10 +42,38 @@ export class ProductsService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
 
+
+  // All Product Categories
+  getAllCategories() {
+    let productCategory = this.products.flatMap((product: any) => {
+      return product.category;
+    });
+    let categories = Array.from(new Set(productCategory));
+    return categories;
+  }
+
+  // Get the selected category value from the Header Component
+  // Pass value to the productCategorySubject
+  getProductCategory(category: any) {
+    this.productCategory = category;
+    this.productCategorySubject.next(this.productCategory);
+  }
+
+  // Get Category Value from the Categories Component
+  // Displays Category Items
+  getFilteredProductsByCategory(category: any) {
+    return this.filteredProducts = this.products.filter((product: any) => {
+      return product.category.includes(category);
+    })
+  }
+
+
+  // Review
   getAllProductCategories(): Observable<any> {
     return this.httpClient.get<any>(this.categoriesURL);
   }
 
+  // Review
   getProductsByCategory(category: string): Observable<any> {
     let url = `${this.categoryURL}/${category}`;
     return this.httpClient.get<any>(url);
@@ -62,7 +92,7 @@ export class ProductsService {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
-  // Get Sort Criterion i.e Low to High or Vice Versa
+  // Get Sort Criterion i.e Low to High or Vice-versa
   getSortCriterion(criterion: any) {
     this.sortCriterion = criterion;
     this.sortSubject.next(this.sortCriterion);
@@ -105,11 +135,12 @@ export class ProductsService {
     this.priceFilterSubject.next(this.priceFilter);
   }
 
-  // Received From the Home Component
+  // Get Price Value from the Home Component
+  // Displays Filtered Products by Price
   getFilteredProductsByPrice(price: any) {
-    return (this.filteredProducts = this.products.filter((product: any) => {
+    return this.filteredProducts = this.products.filter((product: any) => {
       return product.price <= price;
-    }));
+    });
   }
 
   // Pass the searchText value from the header component to the service
