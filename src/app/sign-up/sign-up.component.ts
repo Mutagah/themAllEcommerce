@@ -1,5 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+/*Angular imports */
+import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+/*Service imports */
+import { UsersService } from '../users.service';
+
+/*Component imports */
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+
+/*Angular Material imports */
+import { MatStepper } from '@angular/material/stepper';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -9,6 +21,14 @@ export class SignUpComponent implements OnInit {
   emailUsernameDetails!: FormGroup;
   nameDetails!: FormGroup;
   passwordData!: FormGroup;
+  @ViewChild('stepper') stepper!: MatStepper;
+
+  constructor(
+    private userService: UsersService,
+    private snackbar: MatSnackBar,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
     this.emailUsernameDetails = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -55,6 +75,27 @@ export class SignUpComponent implements OnInit {
       },
       _v: 0,
     };
-    console.log(formData);
+    this.userService.createEmployee(formData).subscribe({
+      next: () => {
+        this.snackbar.openFromComponent(SnackBarComponent, {
+          duration: 3 * 1000,
+          data: {
+            message: `Account with the ${formData.name.firstname} ${formData.name.lastname} has been created successfully`,
+          },
+        });
+        setTimeout(() => {
+          this.stepper.reset();
+        }, 3000);
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.snackbar.openFromComponent(SnackBarComponent, {
+          duration: 3 * 1000,
+          data: {
+            message: `Account has not been created successfully`,
+          },
+        });
+      },
+    });
   }
 }

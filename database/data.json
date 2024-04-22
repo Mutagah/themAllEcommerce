@@ -555,6 +555,29 @@
       },
       "phone": "0727249154",
       "_v": 0
+    },
+    {
+      "id": "e18a",
+      "email": "kihahumutagah@gmail.com",
+      "username": "mutagah",
+      "name": {
+        "firstname": "Mutaga",
+        "lastname": "Kihahu"
+      },
+      "password": "123",
+      "role": "customer",
+      "phone": "",
+      "address": {
+        "geolocation": {
+          "lat": "",
+          "long": ""
+        },
+        "city": "",
+        "street": "",
+        "number": 0,
+        "zipcode": ""
+      },
+      "_v": 0
     }
   ]
 }
