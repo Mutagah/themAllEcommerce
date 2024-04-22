@@ -39,6 +39,7 @@
   margin: auto;
   padding: 5px;
 }
+
 .paired-input-container {
   display: flex;
   justify-content: space-between;
@@ -51,6 +52,7 @@
 .input {
   text-align: center;
 }
+
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -68,7 +70,7 @@ button {
   }
 }
 
-small {
+.hint {
   color: red;
   font-size: 12px;
 }

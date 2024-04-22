@@ -5,7 +5,7 @@
   <div class="child-container">
     <h2 class="main-header">themAll</h2>
     <h5 class="sub-header">Enter your details to create account with us</h5>
-    <mat-stepper linear>
+    <mat-stepper>
       <!--First step  -->
       <mat-step [stepControl]="emailUsernameDetails">
         <form class="login-form" [formGroup]="emailUsernameDetails">
@@ -13,24 +13,37 @@
 
           <div class="paired-input-container">
             <!--Email input field  -->
-            <mat-form-field appearance="outline" class="form-fields">
-              <mat-label>Email</mat-label>
-              <input
-                matInput
-                type="email"
-                formControlName="email"
-                class="input"
-                required
-              />
-              <mat-hint
+            <div class="email-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  type="email"
+                  formControlName="email"
+                  class="input"
+                  style="min-width: 100%"
+                  required
+                />
+              </mat-form-field>
+              <div
                 *ngIf="
-                  emailUsernameDetails.get('email')?.touched &&
+                  emailUsernameDetails.get('email')?.touched && !emailUsernameDetails.get('email')?.errors?.['email']&&
                   emailUsernameDetails.get('email')?.invalid
                 "
+                class="hint"
               >
-                <small> email is a required field </small>
-              </mat-hint>
-            </mat-form-field>
+                Email is a required field
+              </div>
+              <div
+                *ngIf="
+                  emailUsernameDetails.get('email')?.touched && emailUsernameDetails.get('email')?.errors?.['email'] &&
+                  emailUsernameDetails.get('email')?.invalid
+                "
+                class="hint"
+              >
+                Email is invalid
+              </div>
+            </div>
 
             <!-- Username input field -->
             <mat-form-field appearance="outline" class="form-fields">
@@ -47,8 +60,9 @@
                   emailUsernameDetails.get('username')?.touched &&
                   emailUsernameDetails.get('username')?.invalid
                 "
+                class="hint"
               >
-                <small> username is a required field </small>
+                Username is a required field
               </mat-hint>
             </mat-form-field>
           </div>
@@ -68,45 +82,63 @@
         <form class="login-form" [formGroup]="nameDetails">
           <ng-template matStepLabel> Enter name </ng-template>
           <div class="paired-input-container">
-            <!--Email input field  -->
-            <mat-form-field appearance="outline" class="form-fields">
-              <mat-label>First name</mat-label>
-              <input
-                matInput
-                type="text"
-                class="input"
-                formControlName="firstName"
-                required
-              />
-              <mat-hint
+            <!--First name input field  -->
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>First name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="input"
+                  formControlName="firstName"
+                  required
+                />
+              </mat-form-field>
+              <div
                 *ngIf="
                   nameDetails.get('firstName')?.touched &&
-                  nameDetails.get('firstName')?.invalid
+                  nameDetails.get('firstName')?.invalid && !nameDetails.get('firstName')?.errors?.['minlength']
                 "
+                class="hint"
               >
-                <small> first name is a required field </small>
-              </mat-hint>
-            </mat-form-field>
+                First name is a required field
+              </div>
+              <div
+                class="hint"
+                *ngIf="nameDetails.get('firstName')?.touched && nameDetails.get('firstName')?.errors?.['minlength']"
+              >
+                Name must be at least 3 characters
+              </div>
+            </div>
 
-            <!-- Password input field -->
-            <mat-form-field appearance="outline" class="form-fields">
-              <mat-label>Last name</mat-label>
-              <input
-                matInput
-                type="text"
-                class="input"
-                formControlName="lastName"
-                required
-              />
-              <mat-hint
+            <!-- Last name input field -->
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="input"
+                  formControlName="lastName"
+                  required
+                />
+              </mat-form-field>
+              <div
                 *ngIf="
                   nameDetails.get('lastName')?.touched &&
-                  nameDetails.get('lastName')?.invalid
-                "
+                  nameDetails.get('lastName')?.invalid && !nameDetails.get('lastName')?.errors?.['minlength']"
+                class="hint"
               >
-                <small> last name is a required field </small>
-              </mat-hint>
-            </mat-form-field>
+                Last name is a required field
+              </div>
+              <div
+                *ngIf="
+                  nameDetails.get('lastName')?.touched && nameDetails.get('lastName')?.invalid &&  nameDetails.get('lastName')?.errors?.['minlength']"
+                class="hint"
+              >
+                Name must at least 3 characters long
+              </div>
+            </div>
           </div>
 
           <p>
@@ -127,7 +159,7 @@
         <form class="login-form" [formGroup]="passwordData">
           <ng-template matStepLabel> Enter password </ng-template>
           <div class="paired-input-container">
-            <!--Email input field  -->
+            <!--Password input field  -->
             <mat-form-field appearance="outline" class="form-fields">
               <mat-label>Password</mat-label>
               <input
@@ -142,30 +174,43 @@
                   passwordData.get('password')?.touched &&
                   passwordData.get('password')?.invalid
                 "
+                class="hint"
               >
-                <small> password is a required field </small>
+                Password is a required field
               </mat-hint>
             </mat-form-field>
 
-            <!-- Password input field -->
-            <mat-form-field appearance="outline" class="form-fields">
-              <mat-label>Confirm Password</mat-label>
-              <input
-                matInput
-                type="password"
-                class="input"
-                formControlName="passwordConfirmation"
-                required
-              />
-              <mat-hint
+            <!-- Password_confirmation input field -->
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  class="input"
+                  formControlName="passwordConfirmation"
+                  required
+                />
+              </mat-form-field>
+              <div
                 *ngIf="
-                  passwordData.get('password')?.touched &&
-                  passwordData.get('password')?.invalid
+                  passwordData.get('passwordConfirmation')?.touched &&
+                  passwordData.get('passwordConfirmation')?.invalid
+                "
+                class="hint"
+              >
+                Password match is a required field
+              </div>
+              <div
+                class="hint"
+                *ngIf="
+                  passwordData.get('password')?.value !==
+                  passwordData.get('passwordConfirmation')?.value
                 "
               >
-                <small> password does not match </small>
-              </mat-hint>
-            </mat-form-field>
+                Password does not match
+              </div>
+            </div>
           </div>
 
           <p>
@@ -176,7 +221,7 @@
           </p>
           <div class="button-container">
             <button mat-button matStepperPrevious>Back</button>
-            <button type="submit">Sign Up</button>
+            <button (click)="createAccount()">Sign Up</button>
           </div>
         </form>
       </mat-step>

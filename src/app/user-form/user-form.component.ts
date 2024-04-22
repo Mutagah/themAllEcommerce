@@ -8,7 +8,7 @@ import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 /*Service import */
 import { UsersService } from '../users.service';
 
-/* Angular imports*/
+/* Angular Material imports*/
 import { MatStepper } from '@angular/material/stepper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
