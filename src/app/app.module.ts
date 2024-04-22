@@ -32,6 +32,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SearchPipe } from './search.pipe';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SearchPipe } from './search.pipe';
     PriceDetailsComponent,
     CheckoutComponent,
     SearchPipe,
+    AnalyticsComponent,
   ],
   imports: [
     BrowserModule,

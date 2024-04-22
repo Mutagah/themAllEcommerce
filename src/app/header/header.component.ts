@@ -54,15 +54,16 @@ export class HeaderComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  //Displaying the Cart Item Count on the Navbar
   ngOnInit(): void {
+    // Displaying the Cart Item Count on the Navbar
     this.cartService.cartSubject.subscribe((cartItems: any) => {
       this.cartItemCount = cartItems.length;
     });
 
+    // Displaying the Various Categories on the Side Navigation
     this.productService.getAllProducts().subscribe((res) => {
       this.categories = this.productService.getAllCategories();
-    })
+    });
   }
 
   // Review
@@ -89,8 +90,6 @@ export class HeaderComponent implements OnInit {
     return this.categories;
   }
 
-  
-
   // Open Sort Menu - Sets isSortMenuVisible to true
   showSortMenu() {
     this.isSortMenuVisible = !this.isSortMenuVisible;
@@ -101,19 +100,17 @@ export class HeaderComponent implements OnInit {
     this.productService.getSortCriterion(criterion);
   }
 
-
   // Category Filters
-  showCategories(){
+  showCategories() {
     this.isPriceFiltersVisible = false;
     this.isCategoriesVisible = !this.isCategoriesVisible;
   }
 
   // Pass the selected category value to the Product Service
-  filterProductsByCategory(category: any){
+  filterProductsByCategory(category: any) {
     this.productService.getProductCategory(category);
     this.isCategoriesVisible = false;
   }
-
 
   searchProduct(searchText: any) {
     this.productService.getSearchString(searchText);

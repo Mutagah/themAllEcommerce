@@ -43,11 +43,13 @@ export class ProductsService {
   }
 
 
-  // All Product Categories
+  // Get All Product Categories from the products using a flatMap 
+  // Flattening Nested Observables
   getAllCategories() {
     let productCategory = this.products.flatMap((product: any) => {
       return product.category;
     });
+    // Return an Array of Categories
     let categories = Array.from(new Set(productCategory));
     return categories;
   }

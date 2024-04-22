@@ -19,12 +19,18 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.getCategoriesData();
 
-    this.productService.productCategorySubject.subscribe((category:any) => {
+    // Sort - getSortedProducts
+    this.productService.sortSubject.subscribe((sortCriterion: any) => {
+      this.categoriesData = this.productService.sortProducts(sortCriterion);
+    });
+
+    this.productService.productCategorySubject.subscribe((category: any) => {
       // Get All Products then Filter them by Category
       this.productService.getAllProducts().subscribe((res) => {
         this.categoriesData = res;
         // Pass Category Value to the Product Service for Filtering
-        this.categoriesData = this.productService.getFilteredProductsByCategory(category);
+        this.categoriesData =
+          this.productService.getFilteredProductsByCategory(category);
         console.log(this.categoriesData);
       });
     });
