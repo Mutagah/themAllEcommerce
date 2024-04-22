@@ -51,7 +51,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu'
+import {MatMenuModule} from '@angular/material/menu';
+import { UsersAnalysisComponent } from './users-analysis/users-analysis.component'
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {MatMenuModule} from '@angular/material/menu'
     DeleteDialogComponent,
     LoginComponent,
     SignUpComponent,
+    UsersAnalysisComponent,
   ],
   imports: [
     BrowserModule,

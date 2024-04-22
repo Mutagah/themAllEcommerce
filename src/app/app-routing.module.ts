@@ -11,6 +11,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { UsersAnalysisComponent } from './users-analysis/users-analysis.component';
 import {
   canActivateAdminRoutes,
   canActivateSupplierRoutes,
@@ -60,6 +61,12 @@ const routes: Routes = [
   {
     path: 'edituser/:id',
     component: UserFormComponent,
+    data: { requiredRoles: 'admin' },
+    canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
+  },
+  {
+    path: 'user-analysis',
+    component: UsersAnalysisComponent,
     data: { requiredRoles: 'admin' },
     canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
   },

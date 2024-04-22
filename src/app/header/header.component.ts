@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit {
   sidebarAccountDropDown: boolean = false;
   userLoggedIn: boolean = false;
   disableMatBadge: boolean = false;
+  analyticsDropDown: boolean = false;
   userRole!: any;
   constructor(
     private productService: ProductsService,
@@ -148,5 +149,9 @@ export class HeaderComponent implements OnInit {
 
   toggleSidebarAccountDropdown() {
     this.sidebarAccountDropDown = !this.sidebarAccountDropDown;
+  }
+
+  toggleAnalyticsDropDown() {
+    this.analyticsDropDown = !this.analyticsDropDown;
   }
 }
