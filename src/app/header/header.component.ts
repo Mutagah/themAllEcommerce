@@ -55,17 +55,24 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCartItemCount();
+    this.getProductCategories();
+  }
+
+  getCartItemCount(){
     // Displaying the Cart Item Count on the Navbar
     this.cartService.cartSubject.subscribe((cartItems: any) => {
       this.cartItemCount = cartItems.length;
     });
+  };
 
+  getCategories(){
     // Displaying the Various Categories on the Side Navigation
     this.productService.getAllProducts().subscribe((res) => {
       this.categories = this.productService.getAllCategories();
     });
-  }
 
+  }
   // Review
   productModal(): void {
     this.productService.getAllProductCategories().subscribe({

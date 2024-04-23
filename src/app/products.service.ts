@@ -42,7 +42,6 @@ export class ProductsService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
 
-
   // Get All Product Categories from the products using a flatMap 
   // Flattening Nested Observables
   getAllCategories() {
@@ -69,16 +68,8 @@ export class ProductsService {
     })
   }
 
-
-  // Review
   getAllProductCategories(): Observable<any> {
     return this.httpClient.get<any>(this.categoriesURL);
-  }
-
-  // Review
-  getProductsByCategory(category: string): Observable<any> {
-    let url = `${this.categoryURL}/${category}`;
-    return this.httpClient.get<any>(url);
   }
 
   createProduct(product: any, category: string): Observable<Object> {
@@ -149,5 +140,10 @@ export class ProductsService {
   getSearchString(searchText: any) {
     this.searchText = searchText;
     this.searchSubject.next(this.searchText);
+  }
+
+  // Analytics Component
+  showData(){
+    return this.httpClient.get(this.baseURL);
   }
 }

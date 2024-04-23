@@ -1,4 +1,55 @@
-.analytics-container{
-    width: 500px;
-    height: 50vh;
+.analytics-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .top-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    .line-chart-container {
+      background-color: white;
+      color: black;
+      width: 45%;
+      box-shadow: 0 10px 8px rgba(0, 0, 0, 0.51);
+    }
+
+    .bar-chart-container {
+      background-color: white;
+      color: black;
+      width: 45%;
+      box-shadow: 0 10px 8px rgba(0, 0, 0, 0.51);
+    }
+  }
+
+  .bottom-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+    .pie-chart-container {
+      background-color: white;
+      color: black;
+      width: 45%;
+      box-shadow: 0 10px 8px rgba(0, 0, 0, 0.51);
+    }
+   
+    .doughnut-chart-container {
+      background-color: white;
+      color: black;
+      width: 45%;
+      box-shadow: 0 10px 8px rgba(0, 0, 0, 0.51);
+    }
+  }
+}
+
+.header-content{
+  display: flex;
+  flex-direction: row;
 }

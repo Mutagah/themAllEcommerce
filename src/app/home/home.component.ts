@@ -24,11 +24,26 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.getSortedProducts();
+    this.getFilteredProducts();
+    this.getSearchedProduct();
+  }
+
+  getAllProducts() {
+    this.productService.getAllProducts().subscribe((products) => {
+      this.productData = products;
+      console.log(this.productData);
+    });
+  }
+
+  getSortedProducts(){
     // Sort - getSortedProducts
     this.productService.sortSubject.subscribe((sortCriterion: any) => {
       this.productData = this.productService.sortProducts(sortCriterion);
     });
+  }
 
+  getFilteredProducts(){
     // Filter by Price
     // Get the priceFilter Value from the Product Service (Passed From the Header Component)
     this.productService.priceFilterSubject.subscribe((price: any) => {
@@ -38,17 +53,12 @@ export class HomeComponent implements OnInit {
         this.productData = this.productService.getFilteredProductsByPrice(price);
       });
     });
+  }
 
+  getSearchedProduct(){
     // Search Text
     this.productService.searchSubject.subscribe((searchString: any) => {
       this.searchText = searchString;
-    });
-  }
-
-  getAllProducts() {
-    this.productService.getAllProducts().subscribe((products) => {
-      this.productData = products;
-      console.log(this.productData);
     });
   }
 
