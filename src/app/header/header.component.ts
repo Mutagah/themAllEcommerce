@@ -66,7 +66,10 @@ export class HeaderComponent implements OnInit {
         this.authService.logout();
       }
     });
-    if (window.localStorage.getItem('role') === 'admin') {
+    if (
+      window.localStorage.getItem('role') === 'admin' ||
+      window.localStorage.getItem('role') === null
+    ) {
       this.disableMatBadge = true;
     }
     if (window.localStorage.getItem('token') !== null) {
