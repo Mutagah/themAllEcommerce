@@ -30,15 +30,24 @@ export class AuthService {
               (user: any) =>
                 user.email === loginId && user.password === password
             );
-            this.isLogged.next(true);
+            if (this.user === undefined) {
+              observer.error();
+            } else {
+              this.isLogged.next(true);
+              observer.next(this.user);
+            }
           } else {
             this.user = res.find(
               (user: any) =>
                 user.username === loginId && user.password === password
             );
-            this.isLogged.next(true);
+            if (this.user === undefined) {
+              observer.error();
+            } else {
+              this.isLogged.next(true);
+              observer.next(this.user);
+            }
           }
-          observer.next(this.user);
           observer.complete();
         },
         error: (err) => observer.error(err),

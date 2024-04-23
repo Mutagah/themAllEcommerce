@@ -14,8 +14,8 @@ import { UsersService } from '../users.service';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 /*Angular imports */
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -35,7 +35,6 @@ export class DeleteDialogComponent {
     private snackbar: MatSnackBar
   ) {
     this.userDetails = data;
-    console.log(this.userDetails);
   }
 
   titleCase(input: string): string {
