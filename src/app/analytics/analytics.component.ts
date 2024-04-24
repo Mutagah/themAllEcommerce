@@ -19,29 +19,42 @@ export class AnalyticsComponent implements OnInit {
     this.userService.getAllUsers().subscribe({
       next: (users: any) => {
         let cityOccurence: any = {};
+        let userRolesTrack: any = {};
+        let totalUsers = users.length;
         users.forEach((user: any) => {
           if (cityOccurence[user.address.city]) {
             cityOccurence[user.address.city]++;
           } else {
             cityOccurence[user.address.city] = 1;
           }
+
+          if (userRolesTrack[user.role]) {
+            userRolesTrack[user.role]++;
+          } else {
+            userRolesTrack[user.role] = 1;
+          }
         });
-
         let percentageObjValues: any = {};
-
-        let totalSum: any = Object.values(cityOccurence).reduce(
-          (previousValue, currentValue) =>
-            (previousValue as number) + (currentValue as number),
-          0
-        );
 
         for (const key in cityOccurence) {
           if (Object.prototype.hasOwnProperty.call(cityOccurence, key)) {
-            percentageObjValues[key] = (cityOccurence[key] / totalSum) * 100;
+            percentageObjValues[key] = (cityOccurence[key] / totalUsers) * 100;
           }
         }
-        this.renderChart('bar-graph', 'bar', percentageObjValues);
+        this.renderChart(
+          'bar-graph',
+          'bar',
+          percentageObjValues,
+          'People % in cities'
+        );
+        this.renderChart(
+          'pie-chart',
+          'pie',
+          userRolesTrack,
+          'Company role distribution'
+        );
       },
+      error: (error) => console.log(error),
     });
 
     /*
@@ -60,7 +73,7 @@ export class AnalyticsComponent implements OnInit {
   line chart >  
   pie chart >
   */
-  renderChart(id: any, type: any, data: any) {
+  renderChart(id: any, type: any, data: any, label: any) {
     new Chart(id, {
       type: type,
       data: {
@@ -68,13 +81,13 @@ export class AnalyticsComponent implements OnInit {
         labels: Object.keys(data),
         datasets: [
           {
-            label: 'People % in cities',
+            label: label,
             /*
             - Data is whatever is rendered along the y axis
             - The length of the data array should be equal to the length of the labels array
             */
             data: Object.values(data),
-            borderWidth: 1,
+            border: 1,
           },
         ],
       },

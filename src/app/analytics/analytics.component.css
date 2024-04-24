@@ -1,7 +1,12 @@
-.chart-container {
-  height: 40%;
-  width: 40%;
+.graphs-container {
   display: flex;
+  height: 90vh;
+}
+
+.chart-container {
+  height: 50%;
+  width: 50%;
   flex-wrap: wrap;
-  box-shadow:  15px 15px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+  margin: 10px;
 }
