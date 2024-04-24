@@ -46,7 +46,7 @@ export const canActivateSupplierRoutes = () => {
 export const canActivateCustomerRoutes = () => {
   const router = inject(Router);
   const snackbar = inject(MatSnackBar);
-  if (window.localStorage.getItem('role') === 'supplier') {
+  if (window.localStorage.getItem('role') === 'customer') {
     router.navigate(['/home']);
     snackbar.openFromComponent(SnackBarComponent, {
       data: {

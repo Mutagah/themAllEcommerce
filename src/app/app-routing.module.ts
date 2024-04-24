@@ -61,13 +61,13 @@ const routes: Routes = [
   {
     path: 'edituser/:id',
     component: UserFormComponent,
-    data: { requiredRoles: 'admin' },
+    data: { requiredRoles: ['admin'] },
     canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
   },
   {
     path: 'user-analysis',
     component: UsersAnalysisComponent,
-    data: { requiredRoles: 'admin' },
+    data: { requiredRoles: ['admin'] },
     canActivate: [canActivateCustomerRoutes, canActivateSupplierRoutes],
   },
   //accessible by all everyone
