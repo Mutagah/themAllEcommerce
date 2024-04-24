@@ -26,7 +26,7 @@ export class AnalyticsComponent implements OnInit {
             cityOccurence[user.address.city] = 1;
           }
         });
-        console.log(cityOccurence);
+
         let percentageObjValues: any = {};
 
         let totalSum: any = Object.values(cityOccurence).reduce(
@@ -40,7 +40,7 @@ export class AnalyticsComponent implements OnInit {
             percentageObjValues[key] = (cityOccurence[key] / totalSum) * 100;
           }
         }
-        this.renderChart(percentageObjValues);
+        this.renderChart('bar-graph', 'bar', percentageObjValues);
       },
     });
 
@@ -60,9 +60,9 @@ export class AnalyticsComponent implements OnInit {
   line chart >  
   pie chart >
   */
-  renderChart(data: any) {
-    new Chart('myChart', {
-      type: 'bar',
+  renderChart(id: any, type: any, data: any) {
+    new Chart(id, {
+      type: type,
       data: {
         /* labels is data along the x axis*/
         labels: Object.keys(data),
