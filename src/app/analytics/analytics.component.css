@@ -1,0 +1,7 @@
+.chart-container {
+  height: 40%;
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow:  15px 15px 15px rgba(0, 0, 0, 0.5);
+}
