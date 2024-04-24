@@ -308,7 +308,7 @@
           "lat": "-37.3159",
           "long": "81.1496"
         },
-        "city": "kilcoole",
+        "city": "Nairobi",
         "street": "new road",
         "number": 7682,
         "zipcode": "12926-3874"
@@ -331,7 +331,7 @@
           "lat": "-37.3159",
           "long": "81.1496"
         },
-        "city": "kilcoole",
+        "city": "Mombasa",
         "street": "Lovers Ln",
         "number": 7267,
         "zipcode": "12926-3874"
@@ -354,7 +354,7 @@
           "lat": "40.3467",
           "long": "-30.1310"
         },
-        "city": "Cullman",
+        "city": "Nakuru",
         "street": "Frances Ct",
         "number": 86,
         "zipcode": "29567-1452"
@@ -378,7 +378,7 @@
           "lat": "50.3467",
           "long": "-20.1310"
         },
-        "city": "San Antonio",
+        "city": "Kisumu",
         "street": "Hunters Creek Dr",
         "number": 6454,
         "zipcode": "98234-1734"
@@ -401,7 +401,7 @@
           "lat": "40.3467",
           "long": "-40.1310"
         },
-        "city": "san Antonio",
+        "city": "Eldoret",
         "street": "adams St",
         "number": 245,
         "zipcode": "80796-1234"
@@ -424,7 +424,7 @@
           "lat": "20.1677",
           "long": "-10.6789"
         },
-        "city": "el paso",
+        "city": "Nairobi",
         "street": "prospect st",
         "number": 124,
         "zipcode": "12346-0456"
@@ -447,7 +447,7 @@
           "lat": "10.3456",
           "long": "20.6419"
         },
-        "city": "fresno",
+        "city": "Nairobi",
         "street": "saddle st",
         "number": 1342,
         "zipcode": "96378-0245"
@@ -470,7 +470,7 @@
           "lat": "50.3456",
           "long": "10.6419"
         },
-        "city": "mesa",
+        "city": "Nairobi",
         "street": "vally view ln",
         "number": 1342,
         "zipcode": "96378-0245"
@@ -493,7 +493,7 @@
           "lat": "40.12456",
           "long": "20.5419"
         },
-        "city": "miami",
+        "city": "Mombasa",
         "street": "avondale ave",
         "number": 345,
         "zipcode": "96378-0245"
@@ -516,7 +516,7 @@
           "lat": "30.24788",
           "long": "-20.545419"
         },
-        "city": "fort wayne",
+        "city": "Mombasa",
         "street": "oak lawn ave",
         "number": 526,
         "zipcode": "10256-4532"
@@ -572,8 +572,8 @@
           "lat": "",
           "long": ""
         },
-        "city": "",
-        "street": "",
+        "city": "Nakuru",
+        "street": "milimani drive",
         "number": 0,
         "zipcode": ""
       },
