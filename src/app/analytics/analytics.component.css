@@ -1,12 +1,29 @@
 .graphs-container {
   display: flex;
-  height: 90vh;
+  height: 45vh;
 }
 
 .chart-container {
-  height: 50%;
+  height: 100%;
   width: 50%;
   flex-wrap: wrap;
   box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
   margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.line-parent-container {
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+}
+
+.line-container {
+  width: 50%;
+  height: 100%;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 30px;
 }

@@ -53,26 +53,17 @@ export class AnalyticsComponent implements OnInit {
           userRolesTrack,
           'Company role distribution'
         );
+        this.renderChart(
+          'line-chart',
+          'line',
+          cityOccurence,
+          'People in cities'
+        );
       },
       error: (error) => console.log(error),
     });
-
-    /*
-   -Specify the type of chart
-
-   -Specify the labels >> first case would me the city array in my json.
-
-   -Specify the data to be rendered > Get the number of entries that are equal to a certain city then populate your data array.
-
-   For all bar graphs they should all begin at zero 
-   
-    */
   }
-  /*
-  bar chart > Number of users percentage wise who are from the different cities
-  line chart >  
-  pie chart >
-  */
+
   renderChart(id: any, type: any, data: any, label: any) {
     new Chart(id, {
       type: type,
