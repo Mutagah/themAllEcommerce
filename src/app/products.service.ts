@@ -8,7 +8,6 @@ import { Observable, Subject, map } from 'rxjs';
 export class ProductsService {
   private baseURL = 'http://localhost:4000/products';
   private categoriesURL = 'https://fakestoreapi.com/products/categories';
-  private categoryURL = 'https://fakestoreapi.com/products/category';
 
   products: any[] = [];
   filteredProducts: any;
@@ -42,6 +41,19 @@ export class ProductsService {
     return this.httpClient.get(`${this.baseURL}/${id}`);
   }
 
+  createProduct(product: any, category: string): Observable<Object> {
+    product.category = category;
+    return this.httpClient.post(`${this.baseURL}`, product);
+  }
+
+  updateProduct(id: any, product: any) {
+    return this.httpClient.patch(`${this.baseURL}/${id}`, product);
+  }
+
+  deleteProduct(id: any): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
   // Get All Product Categories from the products using a flatMap 
   // Flattening Nested Observables
   getAllCategories() {
@@ -70,19 +82,6 @@ export class ProductsService {
 
   getAllProductCategories(): Observable<any> {
     return this.httpClient.get<any>(this.categoriesURL);
-  }
-
-  createProduct(product: any, category: string): Observable<Object> {
-    product.category = category;
-    return this.httpClient.post(`${this.baseURL}`, product);
-  }
-
-  updateProduct(id: any, product: any) {
-    return this.httpClient.patch(`${this.baseURL}/${id}`, product);
-  }
-
-  deleteProduct(id: any): Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
   // Get Sort Criterion i.e Low to High or Vice-versa

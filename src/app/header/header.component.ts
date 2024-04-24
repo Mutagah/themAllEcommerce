@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
   displayProductDropDown: boolean = false;
   isPriceFiltersVisible: boolean = false;
   priceFilters = [100, 500, 1000];
-
   categories: any;
   isCategoriesVisible: boolean = false;
 
@@ -71,8 +70,8 @@ export class HeaderComponent implements OnInit {
     this.productService.getAllProducts().subscribe((res) => {
       this.categories = this.productService.getAllCategories();
     });
-
   }
+
   // Review
   productModal(): void {
     this.productService.getAllProductCategories().subscribe({

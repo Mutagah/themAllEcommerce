@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { ProductsService } from '../products.service';
-import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-analytics',
@@ -24,14 +23,33 @@ export class AnalyticsComponent implements OnInit {
       if (this.productData != null) {
         for (let i = 0; i < this.productData.length; i++) {
           this.productPrice.push(this.productData[i].price);
-          this.productCategory.push(this.productData[i].category);
           this.productRate.push(this.productData[i].rating.rate);
           this.productCount.push(this.productData[i].rating.count);
         }
-        this.showChartData('line', 'lineChart', this.productRate, this.productPrice);
-        this.showChartData('bar', 'barChart', this.productCount, this.productPrice);
-        this.showChartData('pie', 'pieChart', this.productRate, this.productCount);
-        this.showChartData('doughnut', 'doughnutChart', this.productRate, this.productPrice);
+        this.showChartData(
+          'line',
+          'lineChart',
+          this.productRate,
+          this.productPrice
+        );
+        this.showChartData(
+          'bar',
+          'barChart',
+          this.productCount,
+          this.productPrice
+        );
+        this.showChartData(
+          'pie',
+          'pieChart',
+          this.productRate,
+          this.productCount
+        );
+        this.showChartData(
+          'doughnut',
+          'doughnutChart',
+          this.productRate,
+          this.productPrice
+        );
       }
     });
   }
@@ -45,8 +63,8 @@ export class AnalyticsComponent implements OnInit {
           {
             label: '# of Votes',
             data: data,
-            borderColor: ['rgba(255, 99, 132, 1)'],
-            borderWidth: 2,
+            backgroundColor: ['red', 'green', 'green', 'orange', 'orange', 'black', 'grey','purple', 'pink', 'brown', 'blue', 'cyan', 'peach', 'turquoise', 'magenta', 'green', 'teal', 'maroon', 'orange', 'coral', 'slate', 'mint', 'yellow'],
+            borderWidth: 1,
           },
         ],
       },
@@ -59,5 +77,4 @@ export class AnalyticsComponent implements OnInit {
       },
     });
   }
-  
 }

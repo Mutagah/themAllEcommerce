@@ -18,17 +18,10 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sortProducts();
     this.getCategories();
+    this.sortProducts();
     this.getSearchText();
     this.getFilters();
-  }
-
-  sortProducts() {
-    // Sort - getSortedProducts
-    this.productService.sortSubject.subscribe((sortCriterion: any) => {
-      this.categoriesData = this.productService.sortProducts(sortCriterion);
-    });
   }
 
   getCategories() {
@@ -41,6 +34,13 @@ export class CategoriesComponent implements OnInit {
           this.productService.getFilteredProductsByCategory(category);
         console.log(this.categoriesData);
       });
+    });
+  }
+
+  sortProducts() {
+    // Sort - getSortedProducts
+    this.productService.sortSubject.subscribe((sortCriterion: any) => {
+      this.categoriesData = this.productService.sortProducts(sortCriterion);
     });
   }
 
