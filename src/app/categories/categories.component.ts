@@ -18,13 +18,13 @@ export class CategoriesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getProductCategories();
     this.sortProducts();
     this.getSearchText();
     this.getFilters();
   }
 
-  getCategories() {
+  getProductCategories() {
     this.productService.productCategorySubject.subscribe((category: any) => {
       // Get All Products then Filter them by Category
       this.productService.getAllProducts().subscribe((res) => {

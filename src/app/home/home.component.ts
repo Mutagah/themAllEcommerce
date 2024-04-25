@@ -12,10 +12,8 @@ export class HomeComponent implements OnInit {
   productData: any;
   categories!: string;
   id: any;
-  // Value from the Service
   searchText: any;
-
-  limitControl: any; // Initialize form input with a default limit value
+  limitControl: any;
 
   constructor(
     private productService: ProductsService,
@@ -36,26 +34,25 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getSortedProducts(){
-    // Sort - getSortedProducts
+  getSortedProducts() {
     this.productService.sortSubject.subscribe((sortCriterion: any) => {
       this.productData = this.productService.sortProducts(sortCriterion);
     });
   }
 
-  getFilteredProducts(){
-    // Filter by Price
+  getFilteredProducts() {
     // Get the priceFilter Value from the Product Service (Passed From the Header Component)
     this.productService.priceFilterSubject.subscribe((price: any) => {
       this.productService.getAllProducts().subscribe((res) => {
         this.productData = res;
         // Pass this value i.e. Price, to the getFilteredProductsByPrice() method in the Product Service to return an array of the filteredProducts in the getAllProducts() method
-        this.productData = this.productService.getFilteredProductsByPrice(price);
+        this.productData =
+          this.productService.getFilteredProductsByPrice(price);
       });
     });
   }
 
-  getSearchedProduct(){
+  getSearchedProduct() {
     // Search Text
     this.productService.searchSubject.subscribe((searchString: any) => {
       this.searchText = searchString;

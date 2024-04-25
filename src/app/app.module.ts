@@ -18,6 +18,8 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { PriceDetailsComponent } from './price-details/price-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { SearchPipe } from './search.pipe';
 
 /*Angular imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -31,9 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { SearchPipe } from './search.pipe';
-import { AnalyticsComponent } from './analytics/analytics.component';
-
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -70,6 +70,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

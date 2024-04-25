@@ -2,16 +2,17 @@
   <div class="trending-movies">
     <div class="top">
       <h4>All Products</h4>
-      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label class="limit">Product Limit</mat-label>
         <input
           matInput
-          placeholder="Set Product Limit"
           type="number"
           [(ngModel)]="limitControl"
           name="limitControl"
+          placeholder="Set Product Limit"
           (input)="onInputChange()"
-        />
-      </form>
+        >
+      </mat-form-field>
     </div>
   </div>
 

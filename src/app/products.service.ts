@@ -65,7 +65,7 @@ export class ProductsService {
     return categories;
   }
 
-  // Get the selected category value from the Header Component
+  // Get the selected product category value from the Header Component
   // Pass value to the productCategorySubject
   getProductCategory(category: any) {
     this.productCategory = category;
