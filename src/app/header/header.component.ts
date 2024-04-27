@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
     this.productService.getAllProductCategories().subscribe({
       next: (res) => {
         const dialogRef = this.dialog.open(CreateProductComponent, {
-          width: '500px',
+          // width: '500px',
           data: {
             categories: res,
           },

@@ -52,8 +52,8 @@ export class CreateProductComponent implements OnInit {
         description: this.productData.description,
         category: this.productData.category,
         image: this.productData.image,
-        rate: this.productData.rate,
-        count: this.productData.count,
+        rate: this.productData.rating.rate,
+        count: this.productData.rating.count,
       });
     }
   }

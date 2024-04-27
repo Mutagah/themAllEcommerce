@@ -1,4 +1,28 @@
-input.ng-invalid.ng-touched {
+.title{
+  h1{
+    text-align: center;
+  }
+}
+.content{
+  padding-top: 5px;
+}
+
+.row{
+  display: flex;
+  gap: 10px;
+
+  mat-form-field{
+    width: 100%;
+  }
+}
+
+.action-buttons{
+  justify-content: space-around;
+  margin: 10px;
+  margin-top: 0;
+}
+
+/* input.ng-invalid.ng-touched {
   border: 2px solid red;
 }
 
@@ -7,7 +31,7 @@ small {
 }
 
 .small {
-  font-size: 12px; /* Reduce font size of small error messages */
+  font-size: 12px;
 }
 
 h2 {
@@ -25,8 +49,8 @@ h2 {
 }
 
 .form-container {
-  max-width: 380px; /* Reduce max-width of the form container */
-  margin: 0 auto; /* Center the form horizontally */
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .form-group {
@@ -35,8 +59,8 @@ h2 {
 
 label {
   width: 100%;
-  padding: 5px 0; /* Reduce padding of labels */
-  text-align: center; /* Center align the labels */
+  padding: 5px 0;
+  text-align: center;
 }
 
 .input-error {
@@ -52,8 +76,8 @@ input {
 input,
 select {
   width: 100%;
-  padding: 7px; /* Adjust padding of inputs */
-  box-sizing: border-box; /* Include padding in input width */
+  padding: 7px;
+  box-sizing: border-box;
   border-radius: 6px;
 }
 
@@ -62,4 +86,4 @@ select {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
-}
+} */

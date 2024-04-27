@@ -1,4 +1,131 @@
-<div class="modal-body">
+<div mat-dialog-title class="title">
+  <h1>Create Product</h1>
+</div>
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Title</mat-label>
+        <input 
+          matInput 
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          formControlName="title"
+          placeholder="Enter Product Title"
+        />
+        <mat-hint *ngIf="!myForm.get('title')?.valid && myForm.get('title')?.touched">Product Title is Required.</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Product Price</mat-label>
+        <input 
+          matInput 
+          type="number"
+          class="form-control"
+          id="price"
+          required
+          formControlName="price"
+          placeholder="Eg. 20"
+        />
+        <mat-hint *ngIf="!myForm.get('price')?.valid && myForm.get('price')?.touched">Product Price is Required.</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Category</mat-label>
+        <mat-select class="form-control" id="category" formControlName="category" required placeholder="Select Category">
+          <mat-option *ngFor="let category of data.categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+        <mat-hint *ngIf="!myForm.get('category')?.valid && myForm.get('category')?.touched">Product Category is Required.</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Product Image src</mat-label>
+        <input 
+          matInput 
+          type="text"
+          class="form-control"
+          id="image"
+          required
+          formControlName="image" 
+          placeholder="Paste Image src" 
+        />
+        <mat-hint *ngIf="!myForm.get('image')?.valid && myForm.get('image')?.touched">Product Image is Required.</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Rating</mat-label>
+        <input 
+          matInput 
+          type="number"
+          class="form-control"
+          id="rate"
+          required
+          formControlName="rate" 
+          placeholder="Eg. 3" 
+        />
+        <mat-hint *ngIf="!productData?.rating?.rate?.valid && productData?.rating?.rate.touched">Product Rating is Required.</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Product Count</mat-label>
+        <input 
+          matInput 
+          type="number"
+          class="form-control"
+          id="count"
+          required
+          formControlName="count" 
+          placeholder="Eg. 5" 
+        />
+        <mat-hint *ngIf="!productData?.rating?.count?.valid && productData?.rating?.count.touched">Product Count is Required.</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Description</mat-label>
+        <textarea 
+          matInput 
+          type="text"
+          class="form-control"
+          id="description"
+          required
+          formControlName="description" 
+          placeholder="Enter Product Description"
+        >
+        </textarea>
+        <mat-hint *ngIf="!myForm.get('description')?.valid && myForm.get('description')?.touched">Product Description is Required.</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="action-buttons">
+      <button 
+        mat-raised-button 
+        color="warn"
+        (click)="dialogRef.close('Close click')"
+      >Cancel
+      </button>
+      <button 
+        mat-raised-button
+        color="primary"
+        [disabled]="!myForm.valid"
+        type="submit"
+      >Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="modal-body">
   <div class="close-button">
     <button
       type="button"
@@ -134,4 +261,4 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
