@@ -10,6 +10,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 export class CartService {
   cartProducts: any[] = [];
   cartSubject = new Subject();
+  productDeletedSubject = new Subject(); // Subject to emit event when a product is successfully deleted
 
   constructor(private dialog: MatDialog) {}
 
@@ -50,7 +51,6 @@ export class CartService {
     this.cartSubject.next(this.cartProducts);
   }
 
-  //Change this to ngMaterial dialog
   removeItemFromCart(product: any) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       data: { product }
@@ -65,6 +65,8 @@ export class CartService {
           this.cartProducts.splice(index, 1);
           // Sending the updated cartProduct value/s
           this.cartSubject.next(this.cartProducts);
+          // Emitting event indicating successful deletion
+          this.productDeletedSubject.next(this.cartProducts);
         }
       }
     });

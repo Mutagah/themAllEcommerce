@@ -11,22 +11,24 @@ export class CartItemComponent implements OnInit {
   @Input() productData!: any;
   itemPrice: any;
 
-  constructor(private cartService: CartService, private snackBar: MatSnackBar) {}
+  constructor(
+    private cartService: CartService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getPriceDetails(this.productData);
   }
 
-  // Get Price Details from the service
   getPriceDetails(productData: any) {
-    this.itemPrice = this.cartService.getPriceDetailsInCartItem(productData).price;
+    this.itemPrice =
+      this.cartService.getPriceDetailsInCartItem(productData).price;
   }
 
   decreaseItemCount(productData: any) {
     this.cartService.decreaseProductCountInCart(productData);
-    // Display snackbar message
     this.snackBar.open('Product quantity updated successfully', 'Close', {
-      duration: 4000, // Adjust as needed
+      duration: 4000,
     });
     // Update price details
     this.getPriceDetails(productData);
@@ -34,14 +36,22 @@ export class CartItemComponent implements OnInit {
 
   increaseItemCount(productData: any) {
     this.cartService.increaseProductCountInCart(productData);
-    // Display snackbar message
     this.snackBar.open('Product quantity updated successfully', 'Close', {
-      duration: 4000, // Adjust as needed
+      duration: 4000,
     });
+    // Update price details
     this.getPriceDetails(productData);
   }
 
   removeItem(productData: any) {
     this.cartService.removeItemFromCart(productData);
+  }
+
+  ngAfterViewInit() {
+    this.cartService.productDeletedSubject.subscribe(() => {
+      this.snackBar.open('Product Successfully Deleted from the Cart', 'Close', {
+        duration: 4000,
+      });
+    });
   }
 }
