@@ -1,10 +1,17 @@
-.dialog-buttons {
-    display: flex;
-    justify-content: space-between; /* Align buttons to the right */
+.title{
+  h1{
+    text-align: center;
   }
-  
-  .yes-btn {
-    /* Adjust margins for spacing */
-    margin-left: 100px; /* Add some space between buttons */
-  }
-  
+}
+
+.content{
+  font-size: 20px;
+  color: red;
+  text-align: center;
+}
+
+.action-buttons{
+  justify-content: space-around;
+  margin: 10px;
+  margin-top: 0;
+}
