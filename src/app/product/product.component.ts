@@ -89,12 +89,21 @@ export class ProductComponent implements OnInit {
 
   // Add to Cart Functionality
   addToCart(productData: any) {
+  const isAlreadyInCart = this.cartService.isProductInCart(productData);
+
+  if (isAlreadyInCart) {
+    // If the product is already in the cart, display a message
+    this.snackBar.open('Product is already in the cart','Close', {
+      duration: 4000,
+    });
+  } else {
+    // If the product is not in the cart, add it to the cart
     this.cartService.addProductToCart(productData);
     this.isProductInCart = true;
     
-    // Display snackbar message
-    this.snackBar.open('Product successfully added to the cart', 'Close', {
-      duration: 4000, // Adjust as needed
+    this.snackBar.open('Product successfully added to the cart','Close', {
+      duration: 4000,
     });
+  }
   }
 }

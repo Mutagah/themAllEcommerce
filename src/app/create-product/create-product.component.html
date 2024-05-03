@@ -2,8 +2,8 @@
   <h1>Add Product</h1>
 </div>
 
-<div mat-dialog-content class="content">
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div mat-dialog-content class="content">
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Product Title</mat-label>
@@ -148,23 +148,23 @@
         >
       </mat-form-field>
     </div>
+  </div>
 
-    <div mat-dialog-actions class="action-buttons">
-      <button
-        mat-raised-button
-        color="warn"
-        (click)="dialogRef.close('Close click')"
-      >
-        Cancel
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!myForm.valid"
-        type="submit"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
-</div>
+  <div mat-dialog-actions class="action-buttons">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="dialogRef.close('Close click')"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!myForm.valid"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>

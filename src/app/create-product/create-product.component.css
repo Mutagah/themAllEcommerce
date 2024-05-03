@@ -18,8 +18,7 @@
 
 .action-buttons{
   justify-content: space-around;
-  margin: 10px;
-  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .error{
