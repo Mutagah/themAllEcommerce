@@ -1,12 +1,12 @@
 .price-details{
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 370px;
     height: fit-content;
     border: 1px solid #ffe6c6;
     background-color: #ffe6c6;
     border-radius: 10px;
-    position: fixed;
+    /* position: fixed; */
     right: 120px;
     padding: 5px;
     box-shadow: 0 8px 6px rgba(0, 0, 0, 0.51);

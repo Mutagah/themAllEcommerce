@@ -3,19 +3,21 @@
   <!-- Empty Cart Content -->
   <div class="empty" *ngIf="!cartItems.length">
     <mat-card class="empty-cart">
-      <mat-card-content class="empty-cart-content">
-        Your cart is currently empty
-      </mat-card-content>
+      <div mat-card-content class="empty-cart-content">
+        Your cart is currently empty.
+      </div>
     </mat-card>
-    <button
-      mat-raised-button
-      color="primary"
-      class="add-to-cart-button"
-      [routerLink]="'/home'"
-    >
-      Shop Now
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
+    <div mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-to-cart-button"
+        [routerLink]="'/home'"
+      >
+        Shop Now
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
   </div>
 
   <!-- Cart Content -->
@@ -30,5 +32,4 @@
       <app-price-details></app-price-details>
     </div>
   </div>
-  
 </div>

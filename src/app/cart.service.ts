@@ -7,6 +7,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 @Injectable({
   providedIn: 'root',
 })
+
 export class CartService {
   cartProducts: any[] = [];
   cartSubject = new Subject();

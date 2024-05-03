@@ -39,7 +39,7 @@
 
 .btn-checkout{
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   right: 125px;
   top: 300px;
   width: 355px;
