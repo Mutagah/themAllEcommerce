@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   productData: any;
   categories: any;
   //Variable will be used to show and hide the two cart buttons
-  isProductInCart: boolean = false;  
+  isProductInCart: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.productId = params['id'];
-      console.log(this.productId);
       this.getProductDetails(this.productId);
       this.getProductCategories();
     });
@@ -40,7 +39,6 @@ export class ProductComponent implements OnInit {
   getProductDetails(productId: any) {
     this.productService.getProduct(productId).subscribe((product) => {
       this.productData = product;
-      console.log(this.productData);
     });
   }
 
@@ -70,12 +68,14 @@ export class ProductComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.productService.deleteProduct(productId).subscribe((deletedProduct) => {
-          this.snackBar.open('Product deleted successfully', 'Close', {
-            duration: 5000, 
+        this.productService
+          .deleteProduct(productId)
+          .subscribe((deletedProduct) => {
+            this.snackBar.open('Product deleted successfully', 'Close', {
+              duration: 5000,
+            });
+            this.router.navigate(['home']);
           });
-          this.router.navigate(['home']);  
-        });
       }
     });
   }
@@ -87,23 +87,27 @@ export class ProductComponent implements OnInit {
     return this.categories;
   }
 
-  // Add to Cart Functionality
+  // Add Product to Cart Functionality
   addToCart(productData: any) {
-  const isAlreadyInCart = this.cartService.isProductInCart(productData);
+    // isProductInCart() Method Returns a Boolean Value - True or False
+    const isAlreadyInCart = this.cartService.isProductInCart(productData);
 
-  if (isAlreadyInCart) {
-    // If the product is already in the cart, display a message
-    this.snackBar.open('Product is already in the cart','Close', {
-      duration: 4000,
-    });
-  } else {
-    // If the product is not in the cart, add it to the cart
-    this.cartService.addProductToCart(productData);
-    this.isProductInCart = true;
-    
-    this.snackBar.open('Product successfully added to the cart','Close', {
-      duration: 4000,
-    });
-  }
+    if (isAlreadyInCart) {
+      // If True - The Product is already in the Cart, display snackbar message
+      this.snackBar.open(
+        'The Selected Product is Already in Your Cart',
+        'Close',
+        {
+          duration: 9000,
+        }
+      );
+    } else {
+      // If False - Add the New Product to the Cart
+      this.cartService.addProductToCart(productData);
+      this.isProductInCart = true;
+      this.snackBar.open('Product Successfully Added to Your Cart', 'Close', {
+        duration: 2000,
+      });
+    }
   }
 }

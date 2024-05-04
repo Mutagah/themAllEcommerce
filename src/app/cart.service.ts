@@ -11,7 +11,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 export class CartService {
   cartProducts: any[] = [];
   cartSubject = new Subject();
-  productDeletedSubject = new Subject(); // Subject to emit event when a product is successfully deleted
+  productDeletedSubject = new Subject();
 
   constructor(private dialog: MatDialog) {}
 
@@ -24,7 +24,6 @@ export class CartService {
     return this.cartProducts;
   }
 
-  //Cart Price Details - Used In CartItem Component
   getPriceDetailsInCartItem(product: any) {
     let priceDetails = {
       price: product.price * product.count
@@ -93,7 +92,7 @@ export class CartService {
   }
 
   isProductInCart(product: any): boolean {
-    // Check if the product is in the cart
+    // Checks if the product is already in the cart
     return this.cartProducts.some(item => item.id === product.id);
   }
 }

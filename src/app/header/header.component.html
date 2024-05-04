@@ -31,7 +31,6 @@
     <div routerLink="cart" class="link">
       <mat-icon>add_shopping_cart</mat-icon>
       <div class="cart-items" *ngIf="cartItemCount">{{ cartItemCount }}</div>
-      Cart
     </div>
   </div>
 </nav>
@@ -130,7 +129,7 @@
                 class="dropdown-list"
                 (click)="filterProductsByCategory(category)"
               >
-                <p class="price-filter">{{category}}</p>
+                <p class="price-filter">{{ category }}</p>
               </mat-list-item>
             </div>
           </mat-nav-list>
@@ -142,7 +141,6 @@
               Analytics
             </a>
           </mat-list-item>
-
         </div>
       </div>
     </mat-nav-list>
