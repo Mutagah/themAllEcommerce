@@ -245,17 +245,6 @@
   ],
   "carts": [
     {
-      "id": "e021",
-      "userId": 1,
-      "date": "2024-03-24",
-      "products": [
-        {
-          "productId": "15",
-          "quantity": 3
-        }
-      ]
-    },
-    {
       "id": "92d3",
       "userId": 2,
       "date": "2024-03-25",
@@ -286,17 +275,6 @@
         {
           "productId": "19",
           "quantity": 3
-        }
-      ]
-    },
-    {
-      "id": "55bf",
-      "userId": 1,
-      "date": "2024-04-19",
-      "products": [
-        {
-          "productId": "1",
-          "quantity": 2
         }
       ]
     }

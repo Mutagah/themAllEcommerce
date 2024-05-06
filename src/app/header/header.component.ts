@@ -75,7 +75,10 @@ export class HeaderComponent implements OnInit {
     if (window.localStorage.getItem('token') !== null) {
       this.userLoggedIn = true;
     }
-    /* Listens to any change in badge Count and does the necessary update*/
+    /* 
+    - Listens to any change in badge Count and does the necessary update.
+    - Subscribing to the badgeCount to the the number in real time when the badge count has changed.
+    */
 
     this.badgeService.badgeCount$.subscribe((countChange) => {
       if (countChange === 0) {
