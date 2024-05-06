@@ -1,5 +1,4 @@
 /*Angular imports */
-import { Component, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -7,11 +6,14 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 /*Service imports */
 import { ProductsService } from '../products.service';
 import { CartService } from '../cart.service';
 import { BadgeService } from '../badge.service';
+import { AuthService } from '../auth.service';
 
 /*Component imports */
 import { CreateProductComponent } from '../create-product/create-product.component';
@@ -34,33 +36,65 @@ import { MatDialog } from '@angular/material/dialog';
     ]),
   ],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   userId = 1;
   matBadge = 0;
   categories: any;
-  // cartItemCount: any;
   searchText: string = '';
   displayUserDropDown: boolean = false;
-  displayProductDropDown: Boolean = false;
-
+  displayProductDropDown: boolean = false;
+  accountHeaderDropDown: boolean = false;
+  sidebarAccountDropDown: boolean = false;
+  userLoggedIn: boolean = false;
+  disableMatBadge: boolean = false;
+  analyticsDropDown: boolean = false;
+  userRole!: any;
   constructor(
     private productService: ProductsService,
     private dialog: MatDialog,
     private cartService: CartService,
-    private badgeService: BadgeService
+    private badgeService: BadgeService,
+    private authService: AuthService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.userRole = window.localStorage.getItem('role');
     this.updateBadgeCount();
-    /* Listens to any change in badge Count and does the necessary update*/
+    this.activeRoute.queryParamMap.subscribe((queries) => {
+      if (Boolean(queries.get('logout'))) {
+        this.authService.logout();
+      }
+    });
+    if (
+      window.localStorage.getItem('role') === 'admin' ||
+      window.localStorage.getItem('role') === null
+    ) {
+      this.disableMatBadge = true;
+    }
+    if (window.localStorage.getItem('token') !== null) {
+      this.userLoggedIn = true;
+    }
+    /* 
+    - Listens to any change in badge Count and does the necessary update.
+    - Subscribing to the badgeCount to the the number in real time when the badge count has changed.
+    */
+
     this.badgeService.badgeCount$.subscribe((countChange) => {
-      // Modidy this function so that when the countChange is
       if (countChange === 0) {
         this.matBadge = countChange;
       } else {
         this.matBadge += countChange;
       }
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Close the dropdown if clicked outside of the account button
+    if (!(event.target as HTMLElement).closest('.account-button')) {
+      this.accountHeaderDropDown = false;
+    }
   }
 
   updateBadgeCount() {
@@ -101,11 +135,29 @@ export class HeaderComponent implements OnInit{
     return this.categories;
   }
 
+  logOut() {
+    this.authService.logout();
+    alert('You have successfully logged out');
+    this.userLoggedIn = false;
+  }
+
   toggleUserDropDownArrow() {
     this.displayUserDropDown = !this.displayUserDropDown;
   }
 
   toggleProductDropDown() {
     this.displayProductDropDown = !this.displayProductDropDown;
+  }
+
+  toggleAccountHeaderDropdown() {
+    this.accountHeaderDropDown = !this.accountHeaderDropDown;
+  }
+
+  toggleSidebarAccountDropdown() {
+    this.sidebarAccountDropDown = !this.sidebarAccountDropDown;
+  }
+
+  toggleAnalyticsDropDown() {
+    this.analyticsDropDown = !this.analyticsDropDown;
   }
 }

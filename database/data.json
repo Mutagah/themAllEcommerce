@@ -245,17 +245,6 @@
   ],
   "carts": [
     {
-      "id": "e021",
-      "userId": 1,
-      "date": "2024-03-24",
-      "products": [
-        {
-          "productId": "15",
-          "quantity": 3
-        }
-      ]
-    },
-    {
       "id": "92d3",
       "userId": 2,
       "date": "2024-03-25",
@@ -288,17 +277,6 @@
           "quantity": 3
         }
       ]
-    },
-    {
-      "id": "21a3",
-      "userId": 1,
-      "date": "2024-04-09",
-      "products": [
-        {
-          "productId": "1",
-          "quantity": 2
-        }
-      ]
     }
   ],
   "users": [
@@ -308,7 +286,7 @@
           "lat": "-37.3159",
           "long": "81.1496"
         },
-        "city": "kilcoole",
+        "city": "Nairobi",
         "street": "new road",
         "number": 7682,
         "zipcode": "12926-3874"
@@ -317,6 +295,7 @@
       "email": "john@gmail.com",
       "username": "johnd",
       "password": "m38rmF$",
+      "role": "admin",
       "name": {
         "firstname": "John",
         "lastname": "Doe"
@@ -330,7 +309,7 @@
           "lat": "-37.3159",
           "long": "81.1496"
         },
-        "city": "kilcoole",
+        "city": "Mombasa",
         "street": "Lovers Ln",
         "number": 7267,
         "zipcode": "12926-3874"
@@ -339,6 +318,7 @@
       "email": "morrison@gmail.com",
       "username": "mor_2314",
       "password": "83r5^_",
+      "role": "supplier",
       "name": {
         "firstname": "David",
         "lastname": "Morrison"
@@ -352,7 +332,7 @@
           "lat": "40.3467",
           "long": "-30.1310"
         },
-        "city": "Cullman",
+        "city": "Nakuru",
         "street": "Frances Ct",
         "number": 86,
         "zipcode": "29567-1452"
@@ -361,6 +341,7 @@
       "email": "kevin@gmail.com",
       "username": "kevinryan",
       "password": "kev02937@",
+      "role": "customer",
       "name": {
         "firstname": "Kevin",
         "lastname": "Ryan"
@@ -375,7 +356,7 @@
           "lat": "50.3467",
           "long": "-20.1310"
         },
-        "city": "San Antonio",
+        "city": "Kisumu",
         "street": "Hunters Creek Dr",
         "number": 6454,
         "zipcode": "98234-1734"
@@ -384,6 +365,7 @@
       "email": "don@gmail.com",
       "username": "Donero",
       "password": "Ewedon",
+      "role": "admin",
       "name": {
         "firstname": "Don",
         "lastname": "Romer"
@@ -397,7 +379,7 @@
           "lat": "40.3467",
           "long": "-40.1310"
         },
-        "city": "san Antonio",
+        "city": "Eldoret",
         "street": "adams St",
         "number": 245,
         "zipcode": "80796-1234"
@@ -406,6 +388,7 @@
       "email": "derek@gmail.com",
       "username": "derek",
       "password": "jklg*_56",
+      "role": "supplier",
       "name": {
         "firstname": "Derek",
         "lastname": "Powell"
@@ -419,7 +402,7 @@
           "lat": "20.1677",
           "long": "-10.6789"
         },
-        "city": "el paso",
+        "city": "Nairobi",
         "street": "prospect st",
         "number": 124,
         "zipcode": "12346-0456"
@@ -428,6 +411,7 @@
       "email": "david_r@gmail.com",
       "username": "david_r",
       "password": "3478*#54",
+      "role": "customer",
       "name": {
         "firstname": "David",
         "lastname": "Russell"
@@ -441,7 +425,7 @@
           "lat": "10.3456",
           "long": "20.6419"
         },
-        "city": "fresno",
+        "city": "Nairobi",
         "street": "saddle st",
         "number": 1342,
         "zipcode": "96378-0245"
@@ -450,6 +434,7 @@
       "email": "miriam@gmail.com",
       "username": "snyder",
       "password": "f238&@*$",
+      "role": "admin",
       "name": {
         "firstname": "Miriam",
         "lastname": "Snyder"
@@ -463,7 +448,7 @@
           "lat": "50.3456",
           "long": "10.6419"
         },
-        "city": "mesa",
+        "city": "Nairobi",
         "street": "vally view ln",
         "number": 1342,
         "zipcode": "96378-0245"
@@ -472,6 +457,7 @@
       "email": "william@gmail.com",
       "username": "hopkins",
       "password": "William56$hj",
+      "role": "supplier",
       "name": {
         "firstname": "William",
         "lastname": "Hopkins"
@@ -485,7 +471,7 @@
           "lat": "40.12456",
           "long": "20.5419"
         },
-        "city": "miami",
+        "city": "Mombasa",
         "street": "avondale ave",
         "number": 345,
         "zipcode": "96378-0245"
@@ -494,6 +480,7 @@
       "email": "kate@gmail.com",
       "username": "kate_h",
       "password": "kfejk@*_",
+      "role": "customer",
       "name": {
         "firstname": "Kate",
         "lastname": "Hale"
@@ -507,7 +494,7 @@
           "lat": "30.24788",
           "long": "-20.545419"
         },
-        "city": "fort wayne",
+        "city": "Mombasa",
         "street": "oak lawn ave",
         "number": 526,
         "zipcode": "10256-4532"
@@ -516,6 +503,7 @@
       "email": "jimmie@gmail.com",
       "username": "jimmie_k",
       "password": "klein*#%*",
+      "role": "admin",
       "name": {
         "firstname": "Jimmie",
         "lastname": "Klein"
@@ -538,11 +526,35 @@
       "email": "owen150@gmail.com",
       "username": "michael",
       "password": "michael",
+      "role": "supplier",
       "name": {
         "firstname": "Michael",
         "lastname": "Owen"
       },
       "phone": "0727249154",
+      "_v": 0
+    },
+    {
+      "id": "e18a",
+      "email": "kihahumutagah@gmail.com",
+      "username": "mutagah",
+      "name": {
+        "firstname": "Mutaga",
+        "lastname": "Kihahu"
+      },
+      "password": "123",
+      "role": "customer",
+      "phone": "",
+      "address": {
+        "geolocation": {
+          "lat": "",
+          "long": ""
+        },
+        "city": "Nakuru",
+        "street": "milimani drive",
+        "number": 0,
+        "zipcode": ""
+      },
       "_v": 0
     }
   ]

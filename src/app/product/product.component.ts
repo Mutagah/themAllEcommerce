@@ -112,6 +112,9 @@ export class ProductComponent implements OnInit {
   }
 
   cartFunctionality(productDetails: any) {
+    /*
+   - Checking if you are adding or removing product
+  */
     if (!this.removeProduct) {
       this.removeProduct = true;
       let productArray = [
@@ -153,25 +156,39 @@ export class ProductComponent implements OnInit {
 
             this.cartService.getOneCart(cartId).subscribe({
               next: (res) => {
-                /* 
-                Add functionality where if the productId exists then you update the specific product 
-                */
+                /*
+                 - Add functionality where if the productId exists then you update the specific product 
+               
+                Steps
+                
+                  1. Filtering re.products to get all other items not matching the productDetails id that has been passed in this function.
+                  2.  
+                 */
+
                 res.products = res.products.filter((productInCart: any) => {
                   return productArray.some(
                     (product: any) =>
                       product.productId !== productInCart.productId
                   );
                 });
+                ProductComponent
                 res.products.forEach((productInCart: any) => {
                   productArray.push(productInCart);
                 });
+
                 this.cartService
                   .addMoreItemToUserCart(cartId, {
                     userId: res.userId,
                     date: res.date,
                     products: productArray,
                   })
-                  .subscribe({ next: (res) => res });
+                  .subscribe({
+                    next: (res) => {
+                      this.badgeService.incrementBadgeCount();
+                      return res;
+                    },
+                    error: (error) => error,
+                  });
               },
             });
           } else {
