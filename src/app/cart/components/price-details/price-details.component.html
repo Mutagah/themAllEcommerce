@@ -15,5 +15,7 @@
       {{ (cartItemsTotal + deliveryCharge) * 130 | currency : "Ksh " }}
     </h4>
   </div>
-  <button mat-raised-button color="checkout">Checkout</button>
+  <button mat-raised-button color="checkout" routerLink="checkout">
+    Checkout
+  </button>
 </div>

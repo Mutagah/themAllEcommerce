@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
+import { CartService } from 'src/app/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

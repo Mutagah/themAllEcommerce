@@ -9,16 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*Component imports */
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
-import { PriceDetailsComponent } from './price-details/price-details.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
 import { SearchPipe } from './search.pipe';
 
 /*Angular imports */
@@ -44,12 +39,7 @@ import { MatInputModule } from '@angular/material/input';
     CategoriesComponent,
     CreateProductComponent,
     DeleteConfirmationComponent,
-    CartComponent,
-    CartItemComponent,
-    PriceDetailsComponent,
-    CheckoutComponent,
     SearchPipe,
-    AnalyticsComponent,
   ],
   imports: [
     BrowserModule,

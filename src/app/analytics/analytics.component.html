@@ -1,52 +1,53 @@
 <div class="analytics-container">
-  <div class="title">
-    <h1>Product Analytics</h1>
+    <div class="title">
+      <h1>Product Analytics</h1>
+    </div>
+    <div class="top-container">
+      <mat-card class="line-chart-container">
+        <mat-card-header class="header-content">
+          <div>
+            <mat-card-title>Product Price(Y-axis) Vs Product Rate(X-axis)</mat-card-title>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas id="lineChart"></canvas>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="bar-chart-container">
+        <mat-card-header class="header-content">
+          <div>
+            <mat-card-title>Product Price(Y-axis) Vs Product Count(X-axis)</mat-card-title>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas id="barChart"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="bottom-container">
+      <mat-card class="pie-chart-container">
+        <mat-card-header class="header-content">
+          <div>
+            <mat-card-title>Product Title Vs Product Count</mat-card-title>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas id="pieChart"></canvas>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="doughnut-chart-container">
+        <mat-card-header class="header-content">
+          <div>
+            <mat-card-title>Product Title Vs Product Price</mat-card-title>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas id="doughnutChart"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-  <div class="top-container">
-    <mat-card class="line-chart-container">
-      <mat-card-header class="header-content">
-        <div>
-          <mat-card-title>Product Price(Y-axis) Vs Product Rate(X-axis)</mat-card-title>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <canvas id="lineChart"></canvas>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="bar-chart-container">
-      <mat-card-header class="header-content">
-        <div>
-          <mat-card-title>Product Price(Y-axis) Vs Product Count(X-axis)</mat-card-title>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <canvas id="barChart"></canvas>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div class="bottom-container">
-    <mat-card class="pie-chart-container">
-      <mat-card-header class="header-content">
-        <div>
-          <mat-card-title>Product Title Vs Product Count</mat-card-title>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <canvas id="pieChart"></canvas>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="doughnut-chart-container">
-      <mat-card-header class="header-content">
-        <div>
-          <mat-card-title>Product Title Vs Product Price</mat-card-title>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <canvas id="doughnutChart"></canvas>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+  

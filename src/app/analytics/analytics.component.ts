@@ -5,9 +5,9 @@ import { ProductsService } from '../products.service';
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.css'],
+  styleUrls: ['./analytics.component.css']
 })
-export class AnalyticsComponent implements OnInit {
+export class AnalyticsComponent implements OnInit{
   productData: any;
   productPrice: any[] = [];
   productCategory: any[] = [];
