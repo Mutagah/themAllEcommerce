@@ -326,5 +326,30 @@
         "count": 99
       }
     }
+  ],
+  
+  "user": [
+    {
+      "id": "b604",
+      "username": "admin",
+      "password": "oweno",
+      "name": "Michael Owen",
+      "email": "michaeloduor50@gmail.com",
+      "phone": "0715836219",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "f557",
+      "username": "qodih",
+      "password": "Pa$$w0rd!",
+      "name": "Gage Campos",
+      "email": "zilowimy@mailinator.com",
+      "phone": "+1 (468) 613-7036",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    }
   ]
 }

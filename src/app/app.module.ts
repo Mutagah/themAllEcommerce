@@ -27,6 +27,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { UserReducer } from './User/User.Reducer';
+import { UserEffect } from './User/User.Effects';
+import { AppEffects } from './Common/App.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +59,11 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatSidenavModule,
+    MatSidenavModule, 
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    StoreModule.forRoot({user:UserReducer}),
+    EffectsModule.forRoot([UserEffect, AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],
