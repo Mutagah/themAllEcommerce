@@ -8,13 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*Component imports */
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
-import { SearchPipe } from './search.pipe';
 
 /*Angular imports */
 import { MatIconModule } from '@angular/material/icon';
@@ -33,13 +30,10 @@ import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ProductComponent,
     HeaderComponent,
-    CategoriesComponent,
     CreateProductComponent,
     DeleteConfirmationComponent,
-    SearchPipe,
   ],
   imports: [
     BrowserModule,

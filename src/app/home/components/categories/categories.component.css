@@ -1,13 +1,12 @@
 .home-container {
     background-color: #f5f5dc;
-    display: flex;
-    flex-direction: column;
     position: relative;
     height: max-content;
     .mat-card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      margin-bottom: 20px;
   
       .example-card {
         margin-top: 15px;
@@ -61,11 +60,8 @@
   
   .top {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: black;
-  
     h4 {
       text-transform: uppercase;
       font-weight: bold;
@@ -74,6 +70,10 @@
       margin-top: 20px;
       margin-left: 30px;
       color: black;
+    }
+    .view-all {
+      color: blue;
+      cursor: pointer;
     }
   }
   .product-title {
@@ -84,20 +84,12 @@
     align-items: center;
   }
   
-  .mat-primary {
-    color: orangered;
-  }
-  
-  .currency {
+  .price{
     font-weight: bold;
     color: orangered;
   }
   
-  .example-form-field {
-    margin-top: 20px;
-    margin-right: 30px;
-    width: 155px;
+  .mat-primary{
+    color: orangered;
   }
   
-  /* .trending-movies {
-  } */
