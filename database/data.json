@@ -327,7 +327,6 @@
       }
     }
   ],
-  
   "user": [
     {
       "id": "b604",
@@ -348,6 +347,50 @@
       "email": "zilowimy@mailinator.com",
       "phone": "+1 (468) 613-7036",
       "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "2514",
+      "username": "Michael 8",
+      "password": "11",
+      "name": "Michael O Oduor",
+      "email": "michaeloduor50@gmail.com",
+      "phone": "999777",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "d053",
+      "username": "pyqivubiz",
+      "password": "12345",
+      "name": "Magee Herrera",
+      "email": "pajutu@mailinator.com",
+      "phone": "+1 (949) 941-8204",
+      "gender": "other",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "b9c6",
+      "username": "ducufitev",
+      "password": "Pa$$w0rd!",
+      "name": "Sandra Gillespie",
+      "email": "ladiwoj@mailinator.com",
+      "phone": 744,
+      "gender": "male",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "3386",
+      "username": "kuzyt",
+      "password": "Pa$$w0rd!",
+      "name": "Doris Mccray",
+      "email": "lebidabap@mailinator.com",
+      "phone": 809,
+      "gender": "female",
       "role": "user",
       "status": true
     }

@@ -16,8 +16,8 @@ export class SignupComponent {
 
   registerForm = this.builder.group({
     username: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
-    password: this.builder.control('', Validators.required),
-    confirmpassword: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
+    confirmpassword: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
     name: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
     phone: this.builder.control('', Validators.required),
